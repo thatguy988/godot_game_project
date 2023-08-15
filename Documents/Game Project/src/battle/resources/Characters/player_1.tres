@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c7u4es6btphxh"]
+
+[ext_resource type="Script" path="res://src/battle/resources/Characters/BaseBattleCharacter.gd" id="1_bl5eg"]
+
+[resource]
+script = ExtResource("1_bl5eg")
+name = "Player_1"
+health = 125
+max_health = 125
+magic_points = 50
+max_magic_points = 50
+attack_power = 20
+strength = "Fire"
+weakness = "Water"
+magic_attack_power = 20
+healing_power = 45
+alive = true

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://n3iybn13ymi1"]
+
+[ext_resource type="Texture2D" uid="uid://dxmfg1w58x06r" path="res://assets/FF7Cursor.png" id="1_dyn33"]
+[ext_resource type="Script" path="res://src/ui/menu_cursor.gd" id="2_6p4pu"]
+
+[node name="menu_cursor" type="TextureRect"]
+offset_right = 240.0
+offset_bottom = 240.0
+texture = ExtResource("1_dyn33")
+script = ExtResource("2_6p4pu")
+cursor_offset = Vector2(75, 25)

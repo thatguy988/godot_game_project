@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0obj687s8e61"]
+
+[ext_resource type="Script" path="res://src/main_menu/scripts/main.gd" id="1_5klop"]
+[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="2_5nuj3"]
+[ext_resource type="PackedScene" uid="uid://n3iybn13ymi1" path="res://src/ui/menu_cursor.tscn" id="3_6mp5d"]
+[ext_resource type="Script" path="res://src/main_menu/scripts/main_menu_cursor.gd" id="4_nxn73"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4pqc"]
+bg_color = Color(0, 0, 0.6, 0.470588)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcvjt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2klop"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5klop")
+
+[node name="MainMenu" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 222.0
+offset_right = 598.0
+offset_bottom = 318.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w4pqc")
+
+[node name="MenuSelection" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 20.0
+offset_right = 125.0
+offset_bottom = 86.0
+theme_override_constants/separation = 8
+
+[node name="Play" type="Button" parent="MainMenu/MenuSelection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5nuj3")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_fcvjt")
+text = "Play"
+
+[node name="Quit" type="Button" parent="MainMenu/MenuSelection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5nuj3")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_2klop")
+text = "Quit
+"
+
+[node name="menu_cursor" parent="." instance=ExtResource("3_6mp5d")]
+layout_mode = 0
+offset_left = 835.0
+offset_top = 157.0
+offset_right = 1075.0
+offset_bottom = 397.0
+script = ExtResource("4_nxn73")
+menu_parent_path = NodePath("../MainMenu/MenuSelection")
+cursor_offset = Vector2(60, 105)
+
+[connection signal="pressed" from="MainMenu/MenuSelection/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenu/MenuSelection/Quit" to="." method="_on_quit_pressed"]

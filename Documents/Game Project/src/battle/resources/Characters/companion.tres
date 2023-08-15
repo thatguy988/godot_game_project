@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://woane3tbb58u"]
+
+[ext_resource type="Script" path="res://src/battle/resources/Characters/BaseBattleCharacter.gd" id="1_lal7t"]
+
+[resource]
+script = ExtResource("1_lal7t")
+name = "Player_2"
+health = 100
+max_health = 100
+magic_points = 150
+max_magic_points = 150
+attack_power = 0
+strength = "Lightning"
+weakness = "Earth"
+magic_attack_power = 30
+healing_power = 20
+alive = true

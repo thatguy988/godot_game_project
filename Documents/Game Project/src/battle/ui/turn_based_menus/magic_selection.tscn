@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://drnd0jopnheao"]
+
+[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_75hum"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bml0v"]
+bg_color = Color(0, 0, 0.6, 0.470588)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_752nt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkj42"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mllqs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1ocn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="MagicSelection" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.017
+anchor_bottom = 0.062
+offset_left = -117.023
+offset_top = 31.44
+offset_right = -89.9747
+offset_bottom = 82.464
+theme_override_styles/panel = SubResource("StyleBoxFlat_bml0v")
+
+[node name="Magic" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 36.0
+offset_bottom = 60.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 1
+
+[node name="Fire" type="Button" parent="Magic"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Earth")
+focus_neighbor_bottom = NodePath("../Water")
+theme_override_fonts/font = ExtResource("1_75hum")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_752nt")
+text = "Fire"
+
+[node name="Water" type="Button" parent="Magic"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Fire")
+focus_neighbor_bottom = NodePath("../Lightning")
+theme_override_fonts/font = ExtResource("1_75hum")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_bkj42")
+text = "Water"
+
+[node name="Lightning" type="Button" parent="Magic"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Water")
+focus_neighbor_bottom = NodePath("../Earth")
+theme_override_fonts/font = ExtResource("1_75hum")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_mllqs")
+text = "Thunder"
+
+[node name="Earth" type="Button" parent="Magic"]
+custom_minimum_size = Vector2(0, 15)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Lightning")
+focus_neighbor_bottom = NodePath("../Fire")
+theme_override_fonts/font = ExtResource("1_75hum")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_h1ocn")
+text = "Earth"

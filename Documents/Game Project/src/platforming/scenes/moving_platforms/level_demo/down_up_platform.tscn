@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqja41nfd61bs"]
+
+[ext_resource type="Texture2D" uid="uid://cos4lbnc4f57o" path="res://assets/15 Blob TileMap 16x16.png" id="1_fl603"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8ax8"]
+size = Vector2(48, 14)
+
+[sub_resource type="Animation" id="Animation_cen1v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_8x41n"]
+resource_name = "down_up"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5.2, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 100), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_74o82"]
+_data = {
+"RESET": SubResource("Animation_cen1v"),
+"down_up": SubResource("Animation_8x41n")
+}
+
+[node name="DownUpPlatform" type="Node2D"]
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+position = Vector2(0, 100)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture = ExtResource("1_fl603")
+region_enabled = true
+region_rect = Rect2(0, 48, 48, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_r8ax8")
+one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D"]
+autoplay = "down_up"
+libraries = {
+"": SubResource("AnimationLibrary_74o82")
+}

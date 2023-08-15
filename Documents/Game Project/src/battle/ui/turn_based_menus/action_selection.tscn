@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=3 uid="uid://c7t2aex7vmkrj"]
+
+[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_j5o6a"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ve4bk"]
+bg_color = Color(0, 0, 0.6, 0.470588)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_welie"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_da1qt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hca7g"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isfre"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4taq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vengh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0p7oq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc3b3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7b6q1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="ActionSelection" type="Panel"]
+offset_left = -158.759
+offset_top = 25.2
+offset_right = -132.759
+offset_bottom = 83.2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ve4bk")
+
+[node name="Actions" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 32.0
+offset_bottom = 68.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/separation = 1
+
+[node name="Attack" type="Button" parent="Actions"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Magic")
+theme_override_fonts/font = ExtResource("1_j5o6a")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_welie")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_da1qt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hca7g")
+text = "Attack"
+
+[node name="Magic" type="Button" parent="Actions"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Attack")
+focus_neighbor_bottom = NodePath("../Scan")
+theme_override_fonts/font = ExtResource("1_j5o6a")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_isfre")
+text = "Magic"
+
+[node name="Scan" type="Button" parent="Actions"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Magic")
+focus_neighbor_bottom = NodePath("../Skip")
+theme_override_fonts/font = ExtResource("1_j5o6a")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_a4taq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vengh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0p7oq")
+text = "Scan"
+
+[node name="Skip" type="Button" parent="Actions"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Scan")
+focus_neighbor_bottom = NodePath("../Flee")
+theme_override_fonts/font = ExtResource("1_j5o6a")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_gc3b3")
+text = "Skip"
+
+[node name="Flee" type="Button" parent="Actions"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Skip")
+theme_override_fonts/font = ExtResource("1_j5o6a")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_7b6q1")
+text = "Flee"

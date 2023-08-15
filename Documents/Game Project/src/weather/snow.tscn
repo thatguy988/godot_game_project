@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgbp0bgqm4jmn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vdr4g"]
+emission_shape = 3
+emission_box_extents = Vector3(1200, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(-1, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 70.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+
+[node name="Snow" type="GPUParticles2D"]
+amount = 1600
+process_material = SubResource("ParticleProcessMaterial_vdr4g")
+lifetime = 8.0

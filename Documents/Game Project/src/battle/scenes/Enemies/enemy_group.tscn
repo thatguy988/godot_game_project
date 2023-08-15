@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4o35bpv3uwrr"]
+
+[ext_resource type="Script" path="res://src/battle/ui/enemy_item.gd" id="1_wnvjr"]
+
+[node name="Pair_of_Enemies" type="GridContainer"]
+offset_left = 1.0
+offset_right = 48.0
+offset_bottom = 112.0
+
+[node name="Enemy_1" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+script = ExtResource("1_wnvjr")
+
+[node name="Enemy_2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+script = ExtResource("1_wnvjr")

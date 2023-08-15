@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbgvjj2tyxiyr"]
+
+[ext_resource type="Script" path="res://src/platforming/scripts/Enemies/flying_enemy.gd" id="1_5w3l2"]
+[ext_resource type="Texture2D" uid="uid://d1y0diqs00ui5" path="res://assets/Enemies/06b.png" id="2_i4bsk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iljix"]
+size = Vector2(56, 28.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3l1m2"]
+size = Vector2(8, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fug5"]
+size = Vector2(7.5, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_no3wn"]
+size = Vector2(64, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2lnk8"]
+size = Vector2(49, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jx8ke"]
+radius = 132.442
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ivw6h"]
+radius = 149.215
+
+[node name="flying_enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_5w3l2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_i4bsk")
+region_enabled = true
+region_rect = Rect2(0, 15, 65, 45)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.25)
+shape = SubResource("RectangleShape2D_iljix")
+
+[node name="Left_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left_Collision"]
+position = Vector2(-28, 0.5)
+shape = SubResource("RectangleShape2D_3l1m2")
+
+[node name="Right_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right_Collision"]
+position = Vector2(28.25, 0)
+shape = SubResource("RectangleShape2D_2fug5")
+
+[node name="Bottom_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom_Collision"]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_no3wn")
+
+[node name="Top_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Collision"]
+position = Vector2(0.5, -17)
+shape = SubResource("RectangleShape2D_2lnk8")
+
+[node name="PlayerDetected" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetected"]
+shape = SubResource("CircleShape2D_jx8ke")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="PlayerLost" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerLost"]
+shape = SubResource("CircleShape2D_ivw6h")
+
+[connection signal="body_entered" from="Left_Collision" to="." method="_on_left_collision_body_entered"]
+[connection signal="body_entered" from="Right_Collision" to="." method="_on_right_collision_body_entered"]
+[connection signal="body_entered" from="Bottom_Collision" to="." method="_on_bottom_collision_body_entered"]
+[connection signal="body_entered" from="Top_Collision" to="." method="_on_top_collision_body_entered"]
+[connection signal="body_entered" from="PlayerDetected" to="." method="_on_player_detected_body_entered"]
+[connection signal="body_exited" from="PlayerLost" to="." method="_on_player_lost_body_exited"]

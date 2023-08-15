@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1jxykc83326x"]
+
+[ext_resource type="Script" path="res://src/platforming/scripts/Enemies/enemy.gd" id="1_d7v12"]
+[ext_resource type="Texture2D" uid="uid://dhn1n5un0kaph" path="res://assets/Enemies/01.png" id="2_si4pn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrnsi"]
+size = Vector2(22, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxy8d"]
+size = Vector2(18, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rg4k7"]
+size = Vector2(1, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tmgva"]
+size = Vector2(1, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bgpc7"]
+size = Vector2(22, 1)
+
+[node name="enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_d7v12")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, -4)
+scale = Vector2(0.666667, 0.916667)
+texture = ExtResource("2_si4pn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_hrnsi")
+
+[node name="Top_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Collision"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_hxy8d")
+
+[node name="Left_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left_Collision"]
+position = Vector2(-11.5, 0.5)
+shape = SubResource("RectangleShape2D_rg4k7")
+
+[node name="Right_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right_Collision"]
+position = Vector2(11.5, 0.5)
+shape = SubResource("RectangleShape2D_tmgva")
+
+[node name="Bottom_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom_Collision"]
+position = Vector2(0, 16.5)
+shape = SubResource("RectangleShape2D_bgpc7")
+
+[connection signal="body_entered" from="Top_Collision" to="." method="_on_top_collision_body_entered"]
+[connection signal="body_entered" from="Left_Collision" to="." method="_on_left_collision_body_entered"]
+[connection signal="body_entered" from="Right_Collision" to="." method="_on_right_collision_body_entered"]
+[connection signal="body_entered" from="Bottom_Collision" to="." method="_on_bottom_collision_body_entered"]

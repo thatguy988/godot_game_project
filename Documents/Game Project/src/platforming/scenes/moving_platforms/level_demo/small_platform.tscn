@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnr2a262pthrv"]
+
+[ext_resource type="Texture2D" uid="uid://cos4lbnc4f57o" path="res://15 Blob TileMap 16x16.png" id="1_cm8wg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0rf7w"]
+size = Vector2(16, 13)
+
+[node name="SmallPlatform" type="Node2D"]
+
+[node name="Platform" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_0rf7w")
+one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+texture = ExtResource("1_cm8wg")
+region_enabled = true
+region_rect = Rect2(48, 48, 16, 16)

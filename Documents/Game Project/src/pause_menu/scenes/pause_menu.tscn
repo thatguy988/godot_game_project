@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7fenbssrbogn"]
+
+[ext_resource type="Script" path="res://src/pause_menu/scripts/pause_menu.gd" id="1_at2oi"]
+[ext_resource type="PackedScene" uid="uid://n3iybn13ymi1" path="res://src/ui/menu_cursor.tscn" id="1_usaro"]
+[ext_resource type="Script" path="res://src/pause_menu/scripts/pause_menu_cursor.gd" id="2_a3tdk"]
+[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="2_wffyw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x2plg"]
+bg_color = Color(0, 0, 0.6, 0.470588)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7ymj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80ih7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_at2oi")
+
+[node name="PauseMenuBackground" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 244.0
+offset_right = 647.0
+offset_bottom = 418.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_x2plg")
+
+[node name="PauseMenuSelection" type="VBoxContainer" parent="PauseMenuBackground"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 51.0
+offset_right = 146.0
+offset_bottom = 117.0
+scale = Vector2(1.01474, 1.14687)
+theme_override_constants/separation = 10
+
+[node name="Resume" type="Button" parent="PauseMenuBackground/PauseMenuSelection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wffyw")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_a7ymj")
+text = "Resume"
+
+[node name="Quit" type="Button" parent="PauseMenuBackground/PauseMenuSelection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_wffyw")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_80ih7")
+text = "Quit"
+
+[node name="Label" type="Label" parent="PauseMenuBackground"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 21.0
+offset_right = 147.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("2_wffyw")
+theme_override_font_sizes/font_size = 15
+text = "Pause Menu"
+horizontal_alignment = 1
+
+[node name="menu_cursor" parent="." instance=ExtResource("1_usaro")]
+layout_mode = 0
+script = ExtResource("2_a3tdk")
+menu_parent_path = NodePath("../PauseMenuBackground/PauseMenuSelection")
+cursor_offset = Vector2(110, 105)
+
+[connection signal="pressed" from="PauseMenuBackground/PauseMenuSelection/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenuBackground/PauseMenuSelection/Quit" to="." method="_on_quit_pressed"]
