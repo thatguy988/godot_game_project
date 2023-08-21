@@ -49,14 +49,14 @@ var action
 
 var pick_attack_or_magic
 
-var half_turn = 0.5
-var full_turn = 1
 var weakness_multiplier = 2
 var strength_multiplier = 0.5
 var critical_multiplier = 1.5
 var enemy_critical_multiplier = 1.5
 var enemy_hit_weakness_multiplier = 2
 var enemy_hit_strength_multiplier = 0.5
+
+var battle_over = false
 	
 	
 func _input(event):
@@ -113,7 +113,7 @@ func enemy_turn():
 				character_array[randomNum].health = max(0, character_array[randomNum].health - (enemy_critical_multiplier * enemy_array[enemy_index].attack_power))
 				display_text("%s does damage %d" % [enemy_array[enemy_index].name, (enemy_critical_multiplier * enemy_array[enemy_index].attack_power) ] )
 				await self.text_box_closed
-				enemyturns -= half_turn
+				decrease_turns(enemyturns, true, false)
 			else:
 				display_text("%s attacks" % enemy_array[enemy_index].name)
 				await self.text_box_closed
@@ -121,10 +121,10 @@ func enemy_turn():
 				character_array[randomNum].health = max(0, character_array[randomNum].health - enemy_array[enemy_index].attack_power)
 				display_text("%s does damage %d" % [enemy_array[enemy_index].name,enemy_array[enemy_index].attack_power])
 				await self.text_box_closed
-				enemyturns -= full_turn
-			set_health(health_bar_array[randomNum],
-							character_array[randomNum].health,
-							character_array[randomNum].max_health)
+				decrease_turns(enemyturns, false, false)
+#			set_health(health_bar_array[randomNum],
+#							character_array[randomNum].health,
+#							character_array[randomNum].max_health)
 		elif pick_attack_or_magic == 1: #use magic
 			var pick_spell = randi_range(0,enemy_array[enemy_index].magic_spells.size() - 1)
 			display_text("%s casts %s" % [enemy_array[enemy_index].name, enemy_array[enemy_index].magic_spells[pick_spell]])
@@ -133,18 +133,22 @@ func enemy_turn():
 				character_array[randomNum].health = max(0, character_array[randomNum].health - (enemy_hit_weakness_multiplier * enemy_array[enemy_index].magic_attack_power))
 				display_text("%s is weak to %s Damage %d" % [character_array[randomNum].name, enemy_array[enemy_index].magic_spells[pick_spell], (enemy_hit_weakness_multiplier * enemy_array[enemy_index].magic_attack_power)])
 				await self.text_box_closed
-				enemyturns -= half_turn
+				decrease_turns(enemyturns, true, false)
 			elif character_array[randomNum].strength == enemy_array[enemy_index].magic_spells[pick_spell]:
 				character_array[randomNum].health = max(0, character_array[randomNum].health - (enemy_hit_strength_multiplier * enemy_array[enemy_index].magic_attack_power))
 				display_text("%s is resist to %s damage %d" % [character_array[randomNum].name, enemy_array[enemy_index].magic_spells[pick_spell], (enemy_hit_strength_multiplier * enemy_array[enemy_index].magic_attack_power)])
 				await self.text_box_closed
-				enemyturns -= full_turn
+				decrease_turns(enemyturns, false, false)
 			else:
 				character_array[randomNum].health = max(0, character_array[randomNum].health - (enemy_array[enemy_index].magic_attack_power))
 				display_text("Damage %d" % (enemy_array[enemy_index].magic_attack_power))
 				await self.text_box_closed
-				enemyturns -= full_turn
+				decrease_turns(enemyturns, false, false)
 			damage_array[randomNum].play(enemy_array[enemy_index].magic_spells[pick_spell])
+		set_health(health_bar_array[randomNum],
+							character_array[randomNum].health,
+							character_array[randomNum].max_health)	
+		print(enemyturns)
 		check_enemy_index()
 		check_for_player_turn()
 				
@@ -195,7 +199,7 @@ func _on_water_pressed():
 
 func _on_lightning_pressed():
 	magic_is_selected()
-	action = "Lightning"
+	action = "Thunder"
 	magic_selected.emit()
 	emit_signal("magic_selected")
 	
@@ -211,10 +215,14 @@ func check_if_all_enemies_dead():
 	for i in range(0,enemy_array.size()):
 		if enemy_array[i].alive == false:
 			dead_enemies += 1
+	print(dead_enemies)
 	while dead_enemies == enemy_array.size():
+		battle_over = true
+		$TextboxTimer.start(15)
 		display_text("All enemies are dead")
 		await self.text_box_closed
 		go_back_to_platform_level()
+	
 
 		
 func check_if_enemy_is_dead(selection_index):
@@ -237,6 +245,7 @@ func check_if_all_characters_dead():
 		if character_array[i].alive == false:
 			dead_characters += 1
 	while dead_characters == character_array.size():
+		battle_over = true
 		display_text("game over")
 		await self.text_box_closed
 		go_back_to_platform_level()
@@ -265,6 +274,7 @@ func check_enemy_index():
 	
 			
 func check_for_player_turn():
+	var full_turn = 1
 	if enemyturns <= 0:
 		index = 0
 		playerturns = 0
@@ -277,6 +287,7 @@ func check_for_player_turn():
 		enemy_turn()
 		
 func check_for_enemy_turn():
+	var full_turn = 1
 	if playerturns <= 0:
 		enemy_index = 0
 		enemyturns = 0
@@ -342,7 +353,7 @@ func _on_skip_pressed():
 	await self.text_box_closed
 	check_index()
 	display_menu()
-	playerturns -= half_turn
+	decrease_turns(playerturns, true, true)
 
 
 func attack(selection_index):
@@ -355,7 +366,7 @@ func attack(selection_index):
 		character_animation_array[index].queue("idle")
 		enemy_array[selection_index].health = max(0, enemy_array[selection_index].health - (critical_multiplier * character_array[index].attack_power))			
 		display_text("Critical %d" % (critical_multiplier * character_array[index].attack_power))
-		playerturns -= half_turn
+		decrease_turns(playerturns, true, true)
 	else:	
 		display_text("Attack")
 		await self.text_box_closed
@@ -363,13 +374,14 @@ func attack(selection_index):
 		character_animation_array[index].queue("idle")
 		display_text("Damage %d" % character_array[index].attack_power)
 		enemy_array[selection_index].health = max(0, enemy_array[selection_index].health - character_array[index].attack_power)
-		playerturns -= full_turn
+		decrease_turns(playerturns, false, true)
 	enemy_damage_animation_array[selection_index].play("Attacked")
 	await self.text_box_closed
 	check_if_enemy_is_dead(selection_index)
 	check_if_all_enemies_dead()
-	check_index()
-	check_for_enemy_turn()
+	if battle_over == false:
+		check_index()
+		check_for_enemy_turn()
 	
 func magic(selection_index,action):
 	if character_array[index].magic_points >= 5:
@@ -377,17 +389,17 @@ func magic(selection_index,action):
 			enemy_array[selection_index].health = max(0, enemy_array[selection_index].health - (weakness_multiplier * character_array[index].magic_attack_power))
 			display_text("Hit Weakness Damage %d" % (weakness_multiplier * character_array[index].magic_attack_power))
 			await self.text_box_closed
-			playerturns -= half_turn
+			decrease_turns(playerturns, true, true)
 		elif enemy_array[selection_index].strength == action:
 			enemy_array[selection_index].health = max(0, enemy_array[selection_index].health - (strength_multiplier * character_array[index].magic_attack_power))
 			display_text("Enemy is resist to %s Damage %d" % [action, (strength_multiplier * character_array[index].magic_attack_power)])
 			await self.text_box_closed
-			playerturns -= full_turn
+			decrease_turns(playerturns, false, true)
 		else:
 			enemy_array[selection_index].health = max(0, enemy_array[selection_index].health - character_array[index].magic_attack_power)
 			display_text("%s Attack" % action)
 			await self.text_box_closed
-			playerturns -= full_turn
+			decrease_turns(playerturns, false, true)
 		character_animation_array[index].play("magic_attack")
 		character_animation_array[index].queue("idle")
 		enemy_damage_animation_array[selection_index].play(action)
@@ -397,22 +409,40 @@ func magic(selection_index,action):
 				character_array[index].max_magic_points)
 		check_if_enemy_is_dead(selection_index)
 		check_if_all_enemies_dead()
-		check_index()
-		check_for_enemy_turn()
+		if battle_over == false:
+			check_index()
+			check_for_enemy_turn()
 	else:
 		display_text("Not enough MP")
 		await self.text_box_closed
 		display_menu()
 
 func scan(selection_index):
-	$TextboxTimer.start(10)
-	display_text("HP: %d, MP: %d, Strength: %s, Weakness %s" % [enemy_array[selection_index].health, enemy_array[selection_index].magic_points, enemy_array[selection_index].strength, enemy_array[selection_index].weakness])
+	$TextboxTimer.start(20)
+	display_text("HP: %d, MP: %d, Strength: %s, Weakness %s. Press f to continue" % [enemy_array[selection_index].health, enemy_array[selection_index].magic_points, enemy_array[selection_index].strength, enemy_array[selection_index].weakness])
 	await self.text_box_closed
 	display_menu()
-	$TextboxTimer.start(3)
+	$TextboxTimer.start(5)
 
 func _on_menu_cursor_menu_canceled():
 	if action in ["attack","scan"]:
 		display_menu()
 	elif action in ["Fire","Water","Lightning","Earth"]:
 		display_magic_menu()
+
+func decrease_turns(turns, halfturnhit, is_player): # enter player or enemy turn , true if halfturn false if full turn, true if player took action false if enemy took action
+	var half_turn = 0.5
+	var full_turn = 1.0
+
+	if halfturnhit:
+		turns -= half_turn
+	else:
+		if turns in [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5]:
+			turns -= half_turn
+		else:
+			turns -= full_turn
+
+	if is_player: #player took action
+		playerturns = turns
+	else:
+		enemyturns = turns

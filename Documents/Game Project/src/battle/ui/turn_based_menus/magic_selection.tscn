@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://drnd0jopnheao"]
+[gd_scene load_steps=15 format=3 uid="uid://drnd0jopnheao"]
 
 [ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_75hum"]
 
@@ -12,13 +12,37 @@ border_width_bottom = 1
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_752nt"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wrxwg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_edlwb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkj42"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fsxt"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdln0"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mllqs"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_on4pw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pumcs"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1ocn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iecww"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dcxv6"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="MagicSelection" type="Panel"]
@@ -47,6 +71,8 @@ focus_neighbor_bottom = NodePath("../Water")
 theme_override_fonts/font = ExtResource("1_75hum")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_752nt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wrxwg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_edlwb")
 text = "Fire"
 
 [node name="Water" type="Button" parent="Magic"]
@@ -57,6 +83,8 @@ focus_neighbor_bottom = NodePath("../Lightning")
 theme_override_fonts/font = ExtResource("1_75hum")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_bkj42")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1fsxt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qdln0")
 text = "Water"
 
 [node name="Lightning" type="Button" parent="Magic"]
@@ -67,6 +95,8 @@ focus_neighbor_bottom = NodePath("../Earth")
 theme_override_fonts/font = ExtResource("1_75hum")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_mllqs")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_on4pw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pumcs")
 text = "Thunder"
 
 [node name="Earth" type="Button" parent="Magic"]
@@ -77,4 +107,6 @@ focus_neighbor_bottom = NodePath("../Fire")
 theme_override_fonts/font = ExtResource("1_75hum")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_h1ocn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_iecww")
+theme_override_styles/focus = SubResource("StyleBoxFlat_dcxv6")
 text = "Earth"

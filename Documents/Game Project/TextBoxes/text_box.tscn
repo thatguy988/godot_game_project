@@ -1,7 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://5fkn323in6dh"]
+[gd_scene load_steps=3 format=3 uid="uid://5fkn323in6dh"]
+
+[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_ckycm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wh7os"]
-bg_color = Color(0, 0, 0.788235, 1)
+bg_color = Color(0, 0, 0.788235, 0.470588)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -35,31 +37,48 @@ layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_bottom = 0
 
 [node name="Panel" type="Panel" parent="TextBoxContainer/MarginContainer"]
 visible = false
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="StartSymbol" type="Label" parent="TextBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Character Name" type="Label" parent="TextBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = ExtResource("1_ckycm")
+theme_override_font_sizes/font_size = 15
+text = "Character Speaking Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="StartSymbol" type="Label" parent="TextBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(9, 26)
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_ckycm")
+theme_override_font_sizes/font_size = 14
 text = "*"
 
-[node name="Text" type="Label" parent="TextBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Text" type="Label" parent="TextBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "Text wwwwwwwwww wwwwwwwwwwwwwwwwww wwwww w w w w w w wwwwwwwwwwwwwwwwwwwwwwww wwwww w w w w w w wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww w w w w w w w w w w w w "
+theme_override_fonts/font = ExtResource("1_ckycm")
+theme_override_font_sizes/font_size = 15
+text = "Text wwwwwwwwww wwwwwwwwwwwwwwwwww wwwww w w w w w w wwwwwwwwwwww h H"
 autowrap_mode = 2
 clip_text = true
 
-[node name="EndSymbol" type="Label" parent="TextBoxContainer/MarginContainer/HBoxContainer"]
+[node name="EndSymbol" type="Label" parent="TextBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(9, 26)
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_ckycm")
+theme_override_font_sizes/font_size = 14
 text = "v"

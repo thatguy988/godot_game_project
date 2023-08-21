@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c1j44odlgo42f"]
+[gd_scene load_steps=52 format=3 uid="uid://c1j44odlgo42f"]
 
 [ext_resource type="Texture2D" uid="uid://b7maq8ef755mi" path="res://assets/backgrounds/grass_battle_background.png" id="1_3b60w"]
 [ext_resource type="Script" path="res://src/battle/scripts/Battle_Zones/Forest_Battle_Scene.gd" id="1_i27mq"]
@@ -7,12 +7,11 @@
 [ext_resource type="Resource" uid="uid://woane3tbb58u" path="res://src/battle/resources/Characters/companion.tres" id="4_gload"]
 [ext_resource type="Resource" uid="uid://b75qdpe4in5sb" path="res://src/battle/resources/Enemies/enemy_2.tres" id="5_b7eaf"]
 [ext_resource type="Texture2D" uid="uid://bh3rl2nbceuaq" path="res://assets/Fada rosa.png" id="5_hv4mo"]
+[ext_resource type="PackedScene" uid="uid://dqgpi3owbaxar" path="res://src/battle/ui/turn_based_menus/companion_action_selection.tscn" id="8_po23n"]
 [ext_resource type="PackedScene" uid="uid://dgch1la8udhgi" path="res://src/battle/ui/InfoTexbox.tscn" id="8_v0t2j"]
 [ext_resource type="PackedScene" uid="uid://w55v1oqxcxtd" path="res://src/battle/ui/turn_counter.tscn" id="9_6qasy"]
 [ext_resource type="PackedScene" uid="uid://cq80dp2vl3k53" path="res://src/battle/scenes/Characters/player_character.tscn" id="9_i2eug"]
-[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="9_jrk0x"]
-[ext_resource type="PackedScene" uid="uid://y6plslofmsne" path="res://src/battle/ui/health_and_magic_bars/player_1_healthbar.tscn" id="10_iebgg"]
-[ext_resource type="PackedScene" uid="uid://dlya3hv4flcn0" path="res://src/battle/ui/health_and_magic_bars/player_1_magicbar.tscn" id="11_ylc5c"]
+[ext_resource type="PackedScene" uid="uid://telmfvalpr36" path="res://src/battle/ui/turn_based_menus/companion_magic_selection.tscn" id="9_ys1cy"]
 [ext_resource type="PackedScene" uid="uid://c7t2aex7vmkrj" path="res://src/battle/ui/turn_based_menus/action_selection.tscn" id="12_h1kms"]
 [ext_resource type="PackedScene" uid="uid://drnd0jopnheao" path="res://src/battle/ui/turn_based_menus/magic_selection.tscn" id="13_7kwe0"]
 [ext_resource type="PackedScene" uid="uid://b4o35bpv3uwrr" path="res://src/battle/scenes/Enemies/enemy_group.tscn" id="14_d4e0q"]
@@ -22,41 +21,7 @@
 [ext_resource type="Script" path="res://src/battle/ui/cursors/action_selection_cursor.gd" id="18_0e48g"]
 [ext_resource type="Script" path="res://src/battle/ui/cursors/companion_action_menu_cursor.gd" id="19_7el6r"]
 [ext_resource type="Script" path="res://src/battle/ui/cursors/companion_magic_menu_cursor.gd" id="20_npucr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_la22x"]
-bg_color = Color(0.929412, 0.0235294, 0, 1)
-border_width_left = 1
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0, 0, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5kos"]
-bg_color = Color(0, 0.729412, 0.160784, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_bottom = 10
-border_color = Color(0, 0, 0, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vw86"]
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.02, 0.02, 0.02, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ay4ym"]
-bg_color = Color(0.0941176, 0.380392, 0.945098, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_bottom = 10
-border_color = Color(0.0196078, 0.0196078, 0.0196078, 1)
+[ext_resource type="PackedScene" uid="uid://cd08g0b2vthor" path="res://src/battle/ui/health_and_magic_bars/character_info_textbox.tscn" id="21_i4wqi"]
 
 [sub_resource type="Animation" id="Animation_5yjwo"]
 length = 0.001
@@ -168,47 +133,6 @@ _data = {
 "idle": SubResource("Animation_l10nl")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anaen"]
-bg_color = Color(0, 0, 0.6, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkj5j"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yn4hg"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f15fu"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgkga"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4m7u"]
-bg_color = Color(0, 0, 0.6, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u070o"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a41tl"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsgwl"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yo5t"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0ka8"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
 [sub_resource type="Animation" id="Animation_pmchn"]
 resource_name = "Attacked"
 length = 1.2
@@ -288,13 +212,169 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_8b71i"]
+resource_name = "Thunder"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pair_of_Enemies/Enemy_1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lv71f"]
+resource_name = "Earth"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pair_of_Enemies/Enemy_1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3ck1d"]
 _data = {
 "Attacked": SubResource("Animation_pmchn"),
 "Dead": SubResource("Animation_ofvl3"),
+"Earth": SubResource("Animation_lv71f"),
 "Fire": SubResource("Animation_mmns2"),
 "RESET": SubResource("Animation_goik6"),
+"Thunder": SubResource("Animation_8b71i"),
 "Water": SubResource("Animation_mruws")
+}
+
+[sub_resource type="Animation" id="Animation_bocjq"]
+resource_name = "Dead"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pair_of_Enemies/Enemy_2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6c5tl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pair_of_Enemies/Enemy_2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wvgbg"]
+resource_name = "Attacked"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pair_of_Enemies/Enemy_2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ghe8x"]
+resource_name = "Fire"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pair_of_Enemies/Enemy_2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_tli6v"]
+resource_name = "Water"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pair_of_Enemies/Enemy_2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_fgmab"]
+resource_name = "Thunder"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pair_of_Enemies/Enemy_2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2kn3m"]
+resource_name = "Earth"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pair_of_Enemies/Enemy_2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7iglr"]
+_data = {
+"Attacked": SubResource("Animation_wvgbg"),
+"Dead": SubResource("Animation_bocjq"),
+"Earth": SubResource("Animation_2kn3m"),
+"Fire": SubResource("Animation_ghe8x"),
+"RESET": SubResource("Animation_6c5tl"),
+"Thunder": SubResource("Animation_fgmab"),
+"Water": SubResource("Animation_tli6v")
 }
 
 [sub_resource type="Animation" id="Animation_owh5b"]
@@ -465,197 +545,17 @@ texture = ExtResource("5_hv4mo")
 hframes = 3
 vframes = 3
 
-[node name="companion healthbar" type="ProgressBar" parent="Companion"]
-anchors_preset = -1
-anchor_top = 1.265
-anchor_bottom = 1.265
-offset_left = -479.0
-offset_top = 771.875
-offset_right = -72.0
-offset_bottom = 810.875
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_la22x")
-theme_override_styles/fill = SubResource("StyleBoxFlat_l5kos")
-max_value = 200.0
-step = 1.0
-value = 50.0
-show_percentage = false
-
-[node name="Health Numbers" type="Label" parent="Companion/companion healthbar"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = -1.18
-anchor_right = 0.5
-anchor_bottom = -1.18
-offset_left = -170.762
-offset_top = -48.9285
-offset_right = 609.238
-offset_bottom = 91.0715
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(-64, 23)
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 75
-text = "HP: 125 / 150"
-vertical_alignment = 1
-
-[node name="companion magicbar" type="ProgressBar" parent="Companion"]
-offset_top = 930.0
-offset_right = 390.0
-offset_bottom = 972.0
-theme_override_styles/background = SubResource("StyleBoxFlat_6vw86")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ay4ym")
-value = 30.0
-show_percentage = false
-
-[node name="Magic Numbers" type="Label" parent="Companion/companion magicbar"]
-layout_mode = 0
-offset_left = -2.33618
-offset_top = -97.9379
-offset_right = 490.664
-offset_bottom = 10.0621
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 40
-text = "MP: 25 / 45"
-vertical_alignment = 1
-
 [node name="Companion_AnimationPlayer" type="AnimationPlayer" parent="Companion"]
 autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_6pyxs")
 }
 
-[node name="ActionSelection" type="Panel" parent="Companion"]
-offset_left = -1859.81
-offset_top = 458.763
-offset_right = -1791.81
-offset_bottom = 577.763
-scale = Vector2(4, 4)
-theme_override_styles/panel = SubResource("StyleBoxFlat_anaen")
+[node name="ActionSelection" parent="Companion" instance=ExtResource("8_po23n")]
 
-[node name="Actions" type="VBoxContainer" parent="Companion/ActionSelection"]
-layout_mode = 0
-offset_top = 2.0
-offset_right = 32.0
-offset_bottom = 53.0
-scale = Vector2(2, 2)
-theme_override_constants/separation = 1
-
-[node name="Magic" type="Button" parent="Companion/ActionSelection/Actions"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Flee")
-focus_neighbor_bottom = NodePath("../Scan")
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 5
-theme_override_styles/normal = SubResource("StyleBoxFlat_nkj5j")
-text = "Magic"
-
-[node name="Scan" type="Button" parent="Companion/ActionSelection/Actions"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Magic")
-focus_neighbor_bottom = NodePath("../Skip")
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 5
-theme_override_styles/normal = SubResource("StyleBoxFlat_yn4hg")
-text = "Scan"
-
-[node name="Skip" type="Button" parent="Companion/ActionSelection/Actions"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Scan")
-focus_neighbor_bottom = NodePath("../Flee")
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 5
-theme_override_styles/normal = SubResource("StyleBoxFlat_f15fu")
-text = "Skip"
-
-[node name="Flee" type="Button" parent="Companion/ActionSelection/Actions"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Skip")
-focus_neighbor_bottom = NodePath("../Magic")
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 5
-theme_override_styles/normal = SubResource("StyleBoxFlat_mgkga")
-text = "Flee"
-
-[node name="MagicSelection" type="Panel" parent="Companion"]
-anchors_preset = -1
-anchor_right = 0.017
-anchor_bottom = 0.062
-offset_left = -1411.21
-offset_top = 543.814
-offset_right = -1156.34
-offset_bottom = 1046.06
-theme_override_styles/panel = SubResource("StyleBoxFlat_q4m7u")
-
-[node name="Magic" type="VBoxContainer" parent="Companion/MagicSelection"]
-layout_mode = 0
-offset_top = 1.0
-offset_right = 36.0
-offset_bottom = 69.0
-scale = Vector2(7, 7)
-theme_override_constants/separation = 1
-
-[node name="Fire" type="Button" parent="Companion/MagicSelection/Magic"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Healing")
-focus_neighbor_bottom = NodePath("../Water")
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 5
-theme_override_styles/normal = SubResource("StyleBoxFlat_u070o")
-text = "Fire"
-
-[node name="Water" type="Button" parent="Companion/MagicSelection/Magic"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Fire")
-focus_neighbor_bottom = NodePath("../Lightning")
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 5
-theme_override_styles/normal = SubResource("StyleBoxFlat_a41tl")
-text = "Water"
-
-[node name="Lightning" type="Button" parent="Companion/MagicSelection/Magic"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Water")
-focus_neighbor_bottom = NodePath("../Earth")
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 5
-theme_override_styles/normal = SubResource("StyleBoxFlat_wsgwl")
-text = "Thunder"
-
-[node name="Earth" type="Button" parent="Companion/MagicSelection/Magic"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Lightning")
-focus_neighbor_bottom = NodePath("../Healing")
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 5
-theme_override_styles/normal = SubResource("StyleBoxFlat_6yo5t")
-text = "Earth"
-
-[node name="Healing" type="Button" parent="Companion/MagicSelection/Magic"]
-custom_minimum_size = Vector2(0, 12)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Earth")
-focus_neighbor_bottom = NodePath("../Fire")
-theme_override_fonts/font = ExtResource("9_jrk0x")
-theme_override_font_sizes/font_size = 5
-theme_override_styles/normal = SubResource("StyleBoxFlat_q0ka8")
-text = "Healing"
+[node name="MagicSelection" parent="Companion" instance=ExtResource("9_ys1cy")]
 
 [node name="Player_Character" parent="." instance=ExtResource("9_i2eug")]
-
-[node name="Player1 healthbar" parent="Player_Character" instance=ExtResource("10_iebgg")]
-
-[node name="Player1 magicbar" parent="Player_Character" instance=ExtResource("11_ylc5c")]
 
 [node name="ActionSelection" parent="Player_Character" instance=ExtResource("12_h1kms")]
 
@@ -666,7 +566,13 @@ libraries = {
 "": SubResource("AnimationLibrary_3ck1d")
 }
 
+[node name="Enemy_2_Damage" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7iglr")
+}
+
 [node name="TextboxTimer" type="Timer" parent="."]
+wait_time = 10.0
 
 [node name="PlayerDamage" type="AnimationPlayer" parent="."]
 libraries = {
@@ -697,10 +603,10 @@ custom_minimum_size = Vector2(100, 100)
 
 [node name="menu_cursor" parent="." instance=ExtResource("15_75lh7")]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 34.0
-offset_right = 262.0
-offset_bottom = 274.0
+offset_left = 81.0
+offset_top = 192.0
+offset_right = 321.0
+offset_bottom = 432.0
 scale = Vector2(0.789061, 0.814179)
 script = ExtResource("16_kcrop")
 menu_parent_path = NodePath("../Pair_of_Enemies")
@@ -708,27 +614,48 @@ cursor_offset = Vector2(50, 0)
 
 [node name="Player_Character_Magic_Cursor" parent="." instance=ExtResource("15_75lh7")]
 layout_mode = 0
+offset_left = 126.0
+offset_top = 226.0
+offset_right = 366.0
+offset_bottom = 466.0
 script = ExtResource("17_53w1d")
 menu_parent_path = NodePath("../Player_Character/MagicSelection/Magic")
 cursor_offset = Vector2(110, 100)
 
 [node name="Player_Character_Action_Cursor" parent="." instance=ExtResource("15_75lh7")]
 layout_mode = 0
+offset_left = 59.0
+offset_top = 173.0
+offset_right = 299.0
+offset_bottom = 413.0
 script = ExtResource("18_0e48g")
 menu_parent_path = NodePath("../Player_Character/ActionSelection/Actions")
 cursor_offset = Vector2(110, 100)
 
 [node name="Companion_Action_Cursor" parent="." instance=ExtResource("15_75lh7")]
 layout_mode = 0
+offset_left = 47.0
+offset_top = 123.0
+offset_right = 287.0
+offset_bottom = 363.0
 script = ExtResource("19_7el6r")
 menu_parent_path = NodePath("../Companion/ActionSelection/Actions")
 cursor_offset = Vector2(110, 100)
 
 [node name="Companion_Magic_Cursor" parent="." instance=ExtResource("15_75lh7")]
 layout_mode = 0
+offset_left = 16.0
+offset_top = 90.0
+offset_right = 256.0
+offset_bottom = 330.0
 script = ExtResource("20_npucr")
 menu_parent_path = NodePath("../Companion/MagicSelection/Magic")
 cursor_offset = Vector2(110, 100)
+
+[node name="character_info_textbox" parent="." instance=ExtResource("21_i4wqi")]
+offset = Vector2(600, 450)
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 600, 450)
 
 [connection signal="attack_button_pressed" from="." to="menu_cursor" method="_on_battle_attack_button_pressed"]
 [connection signal="companion_display_action_cursor" from="." to="Companion_Action_Cursor" method="_on_battle_companion_display_action_cursor"]
@@ -764,7 +691,12 @@ cursor_offset = Vector2(110, 100)
 [connection signal="cursor_selected" from="Pair_of_Enemies/Enemy_2" to="menu_cursor" method="_on_enemy_2_cursor_selected"]
 [connection signal="menu_canceled" from="menu_cursor" to="." method="_on_menu_cursor_menu_canceled"]
 
+[editable path="Companion/ActionSelection"]
+[editable path="Companion/MagicSelection"]
 [editable path="Player_Character"]
 [editable path="Player_Character/ActionSelection"]
 [editable path="Player_Character/MagicSelection"]
 [editable path="Pair_of_Enemies"]
+[editable path="character_info_textbox"]
+[editable path="character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 healthbar"]
+[editable path="character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 magicbar"]

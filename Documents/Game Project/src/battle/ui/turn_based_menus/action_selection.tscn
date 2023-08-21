@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7t2aex7vmkrj"]
+[gd_scene load_steps=18 format=3 uid="uid://c7t2aex7vmkrj"]
 
 [ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_j5o6a"]
 
@@ -21,6 +21,12 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isfre"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yr5w"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3o0dl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a4taq"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
@@ -33,7 +39,19 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gc3b3"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_54tr6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mydaj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7b6q1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4de0x"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mff8c"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="ActionSelection" type="Panel"]
@@ -70,6 +88,8 @@ focus_neighbor_bottom = NodePath("../Scan")
 theme_override_fonts/font = ExtResource("1_j5o6a")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_isfre")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7yr5w")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3o0dl")
 text = "Magic"
 
 [node name="Scan" type="Button" parent="Actions"]
@@ -92,6 +112,8 @@ focus_neighbor_bottom = NodePath("../Flee")
 theme_override_fonts/font = ExtResource("1_j5o6a")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_gc3b3")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_54tr6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mydaj")
 text = "Skip"
 
 [node name="Flee" type="Button" parent="Actions"]
@@ -101,4 +123,6 @@ focus_neighbor_top = NodePath("../Skip")
 theme_override_fonts/font = ExtResource("1_j5o6a")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_7b6q1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4de0x")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mff8c")
 text = "Flee"

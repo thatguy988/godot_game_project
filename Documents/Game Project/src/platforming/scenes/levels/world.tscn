@@ -111,4 +111,3 @@ position = Vector2(-24.029, 279.167)
 
 [node name="Checkpoint_B" parent="." instance=ExtResource("16_440wg")]
 position = Vector2(241.251, 278.333)
-scale = Vector2(1, 1)

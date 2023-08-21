@@ -1,0 +1,133 @@
+[gd_scene load_steps=18 format=3 uid="uid://telmfvalpr36"]
+
+[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_kshu0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4m7u"]
+bg_color = Color(0, 0, 0.6, 0.470588)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u070o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlj3u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3iffc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a41tl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8l5mb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hts80"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsgwl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28ao4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3k2as"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6yo5t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fckpv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eno6h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0ka8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grfxn"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rlf6"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="MagicSelection" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.017
+anchor_bottom = 0.062
+offset_left = -1411.21
+offset_top = 543.814
+offset_right = -1156.34
+offset_bottom = 1046.06
+theme_override_styles/panel = SubResource("StyleBoxFlat_q4m7u")
+
+[node name="Magic" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 36.0
+offset_bottom = 69.0
+scale = Vector2(7, 7)
+theme_override_constants/separation = 1
+
+[node name="Fire" type="Button" parent="Magic"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Healing")
+focus_neighbor_bottom = NodePath("../Water")
+theme_override_fonts/font = ExtResource("1_kshu0")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_u070o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wlj3u")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3iffc")
+text = "Fire"
+
+[node name="Water" type="Button" parent="Magic"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Fire")
+focus_neighbor_bottom = NodePath("../Lightning")
+theme_override_fonts/font = ExtResource("1_kshu0")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_a41tl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8l5mb")
+theme_override_styles/focus = SubResource("StyleBoxFlat_hts80")
+text = "Water"
+
+[node name="Lightning" type="Button" parent="Magic"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Water")
+focus_neighbor_bottom = NodePath("../Earth")
+theme_override_fonts/font = ExtResource("1_kshu0")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_wsgwl")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_28ao4")
+theme_override_styles/focus = SubResource("StyleBoxFlat_3k2as")
+text = "Thunder"
+
+[node name="Earth" type="Button" parent="Magic"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Lightning")
+focus_neighbor_bottom = NodePath("../Healing")
+theme_override_fonts/font = ExtResource("1_kshu0")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_6yo5t")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fckpv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_eno6h")
+text = "Earth"
+
+[node name="Healing" type="Button" parent="Magic"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Earth")
+focus_neighbor_bottom = NodePath("../Fire")
+theme_override_fonts/font = ExtResource("1_kshu0")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_q0ka8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_grfxn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_6rlf6")
+text = "Healing"

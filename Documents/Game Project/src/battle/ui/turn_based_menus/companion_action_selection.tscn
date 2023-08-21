@@ -1,0 +1,110 @@
+[gd_scene load_steps=15 format=3 uid="uid://dqgpi3owbaxar"]
+
+[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_7thxs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anaen"]
+bg_color = Color(0, 0, 0.6, 0.470588)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkj5j"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ngyl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_leirk"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yn4hg"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvxno"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4rai"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f15fu"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mv3o"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jfd0b"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgkga"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsdyw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7xec"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="ActionSelection" type="Panel"]
+offset_left = -1859.81
+offset_top = 458.763
+offset_right = -1791.81
+offset_bottom = 577.763
+scale = Vector2(4, 4)
+theme_override_styles/panel = SubResource("StyleBoxFlat_anaen")
+
+[node name="Actions" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 32.0
+offset_bottom = 53.0
+scale = Vector2(2, 2)
+theme_override_constants/separation = 1
+
+[node name="Magic" type="Button" parent="Actions"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Flee")
+focus_neighbor_bottom = NodePath("../Scan")
+theme_override_fonts/font = ExtResource("1_7thxs")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_nkj5j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6ngyl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_leirk")
+text = "Magic"
+
+[node name="Scan" type="Button" parent="Actions"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Magic")
+focus_neighbor_bottom = NodePath("../Skip")
+theme_override_fonts/font = ExtResource("1_7thxs")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_yn4hg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gvxno")
+theme_override_styles/focus = SubResource("StyleBoxFlat_y4rai")
+text = "Scan"
+
+[node name="Skip" type="Button" parent="Actions"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Scan")
+focus_neighbor_bottom = NodePath("../Flee")
+theme_override_fonts/font = ExtResource("1_7thxs")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_f15fu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4mv3o")
+theme_override_styles/focus = SubResource("StyleBoxFlat_jfd0b")
+text = "Skip"
+
+[node name="Flee" type="Button" parent="Actions"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+focus_neighbor_top = NodePath("../Skip")
+focus_neighbor_bottom = NodePath("../Magic")
+theme_override_fonts/font = ExtResource("1_7thxs")
+theme_override_font_sizes/font_size = 5
+theme_override_styles/normal = SubResource("StyleBoxFlat_mgkga")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lsdyw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_q7xec")
+text = "Flee"

@@ -5,10 +5,10 @@
 [resource]
 script = ExtResource("1_lal7t")
 name = "Player_2"
-health = 100
-max_health = 100
-magic_points = 150
-max_magic_points = 150
+health = 50
+max_health = 50
+magic_points = 75
+max_magic_points = 75
 attack_power = 0
 strength = "Lightning"
 weakness = "Earth"

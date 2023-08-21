@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgch1la8udhgi"]
+[gd_scene load_steps=3 format=3 uid="uid://dgch1la8udhgi"]
+
+[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_mhp5o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wh7os"]
 bg_color = Color(0, 0, 0.788235, 0.470588)
@@ -16,10 +18,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -229.0
+offset_left = -576.0
 offset_top = -638.0
-offset_right = 285.0
-offset_bottom = -546.0
+offset_right = 79.0
+offset_bottom = -526.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 4
@@ -50,12 +52,16 @@ layout_mode = 2
 custom_minimum_size = Vector2(9, 26)
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_mhp5o")
+theme_override_font_sizes/font_size = 12
 text = "*"
 
 [node name="Text" type="Label" parent="TextBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_mhp5o")
+theme_override_font_sizes/font_size = 15
 text = "Text  "
 autowrap_mode = 2
 clip_text = true
@@ -64,4 +70,6 @@ clip_text = true
 custom_minimum_size = Vector2(9, 26)
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_mhp5o")
+theme_override_font_sizes/font_size = 14
 text = "v"
