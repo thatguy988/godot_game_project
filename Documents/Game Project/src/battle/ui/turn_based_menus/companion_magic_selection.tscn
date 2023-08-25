@@ -75,7 +75,6 @@ theme_override_constants/separation = 1
 [node name="Fire" type="Button" parent="Magic"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
-focus_neighbor_top = NodePath("../Healing")
 focus_neighbor_bottom = NodePath("../Water")
 theme_override_fonts/font = ExtResource("1_kshu0")
 theme_override_font_sizes/font_size = 5
@@ -124,7 +123,6 @@ text = "Earth"
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Earth")
-focus_neighbor_bottom = NodePath("../Fire")
 theme_override_fonts/font = ExtResource("1_kshu0")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_q0ka8")

@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd08g0b2vthor"]
+[gd_scene load_steps=7 format=3 uid="uid://b2kpj0pq7haca"]
 
-[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_frkjv"]
+[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_cak1f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfld8"]
 bg_color = Color(0, 0, 0.6, 0.470588)
@@ -44,25 +44,10 @@ expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_46mey"]
-bg_color = Color(0.929412, 0.0235294, 0, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0, 0, 0, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_plwbs"]
-bg_color = Color(0, 0.729412, 0.160784, 1)
-
-[node name="character_info_textbox" type="CanvasLayer"]
+[node name="One_Character_Info_Textbox" type="CanvasLayer"]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 182.0
+offset_right = 97.0
 offset_bottom = 69.0
 
 [node name="Panel" type="Panel" parent="MarginContainer"]
@@ -71,9 +56,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_sfld8")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 125
+theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 0
 
 [node name="Panel" type="Panel" parent="MarginContainer/MarginContainer"]
@@ -86,7 +71,7 @@ theme_override_constants/separation = 10
 
 [node name="Player1 Name" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_frkjv")
+theme_override_fonts/font = ExtResource("1_cak1f")
 theme_override_font_sizes/font_size = 5
 text = "Player 1"
 
@@ -115,7 +100,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(-64, 23)
-theme_override_fonts/font = ExtResource("1_frkjv")
+theme_override_fonts/font = ExtResource("1_cak1f")
 theme_override_font_sizes/font_size = 10
 text = "HP: 125 / 150"
 vertical_alignment = 1
@@ -134,77 +119,7 @@ offset_top = -9.0
 offset_right = 90.0
 offset_bottom = 8.0
 scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("1_frkjv")
-theme_override_font_sizes/font_size = 10
-text = "MP: 25 / 45"
-vertical_alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 0
-
-[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer2"]
-visible = false
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_frkjv")
-theme_override_font_sizes/font_size = 5
-text = "Player 2"
-
-[node name="companion healthbar" type="ProgressBar" parent="MarginContainer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_styles/background = SubResource("StyleBoxFlat_46mey")
-theme_override_styles/fill = SubResource("StyleBoxFlat_plwbs")
-max_value = 200.0
-step = 1.0
-value = 50.0
-show_percentage = false
-
-[node name="Health Numbers" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/companion healthbar"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = -1.18
-anchor_right = 0.5
-anchor_bottom = -1.18
-offset_left = 16.0
-offset_top = -23.64
-offset_right = 124.0
-offset_bottom = 12.36
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(-64, 23)
-theme_override_fonts/font = ExtResource("1_frkjv")
-theme_override_font_sizes/font_size = 10
-text = "HP: 125 / 150"
-vertical_alignment = 1
-
-[node name="companion magicbar" type="ProgressBar" parent="MarginContainer/MarginContainer2/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 5
-theme_override_styles/background = SubResource("StyleBoxFlat_qwi3a")
-theme_override_styles/fill = SubResource("StyleBoxFlat_n8n2t")
-value = 30.0
-show_percentage = false
-
-[node name="Magic Numbers" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/companion magicbar"]
-layout_mode = 0
-offset_top = -9.0
-offset_right = 90.0
-offset_bottom = 8.0
-scale = Vector2(0.5, 0.5)
-theme_override_fonts/font = ExtResource("1_frkjv")
+theme_override_fonts/font = ExtResource("1_cak1f")
 theme_override_font_sizes/font_size = 10
 text = "MP: 25 / 45"
 vertical_alignment = 1

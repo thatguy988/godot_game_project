@@ -21,22 +21,27 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
+	
 
-	var direction = Input.get_axis("ui_left", "ui_right")
-	#sprite.flip_h mirror sprite
-	if direction != 0:
-		sprite.flip_h = (direction == -1)
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED) 
-	move_and_slide()
-	update_animation(direction)
-	get_character_position()
+	
+#
+#	var direction = Input.get_axis("ui_left", "ui_right")
+#	#sprite.flip_h mirror sprite
+#	if direction != 0:
+#		sprite.flip_h = (direction == -1)
+#	if direction:
+#		velocity.x = direction * SPEED
+#	else:
+#		velocity.x = move_toward(velocity.x, 0, SPEED) 
+#
+#
+#	move_and_slide()
+#	update_animation(direction)
+#	get_character_position()
+	
+	
+
 	
 func update_animation(direction):
 	if is_on_floor():

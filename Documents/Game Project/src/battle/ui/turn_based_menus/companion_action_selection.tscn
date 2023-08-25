@@ -64,7 +64,6 @@ theme_override_constants/separation = 1
 [node name="Magic" type="Button" parent="Actions"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
-focus_neighbor_top = NodePath("../Flee")
 focus_neighbor_bottom = NodePath("../Scan")
 theme_override_fonts/font = ExtResource("1_7thxs")
 theme_override_font_sizes/font_size = 5
@@ -101,7 +100,6 @@ text = "Skip"
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Skip")
-focus_neighbor_bottom = NodePath("../Magic")
 theme_override_fonts/font = ExtResource("1_7thxs")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_mgkga")

@@ -83,13 +83,24 @@ func set_magic_points(progressbar, magic_points, max_magic_points):
 	progressbar.max_value = max_magic_points
 	progressbar.get_node("Magic Numbers").text = "MP: %d / %d" % [magic_points,max_magic_points]
 	
-func display_counter(new_name,turn):
+func display_counter(new_name):
 	$TurnCounter/TextBoxContainer/MarginContainer/HBoxContainer/CharacterName.text = new_name
-	$TurnCounter/TextBoxContainer/MarginContainer/HBoxContainer/NumberofTurns.text = "%f" % playerturns
+	$TurnCounter/TextBoxContainer/MarginContainer/HBoxContainer/NumberofTurns.text = "%s" % array_to_string(playerturns)
+	#$TurnCounter/TextBoxContainer/MarginContainer/HBoxContainer/NumberofTurns.text = "%f" % playerturns
+	
+	
+func array_to_string(arr):
+	var str_arr = []
+	for value in arr:
+		str_arr.append(str(value))
+	return ", ".join(str_arr)
+	
 	
 func display_text(new_text):
 	$InfoTextbox/TextBoxContainer/MarginContainer/HBoxContainer/Text.text = new_text
 	$InfoTextbox.show()
+	
+	
 	
 func enemy_turn():
 	#pick attack or magic list
@@ -148,7 +159,6 @@ func enemy_turn():
 		set_health(health_bar_array[randomNum],
 							character_array[randomNum].health,
 							character_array[randomNum].max_health)	
-		print(enemyturns)
 		check_enemy_index()
 		check_for_player_turn()
 				
@@ -261,7 +271,7 @@ func check_index():
 		index += 1
 		if index >= character_array.size():
 			index = 0
-	display_counter(character_array[index].name, playerturns)
+	display_counter(character_array[index].name)
 	
 func check_enemy_index():
 	enemy_index += 1
@@ -274,26 +284,37 @@ func check_enemy_index():
 	
 			
 func check_for_player_turn():
-	var full_turn = 1
-	if enemyturns <= 0:
+	var sum_of_array = 0
+	for value in enemyturns:
+		sum_of_array += value
+		
+	if sum_of_array <= 0:
 		index = 0
-		playerturns = 0
+		playerturns = []
+		$"TurnCounter".show() # show turncounter when player turn
 		for i in range(character_array.size()):
 			if character_array[i].alive == true:
-				playerturns += full_turn
-		display_counter(character_array[index].name, playerturns)
+				playerturns.append(1)
+#		for i in range(character_array.size()):
+#			if character_array[i].alive == true:
+#				playerturns += full_turn
+		display_counter(character_array[index].name)
 		display_menu()
 	else:
 		enemy_turn()
 		
 func check_for_enemy_turn():
-	var full_turn = 1
-	if playerturns <= 0:
+	var sum_of_array = 0
+	for value in playerturns:
+		sum_of_array += value
+
+	if sum_of_array <= 0:
 		enemy_index = 0
-		enemyturns = 0
+		enemyturns = []
+		$"TurnCounter".hide() #hide turncounter when enemies turn
 		for i in range(enemy_array.size()):
 			if enemy_array[i].alive == true:
-				enemyturns += full_turn
+				enemyturns.append(1)
 		enemy_turn()
 	else:
 		display_menu()
@@ -430,19 +451,42 @@ func _on_menu_cursor_menu_canceled():
 	elif action in ["Fire","Water","Lightning","Earth"]:
 		display_magic_menu()
 
-func decrease_turns(turns, halfturnhit, is_player): # enter player or enemy turn , true if halfturn false if full turn, true if player took action false if enemy took action
+
+		
+func decrease_turns(turns_array, halfturnhit, is_player):
 	var half_turn = 0.5
 	var full_turn = 1.0
-
+	var no_1 = true
+	
 	if halfturnhit:
-		turns -= half_turn
+		for i in range(len(turns_array)):
+			if turns_array[i] != 0:
+				if turns_array[i] == 1:
+					turns_array[i] -= half_turn
+					no_1 = false
+					break
+		if no_1:
+			for i in range(len(turns_array)):
+				if turns_array[i] != 0:
+					if turns_array[i] == 0.5:
+						turns_array[i] -= half_turn
+						break
 	else:
-		if turns in [0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.5]:
-			turns -= half_turn
-		else:
-			turns -= full_turn
+		for i in range(len(turns_array)):
+			if turns_array[i] != 0:
+				if turns_array[i] == 0.5:
+					turns_array[i] -= half_turn
+				else:
+					turns_array[i] -= full_turn
+				break
+	
+	if is_player:
+		playerturns = turns_array
+		print(playerturns)
+	else:
+		enemyturns = turns_array
+		print(enemyturns)
 
-	if is_player: #player took action
-		playerturns = turns
-	else:
-		enemyturns = turns
+
+
+

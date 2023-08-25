@@ -1,8 +1,8 @@
 
 extends Node
 
-var position_x = 0
-var position_y = 100
+var position_x
+var position_y
 
 var companion_position_x = position_x
 var companion_position_y = position_y
@@ -37,6 +37,8 @@ func update_checkpoint():
 	checkpoint_spawn_point_y = position_y
 	print(checkpoint_spawn_point_x)
 	print(checkpoint_spawn_point_y)
+	
+
 # Example usage:
 # To check if enemy 1 is alive in Level 1, call is_enemy_alive(1, 0).
 # To check if enemy 2 is alive in Level 2, call is_enemy_alive(2, 1).

@@ -13,8 +13,8 @@ var max_target_distance: float = 1000.0  # Define the maximum distance to consid
 func _ready():
 	navigation_agent.path_desired_distance = 20.0
 	navigation_agent.target_desired_distance = 20.0
-	global_position.x = Global.companion_position_x
-	global_position.y = Global.companion_position_y
+#	global_position.x = Global.companion_position_x
+#	global_position.y = Global.companion_position_y
 	call_deferred("actor_setup")
 
 func actor_setup():

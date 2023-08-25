@@ -24,10 +24,10 @@ var falling = true
 @onready var jumpraycast5 = $JumpRaycast5
 
 func _ready():
-	navigation_agent.path_desired_distance = 40.0
+	navigation_agent.path_desired_distance = 1.0
 	navigation_agent.target_desired_distance = 10.0
-	global_position.x = Global.companion_2_position_x
-	global_position.y = Global.companion_2_position_y
+#	global_position.x = Global.companion_2_position_x
+#	global_position.y = Global.companion_2_position_y
 	call_deferred("actor_setup")
 
 func actor_setup():
@@ -38,10 +38,10 @@ func set_movement_target(target_point: Vector2):
 	if global_position.distance_to(target_point) > max_target_distance:
 		# Target is too far, reset the target_position to a new location.
 		find_new_target_position()
-		navigation_agent.target_position.x = target_point.x 
+		navigation_agent.target_position.x = target_point.x -50
 		navigation_agent.target_position.y = target_point.y - 10
 	else:
-		navigation_agent.target_position.x = target_point.x 
+		navigation_agent.target_position.x = target_point.x -50
 		navigation_agent.target_position.y = target_point.y - 10
 
 

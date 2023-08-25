@@ -60,4 +60,5 @@ custom_minimum_size = Vector2(15, 26)
 layout_mode = 2
 size_flags_vertical = 8
 text = "4.0"
-visible_characters = 3
+visible_characters = 10
+visible_ratio = 3.33333

@@ -21,8 +21,16 @@ func _ready():
 	enemy_nodes = [$Pair_of_Enemies/Enemy_1, $Pair_of_Enemies/Enemy_2]
 	enemyturns = enemy_array.size()
 	
-	playerturns = character_array.size()
-	enemyturns = enemy_array.size()
+	#playerturns = character_array.size()
+	#enemyturns = enemy_array.size()
+	playerturns = []
+	enemyturns = []
+	for i in range(character_array.size()):
+			playerturns.append(1)
+	#playerturns = [1, 1]
+	for i in range(enemy_array.size()):
+			enemyturns.append(1)
+	#enemyturns = [1, 1]
 	
 	initialize_focus=[$Player_Character/ActionSelection/Actions/Attack,$Companion/ActionSelection/Actions/Magic]
 	initialize_focus_magic=[$Player_Character/MagicSelection/Magic/Fire,$Companion/MagicSelection/Magic/Fire ]
@@ -51,7 +59,7 @@ func _ready():
 
 	for i in range(enemy_array.size()):
 		enemy_nodes[i].texture = enemy_array[i].texture
-	display_counter(character_array[index].name,playerturns)
+	display_counter(character_array[index].name)
 	
 	$InfoTextbox.hide()
 	
@@ -76,6 +84,8 @@ func _on_enemy_1_cursor_selected():
 			scan(selection_index)
 		elif action in ["Fire","Water","Thunder","Earth"]:
 			magic(selection_index, action)
+			
+		#add code for scripted scenes here maybe for bosses when boss reaches a certain health trigger cutscene
 		
 		
 	else:

@@ -58,7 +58,7 @@ position = Vector2(6170.64, 540.833)
 position = Vector2(6581.06, 540)
 
 [node name="Player" parent="." instance=ExtResource("1_1ohai")]
-position = Vector2(152.824, 265)
+position = Vector2(51.9026, 297.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-0.961121, -0.833313)
@@ -95,14 +95,16 @@ texture = ExtResource("14_yayeb")
 centered = false
 
 [node name="CharacterBody2D" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("15_h1o27")]
-position = Vector2(-20.1843, 86.6667)
+position = Vector2(39.4075, 263.333)
 floor_max_angle = 0.0
 movement_target = NodePath("../Player")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_obv20")
 
 [node name="CharacterBody2D2" parent="." node_paths=PackedStringArray("movement_target") instance=ExtResource("16_de4iw")]
+visible = false
 position = Vector2(69.2035, 289.167)
 movement_target = NodePath("../Player")
 
@@ -111,3 +113,9 @@ position = Vector2(-24.029, 279.167)
 
 [node name="Checkpoint_B" parent="." instance=ExtResource("16_440wg")]
 position = Vector2(241.251, 278.333)
+
+[connection signal="body_entered" from="enemy/Top_Collision" to="Player" method="_on_top_collision_body_entered"]
+[connection signal="body_entered" from="enemy2/Top_Collision" to="Player" method="_on_top_collision_body_entered"]
+
+[editable path="enemy"]
+[editable path="enemy2"]
