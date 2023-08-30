@@ -90,7 +90,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_y4ux7")
 text = "Quit
 "
 
-[node name="menu_cursor" parent="." instance=ExtResource("3_6mp5d")]
+[node name="main_menu_cursor" parent="." instance=ExtResource("3_6mp5d")]
 layout_mode = 0
 offset_left = 835.0
 offset_top = 157.0
@@ -101,5 +101,8 @@ menu_parent_path = NodePath("../MainMenu/MenuSelection")
 cursor_offset = Vector2(60, 105)
 
 [connection signal="pressed" from="MainMenu/MenuSelection/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenu/MenuSelection/Play" to="main_menu_cursor" method="_on_play_pressed"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Tutorial" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="MainMenu/MenuSelection/Tutorial" to="main_menu_cursor" method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenu/MenuSelection/Quit" to="main_menu_cursor" method="_on_quit_pressed"]

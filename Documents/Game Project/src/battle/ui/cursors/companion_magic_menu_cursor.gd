@@ -29,6 +29,7 @@ func _on_battle_companion_display_magic_cursor():
 
 
 func _on_battle_hide_companion_display_magic_cursor():
+	print("HEYO")
 	visible = false
 	can_select_magic = false
 	cursor_index = 0
@@ -82,3 +83,11 @@ func _on_healing_pressed():
 	if current_menu_item != null:
 		if current_menu_item.has_method("cursor_select"):
 			current_menu_item.cursor_select()
+
+
+func _on_tutorial_companion_display_magic_cursor():
+	pass # Replace with function body.
+
+
+func _on_tutorial_hide_companion_display_magic_cursor():
+	pass # Replace with function body.

@@ -87,3 +87,8 @@ func _on_flee_pressed():
 func _on_tutorial_display_scan_cursor():
 	visible = true
 	can_select_action = true
+
+
+func _on_tutorial_display_magic_cursor():
+	visible = true
+	can_select_action = true

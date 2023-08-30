@@ -15,9 +15,5 @@ func _on_play_pressed():
 	#get_tree().change_scene_to_file("res://src/cutscenes/scenes/Intro_Animation_Player.tscn")
 	
 
-
-
-
-
 func _on_tutorial_pressed():
 	get_tree().change_scene_to_file("res://src/battle/scenes/Battle_Zones/tutorial.tscn")

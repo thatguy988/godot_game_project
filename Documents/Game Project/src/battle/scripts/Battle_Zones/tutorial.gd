@@ -82,14 +82,15 @@ func _ready():
 	$InfoTextbox.hide()
 	for i in range(action_selection_array.size()):
 		action_selection_array[i].hide()
-		magic_selection_array[i].hide()
+	#	magic_selection_array[i].hide()
 	$"One_Character_Info_Textbox".hide()
 	$"TurnCounter".hide()
 	$"Player_Character/ActionSelection".hide()
-	$"Player_Character/select_magic".hide()
+	#$"Player_Character/select_magic".hide()
 	$"Player_Character/select_scan".hide()
 	$"Companion/MagicSelectFire".hide()
-	$"Player_Character/MagicSelectWater".hide()
+	$"Companion/MagicSelectWater".hide()
+	$"Companion/ActionSelection".hide()
 	$Companion.visible = false
 	$InfoTextbox.hide()
 	character_name = ["Tutorial Narrator"]
@@ -208,7 +209,6 @@ func _input(event):
 			
 	elif tutorial_step_15 and not tutorial_step_16:#have user cast fire magic
 		if Input.is_action_just_pressed("ui_select"):
-			tutorial_step_16 = true
 			emit_signal("tutorial_text_box_closed")
 	
 	elif tutorial_step_16 and not tutorial_step_17:#explaining
@@ -297,7 +297,33 @@ func _on_attack_pressed():
 		action = "attack"
 		attack_button_pressed.emit()#pass arguement
 		emit_signal("attack_button_pressed")#get it to work
-		
+
+var water = true
+func _on_magic_pressed():
+	$Companion/ActionSelection.hide()
+	if water:
+		$Companion/MagicSelectWater.show()
+		$Companion/MagicSelectWater/Magic/Fire.grab_focus()
+		emit_signal("companion_display_magic_cursor")
+	else:
+		$Companion/MagicSelectFire.show()
+		$Companion/MagicSelectFire/Magic/Fire.grab_focus()
+		emit_signal("companion_display_magic_cursor")
+	
+func _on_water_pressed():
+	$Companion/MagicSelectWater.hide()
+	action = "Water"
+	emit_signal("hide_companion_display_magic_cursor")
+	magic_selected.emit()
+	emit_signal("magic_selected")
+	
+func _on_fire_pressed():
+	$Companion/MagicSelectFire.hide()
+	action = "Fire"
+	emit_signal("hide_companion_display_magic_cursor")
+	magic_selected.emit()
+	emit_signal("magic_selected")
+	
 func _on_scan_pressed():
 	$"Player_Character/select_scan".hide()
 	action = "scan"
@@ -401,6 +427,7 @@ func tutorial_script():
 	$TextboxTimer.start(20)
 	display_textbox(character_name[0], dialogue[11])
 	await self.tutorial_text_box_closed
+	
 	$Player_Character/select_scan.show()
 	$Player_Character/select_scan/Actions/Attack.grab_focus()
 	emit_signal("display_scan_cursor")
@@ -418,9 +445,11 @@ func tutorial_script():
 	$TextboxTimer.start(20)
 	display_textbox(character_name[0], dialogue[14])
 	await self.tutorial_text_box_closed
+	
+	$Companion/ActionSelection.show()
+	$Companion/ActionSelection/Actions/Magic.grab_focus()
+	emit_signal("companion_display_action_cursor")
 	display_text("Select Magic then select Water then select enemy.")
-	
-	
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
@@ -433,7 +462,10 @@ func tutorial_script():
 	display_counter("Companion")
 	await self.tutorial_text_box_closed
 	
-	
+	$Companion/ActionSelection.show()
+	$Companion/ActionSelection/Actions/Magic.grab_focus()
+	emit_signal("companion_display_action_cursor")
+	display_text("Select Magic then select Fire then select enemy.")
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
@@ -474,16 +506,24 @@ func tutorial_script():
 
 
 func _on_enemy_1_cursor_selected():
-	if not tutorial_step_5:
+	if tutorial_step_4 and not tutorial_step_5: #select enemy and attack
 		step_5_enemy_selected()
 		
-	print(tutorial_step_10)
-	print(tutorial_step_11)
-	if tutorial_step_10 and not tutorial_step_11:
+	if tutorial_step_10 and not tutorial_step_11: #select enemy and scan
 		print("Objective complete")
 		tutorial_step_11 = true
 		emit_signal("objective_complete")
 		
+	if tutorial_step_13 and not tutorial_step_14:#cast water
+		print("Casted Water magic")
+		tutorial_step_14 = true 
+		water = false #make sure when user press magic to cast fire we show Magicselectfire
+		emit_signal("objective_complete")
+		
+	if tutorial_step_15 and not tutorial_step_16:#cast fire
+		print("Casted fire magic")
+		tutorial_step_16 = true
+		emit_signal("objective_complete")
 		
 	if enemy_array[0].alive:
 		var selection_index = 0

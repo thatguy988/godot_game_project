@@ -1,9 +1,5 @@
 extends "res://src/ui/menu_cursor.gd"
 
-
-
-
-	
 var can_select_action = false  # Indicates if the companion can select an enemy
 
 
@@ -73,3 +69,5 @@ func _on_flee_pressed():
 	if current_menu_item != null:
 		if current_menu_item.has_method("cursor_select"):
 			current_menu_item.cursor_select()
+
+

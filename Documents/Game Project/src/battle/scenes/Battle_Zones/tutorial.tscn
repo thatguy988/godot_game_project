@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bdoyaixcaarmd"]
+[gd_scene load_steps=20 format=3 uid="uid://bdoyaixcaarmd"]
 
 [ext_resource type="Script" path="res://src/battle/scripts/Battle_Zones/tutorial.gd" id="1_npgrx"]
 [ext_resource type="PackedScene" uid="uid://dgch1la8udhgi" path="res://src/battle/ui/InfoTexbox.tscn" id="2_ana76"]
@@ -7,7 +7,6 @@
 [ext_resource type="Resource" uid="uid://c7u4es6btphxh" path="res://src/battle/resources/Characters/player_1.tres" id="3_n08ny"]
 [ext_resource type="PackedScene" uid="uid://cq80dp2vl3k53" path="res://src/battle/scenes/Characters/player_character.tscn" id="4_5afx6"]
 [ext_resource type="PackedScene" uid="uid://c7t2aex7vmkrj" path="res://src/battle/ui/turn_based_menus/action_selection.tscn" id="5_kdxoy"]
-[ext_resource type="PackedScene" uid="uid://drnd0jopnheao" path="res://src/battle/ui/turn_based_menus/magic_selection.tscn" id="6_c1ni4"]
 [ext_resource type="PackedScene" uid="uid://n3iybn13ymi1" path="res://src/ui/menu_cursor.tscn" id="7_fochq"]
 [ext_resource type="Script" path="res://src/battle/ui/cursors/action_selection_cursor.gd" id="8_drvpc"]
 [ext_resource type="PackedScene" uid="uid://ckiain8unk2wd" path="res://src/battle/scenes/Characters/companion.tscn" id="9_vj40l"]
@@ -18,6 +17,8 @@
 [ext_resource type="Script" path="res://src/battle/ui/enemy_item.gd" id="12_8yjfx"]
 [ext_resource type="PackedScene" uid="uid://b2kpj0pq7haca" path="res://src/battle/ui/health_and_magic_bars/One_Character_Info_Textbox.tscn" id="14_om2oq"]
 [ext_resource type="PackedScene" uid="uid://w55v1oqxcxtd" path="res://src/battle/ui/turn_counter.tscn" id="15_por7h"]
+[ext_resource type="Script" path="res://src/battle/ui/cursors/companion_action_menu_cursor.gd" id="19_4itcf"]
+[ext_resource type="Script" path="res://src/battle/ui/cursors/companion_magic_menu_cursor.gd" id="20_yv7jk"]
 
 [node name="tutorial" type="Control"]
 layout_mode = 3
@@ -36,17 +37,15 @@ character = ExtResource("3_n08ny")
 
 [node name="Player_Character" parent="." instance=ExtResource("4_5afx6")]
 
-[node name="MagicSelectWater" parent="Player_Character" instance=ExtResource("6_c1ni4")]
-
 [node name="select_scan" parent="Player_Character" instance=ExtResource("5_kdxoy")]
-
-[node name="select_magic" parent="Player_Character" instance=ExtResource("5_kdxoy")]
 
 [node name="ActionSelection" parent="Player_Character" instance=ExtResource("5_kdxoy")]
 
 [node name="Companion" parent="." instance=ExtResource("9_vj40l")]
 
 [node name="MagicSelectFire" parent="Companion" instance=ExtResource("10_j6aul")]
+
+[node name="MagicSelectWater" parent="Companion" instance=ExtResource("10_j6aul")]
 
 [node name="ActionSelection" parent="Companion" instance=ExtResource("11_cp4y5")]
 
@@ -95,17 +94,45 @@ script = ExtResource("8_drvpc")
 menu_parent_path = NodePath("../Player_Character/select_scan/Actions")
 cursor_offset = Vector2(110, 100)
 
+[node name="Companion_Action_Selection" parent="." instance=ExtResource("7_fochq")]
+layout_mode = 0
+script = ExtResource("19_4itcf")
+menu_parent_path = NodePath("../Companion/ActionSelection/Actions")
+cursor_offset = Vector2(110, 100)
+
+[node name="Companion_Magic_Selection_Fire" parent="." instance=ExtResource("7_fochq")]
+layout_mode = 0
+script = ExtResource("20_yv7jk")
+menu_parent_path = NodePath("../Companion/MagicSelectFire/Magic")
+cursor_offset = Vector2(110, 100)
+
+[node name="Companion_Magic_Selection_Water" parent="." instance=ExtResource("7_fochq")]
+layout_mode = 0
+script = ExtResource("20_yv7jk")
+menu_parent_path = NodePath("../Companion/MagicSelectWater/Magic")
+cursor_offset = Vector2(110, 100)
+
 [connection signal="attack_button_pressed" from="." to="menu_cursor" method="_on_battle_attack_button_pressed"]
+[connection signal="companion_display_action_cursor" from="." to="Companion_Action_Selection" method="_on_battle_companion_display_action_cursor"]
+[connection signal="companion_display_magic_cursor" from="." to="Companion_Magic_Selection_Water" method="_on_battle_companion_display_magic_cursor"]
 [connection signal="display_attack_cursor" from="." to="Player_Character_Action_Selection" method="_on_battle_display_attack_cursor"]
 [connection signal="display_scan_cursor" from="." to="Player_Character_Scan_Selection" method="_on_tutorial_display_scan_cursor"]
+[connection signal="hide_companion_display_magic_cursor" from="." to="Companion_Magic_Selection_Fire" method="_on_battle_hide_companion_display_magic_cursor"]
+[connection signal="hide_companion_display_magic_cursor" from="." to="Companion_Magic_Selection_Water" method="_on_battle_hide_companion_display_magic_cursor"]
+[connection signal="magic_selected" from="." to="menu_cursor" method="_on_battle_magic_selected"]
 [connection signal="objective_complete" from="." to="." method="_on_objective_complete"]
 [connection signal="scan_button_pressed" from="." to="menu_cursor" method="_on_battle_scan_button_pressed"]
 [connection signal="tutorial_text_box_closed" from="." to="." method="_text_box_closed"]
 [connection signal="pressed" from="Player_Character/select_scan/Actions/Scan" to="." method="_on_scan_pressed"]
 [connection signal="pressed" from="Player_Character/select_scan/Actions/Scan" to="Player_Character_Scan_Selection" method="_on_scan_pressed"]
-[connection signal="pressed" from="Player_Character/select_magic/Actions/Magic" to="Player_Character_Action_Selection" method="_on_magic_pressed"]
 [connection signal="pressed" from="Player_Character/ActionSelection/Actions/Attack" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Player_Character/ActionSelection/Actions/Attack" to="Player_Character_Action_Selection" method="_on_attack_pressed"]
+[connection signal="pressed" from="Companion/MagicSelectFire/Magic/Fire" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="Companion/MagicSelectFire/Magic/Fire" to="Companion_Magic_Selection_Fire" method="_on_fire_pressed"]
+[connection signal="pressed" from="Companion/MagicSelectWater/Magic/Water" to="." method="_on_water_pressed"]
+[connection signal="pressed" from="Companion/MagicSelectWater/Magic/Water" to="Companion_Magic_Selection_Water" method="_on_water_pressed"]
+[connection signal="pressed" from="Companion/ActionSelection/Actions/Magic" to="." method="_on_magic_pressed"]
+[connection signal="pressed" from="Companion/ActionSelection/Actions/Magic" to="Companion_Action_Selection" method="_on_magic_pressed"]
 [connection signal="cursor_selected" from="One_Enemy/Enemy" to="." method="_on_enemy_1_cursor_selected"]
 [connection signal="cursor_selected" from="One_Enemy/Enemy" to="menu_cursor" method="_on_enemy_1_cursor_selected"]
 [connection signal="menu_canceled" from="menu_cursor" to="." method="_on_menu_cursor_menu_canceled"]
@@ -113,12 +140,11 @@ cursor_offset = Vector2(110, 100)
 
 [editable path="TextBox"]
 [editable path="Player_Character"]
-[editable path="Player_Character/MagicSelectWater"]
 [editable path="Player_Character/select_scan"]
-[editable path="Player_Character/select_magic"]
 [editable path="Player_Character/ActionSelection"]
 [editable path="Companion"]
 [editable path="Companion/MagicSelectFire"]
+[editable path="Companion/MagicSelectWater"]
 [editable path="Companion/ActionSelection"]
 [editable path="One_Enemy"]
 [editable path="One_Character_Info_Textbox"]

@@ -102,8 +102,6 @@ func display_text(new_text):
 	$InfoTextbox/TextBoxContainer/MarginContainer/HBoxContainer/Text.text = new_text
 	$InfoTextbox.show()
 	
-	
-	
 func enemy_turn():
 	#pick attack or magic list
 	
@@ -169,8 +167,6 @@ func _on_flee_pressed():
 	await self.text_box_closed
 	#get_tree().change_scene_to_file("res://camera/camera.tscn")
 	
-
-
 func _on_magic_pressed():
 	action_selection_array[index].hide()
 	display_magic_menu()

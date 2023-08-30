@@ -21,11 +21,31 @@ func _process(delta):
 		"GridContainer":
 			set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		visible = false
-		cursor_index = 0
+func _on_play_pressed():
+	visible = false
+	cursor_index = 0
 		
-		var current_menu_item := get_menu_item_at_index(cursor_index)
-		if current_menu_item != null:
-			if current_menu_item.has_method("cursor_select"):
-				current_menu_item.cursor_select()
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if current_menu_item != null:
+		if current_menu_item.has_method("cursor_select"):
+			current_menu_item.cursor_select()
+
+
+func _on_tutorial_pressed():
+	visible = false
+	cursor_index = 0
+		
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if current_menu_item != null:
+		if current_menu_item.has_method("cursor_select"):
+			current_menu_item.cursor_select()
+
+
+func _on_quit_pressed():
+	visible = false
+	cursor_index = 0
+		
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if current_menu_item != null:
+		if current_menu_item.has_method("cursor_select"):
+			current_menu_item.cursor_select()
