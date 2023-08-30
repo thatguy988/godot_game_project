@@ -57,13 +57,15 @@ var enemy_hit_weakness_multiplier = 2
 var enemy_hit_strength_multiplier = 0.5
 
 var battle_over = false
-	
+
+
+
 	
 func _input(event):
-	if Input.is_key_pressed(KEY_F) and $InfoTextbox.visible:
+	if Input.is_action_just_pressed("ui_select") and $InfoTextbox.visible:
 		$InfoTextbox.hide()
 		emit_signal("text_box_closed")
-		
+
 	if Input.is_action_just_pressed("ui_cancel") and magic_selection_array[index].visible:
 		magic_selection_array[index].hide()
 		if index == 0:
@@ -440,7 +442,7 @@ func magic(selection_index,action):
 
 func scan(selection_index):
 	$TextboxTimer.start(20)
-	display_text("HP: %d, MP: %d, Strength: %s, Weakness %s. Press f to continue" % [enemy_array[selection_index].health, enemy_array[selection_index].magic_points, enemy_array[selection_index].strength, enemy_array[selection_index].weakness])
+	display_text("HP: %d, MP: %d, Strength: %s, Weakness %s. Press spacebar to continue" % [enemy_array[selection_index].health, enemy_array[selection_index].magic_points, enemy_array[selection_index].strength, enemy_array[selection_index].weakness])
 	await self.text_box_closed
 	display_menu()
 	$TextboxTimer.start(5)
@@ -487,6 +489,10 @@ func decrease_turns(turns_array, halfturnhit, is_player):
 		enemyturns = turns_array
 		print(enemyturns)
 
+func display_textbox(name, new_text):
+	$TextBox/TextBoxContainer/MarginContainer/VBoxContainer/CharacterName.text = name
+	$TextBox/TextBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Text.text = new_text
+	$TextBox.show()
 
 
 

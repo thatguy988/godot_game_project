@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0obj687s8e61"]
+[gd_scene load_steps=15 format=3 uid="uid://d0obj687s8e61"]
 
 [ext_resource type="Script" path="res://src/main_menu/scripts/main.gd" id="1_5klop"]
 [ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="2_5nuj3"]
@@ -19,6 +19,15 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ralud"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5uca"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_plgrx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdi4r"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2klop"]
@@ -42,7 +51,7 @@ layout_mode = 0
 offset_left = 472.0
 offset_top = 222.0
 offset_right = 598.0
-offset_bottom = 318.0
+offset_bottom = 340.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_w4pqc")
 
 [node name="MenuSelection" type="VBoxContainer" parent="MainMenu"]
@@ -61,6 +70,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_fcvjt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2k3gh")
 theme_override_styles/focus = SubResource("StyleBoxFlat_ralud")
 text = "Play"
+
+[node name="Tutorial" type="Button" parent="MainMenu/MenuSelection"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_5nuj3")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_t5uca")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_plgrx")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wdi4r")
+text = "Tutorial"
 
 [node name="Quit" type="Button" parent="MainMenu/MenuSelection"]
 layout_mode = 2
@@ -83,4 +101,5 @@ menu_parent_path = NodePath("../MainMenu/MenuSelection")
 cursor_offset = Vector2(60, 105)
 
 [connection signal="pressed" from="MainMenu/MenuSelection/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MainMenu/MenuSelection/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Quit" to="." method="_on_quit_pressed"]

@@ -22,17 +22,6 @@ func _process(delta):
 		"GridContainer":
 			set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
 			
-			
-	if Input.is_action_just_pressed("ui_accept"):
-		visible = false
-		can_select_magic = false
-		cursor_index = 0
-		var current_menu_item := get_menu_item_at_index(cursor_index)
-		if current_menu_item != null:
-			if current_menu_item.has_method("cursor_select"):
-				current_menu_item.cursor_select()
-	
-
 
 func _on_battle_companion_display_magic_cursor():
 	visible = true
@@ -43,3 +32,53 @@ func _on_battle_hide_companion_display_magic_cursor():
 	visible = false
 	can_select_magic = false
 	cursor_index = 0
+
+
+func _on_fire_pressed():
+	visible = false
+	can_select_magic = false
+	cursor_index = 0
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if current_menu_item != null:
+		if current_menu_item.has_method("cursor_select"):
+			current_menu_item.cursor_select()
+
+
+func _on_water_pressed():
+	visible = false
+	can_select_magic = false
+	cursor_index = 0
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if current_menu_item != null:
+		if current_menu_item.has_method("cursor_select"):
+			current_menu_item.cursor_select()
+
+
+func _on_lightning_pressed():
+	visible = false
+	can_select_magic = false
+	cursor_index = 0
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if current_menu_item != null:
+		if current_menu_item.has_method("cursor_select"):
+			current_menu_item.cursor_select()
+
+
+func _on_earth_pressed():
+	visible = false
+	can_select_magic = false
+	cursor_index = 0
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if current_menu_item != null:
+		if current_menu_item.has_method("cursor_select"):
+			current_menu_item.cursor_select()
+
+
+func _on_healing_pressed():
+	visible = false
+	can_select_magic = false
+	cursor_index = 0
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if current_menu_item != null:
+		if current_menu_item.has_method("cursor_select"):
+			current_menu_item.cursor_select()

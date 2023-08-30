@@ -47,8 +47,10 @@ expand_margin_bottom = 1.0
 [node name="One_Character_Info_Textbox" type="CanvasLayer"]
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 97.0
-offset_bottom = 69.0
+offset_left = 850.0
+offset_top = 500.0
+offset_right = 947.0
+offset_bottom = 569.0
 
 [node name="Panel" type="Panel" parent="MarginContainer"]
 layout_mode = 2
