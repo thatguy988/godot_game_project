@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://coxni2ug60khy"]
+[gd_scene load_steps=10 format=3 uid="uid://coxni2ug60khy"]
 
 [ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_nn56t"]
+[ext_resource type="Script" path="res://src/battle/ui/health_and_magic_bars/Character_Info_Textbox.gd" id="1_vulh0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfld8"]
 bg_color = Color(0, 0, 0.6, 0.470588)
@@ -60,6 +61,7 @@ expand_margin_bottom = 1.0
 bg_color = Color(0, 0.729412, 0.160784, 1)
 
 [node name="three_character_info_textbox" type="CanvasLayer"]
+script = ExtResource("1_vulh0")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 263.0
@@ -224,14 +226,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Player1 Name" type="Label" parent="MarginContainer/MarginContainer3/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer3/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_nn56t")
 theme_override_font_sizes/font_size = 5
 text = "Player 3
 "
 
-[node name="Player1 healthbar" type="ProgressBar" parent="MarginContainer/MarginContainer3/VBoxContainer"]
+[node name="companion 2 healthbar" type="ProgressBar" parent="MarginContainer/MarginContainer3/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_cqhqw")
@@ -241,7 +243,7 @@ step = 1.0
 value = 50.0
 show_percentage = false
 
-[node name="Health Numbers" type="Label" parent="MarginContainer/MarginContainer3/VBoxContainer/Player1 healthbar"]
+[node name="Health Numbers" type="Label" parent="MarginContainer/MarginContainer3/VBoxContainer/companion 2 healthbar"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -261,7 +263,7 @@ theme_override_font_sizes/font_size = 10
 text = "HP: 125 / 150"
 vertical_alignment = 1
 
-[node name="Player1 magicbar" type="ProgressBar" parent="MarginContainer/MarginContainer3/VBoxContainer"]
+[node name="companion 2 magicbar" type="ProgressBar" parent="MarginContainer/MarginContainer3/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 5
 theme_override_styles/background = SubResource("StyleBoxFlat_qwi3a")
@@ -269,7 +271,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_n8n2t")
 value = 30.0
 show_percentage = false
 
-[node name="Magic Numbers" type="Label" parent="MarginContainer/MarginContainer3/VBoxContainer/Player1 magicbar"]
+[node name="Magic Numbers" type="Label" parent="MarginContainer/MarginContainer3/VBoxContainer/companion 2 magicbar"]
 layout_mode = 0
 offset_top = -9.0
 offset_right = 90.0

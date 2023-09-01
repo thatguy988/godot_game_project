@@ -68,3 +68,8 @@ func get_character_position():
 
 func _on_top_collision_body_entered(body): #when land on enemy head then let character bounce off
 	velocity.y = JUMP_VELOCITY
+
+
+func _on_out_of_bounds_body_entered(body):
+	global_position.x = Global.checkpoint_spawn_point_x
+	global_position.y = Global.checkpoint_spawn_point_y

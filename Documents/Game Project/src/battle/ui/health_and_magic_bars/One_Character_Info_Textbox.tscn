@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2kpj0pq7haca"]
+[gd_scene load_steps=8 format=3 uid="uid://b2kpj0pq7haca"]
 
 [ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_cak1f"]
+[ext_resource type="Script" path="res://src/battle/ui/health_and_magic_bars/Character_Info_Textbox.gd" id="1_fiyp3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sfld8"]
 bg_color = Color(0, 0, 0.6, 0.470588)
@@ -45,6 +46,7 @@ expand_margin_top = 1.0
 expand_margin_bottom = 1.0
 
 [node name="One_Character_Info_Textbox" type="CanvasLayer"]
+script = ExtResource("1_fiyp3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_left = 850.0

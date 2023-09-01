@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://src/battle/ui/cursors/action_selection_cursor.gd" id="18_0e48g"]
 [ext_resource type="Script" path="res://src/battle/ui/cursors/companion_action_menu_cursor.gd" id="19_7el6r"]
 [ext_resource type="Script" path="res://src/battle/ui/cursors/companion_magic_menu_cursor.gd" id="20_npucr"]
-[ext_resource type="PackedScene" uid="uid://cd08g0b2vthor" path="res://src/battle/ui/health_and_magic_bars/character_info_textbox.tscn" id="21_i4wqi"]
+[ext_resource type="PackedScene" uid="uid://cd08g0b2vthor" path="res://src/battle/ui/health_and_magic_bars/Two_Character_Info_Textbox.tscn" id="21_i4wqi"]
 
 [sub_resource type="Animation" id="Animation_pmchn"]
 resource_name = "Attacked"
@@ -590,14 +590,8 @@ libraries = {
 layout_mode = 0
 offset_left = 306.0
 offset_top = 181.0
-offset_right = 594.0
-offset_bottom = 410.0
-
-[node name="Enemy_1" parent="Pair_of_Enemies" index="0"]
-custom_minimum_size = Vector2(100, 100)
-
-[node name="Enemy_2" parent="Pair_of_Enemies" index="1"]
-custom_minimum_size = Vector2(100, 100)
+offset_right = 570.0
+offset_bottom = 385.0
 
 [node name="menu_cursor" parent="." instance=ExtResource("15_75lh7")]
 layout_mode = 0
@@ -659,12 +653,15 @@ transform = Transform2D(2, 0, 0, 2, 600, 450)
 [connection signal="companion_display_action_cursor" from="." to="Companion_Action_Cursor" method="_on_battle_companion_display_action_cursor"]
 [connection signal="companion_display_magic_cursor" from="." to="Companion_Magic_Cursor" method="_on_battle_companion_display_magic_cursor"]
 [connection signal="display_attack_cursor" from="." to="Player_Character_Action_Cursor" method="_on_battle_display_attack_cursor"]
+[connection signal="display_counter_text_box" from="." to="TurnCounter" method="_on_display_counter_text_box"]
 [connection signal="display_info_text_box" from="." to="InfoTextbox" method="_on_display_info_text_box"]
 [connection signal="hide_companion_display_magic_cursor" from="." to="Companion_Magic_Cursor" method="_on_battle_hide_companion_display_magic_cursor"]
 [connection signal="hide_player_display_magic_cursor" from="." to="Player_Character_Magic_Cursor" method="_on_battle_hide_player_display_magic_cursor"]
 [connection signal="magic_selected" from="." to="menu_cursor" method="_on_battle_magic_selected"]
 [connection signal="player_display_magic_cursor" from="." to="Player_Character_Magic_Cursor" method="_on_battle_player_display_magic_cursor"]
 [connection signal="scan_button_pressed" from="." to="menu_cursor" method="_on_battle_scan_button_pressed"]
+[connection signal="set_health" from="." to="character_info_textbox" method="_on_set_health"]
+[connection signal="set_magic_points" from="." to="character_info_textbox" method="_on_set_magic_points"]
 [connection signal="pressed" from="Companion/ActionSelection/Actions/Magic" to="." method="_on_magic_pressed"]
 [connection signal="pressed" from="Companion/ActionSelection/Actions/Magic" to="Companion_Action_Cursor" method="_on_magic_pressed"]
 [connection signal="pressed" from="Companion/ActionSelection/Actions/Scan" to="." method="_on_scan_pressed"]
@@ -703,10 +700,10 @@ transform = Transform2D(2, 0, 0, 2, 600, 450)
 [connection signal="pressed" from="Player_Character/MagicSelection/Magic/Earth" to="Player_Character_Magic_Cursor" method="_on_earth_pressed"]
 [connection signal="timeout" from="TextboxTimer" to="." method="_on_textbox_timer_timeout"]
 [connection signal="info_text_box_closed" from="InfoTextbox" to="." method="_on_info_text_box_closed"]
-[connection signal="cursor_selected" from="Pair_of_Enemies/Enemy_1" to="." method="_on_enemy_1_cursor_selected"]
-[connection signal="cursor_selected" from="Pair_of_Enemies/Enemy_1" to="menu_cursor" method="_on_enemy_1_cursor_selected"]
-[connection signal="cursor_selected" from="Pair_of_Enemies/Enemy_2" to="." method="_on_enemy_2_cursor_selected"]
-[connection signal="cursor_selected" from="Pair_of_Enemies/Enemy_2" to="menu_cursor" method="_on_enemy_2_cursor_selected"]
+[connection signal="cursor_selected" from="Pair_of_Enemies/enemy_1" to="." method="_on_enemy_1_cursor_selected"]
+[connection signal="cursor_selected" from="Pair_of_Enemies/enemy_1" to="menu_cursor" method="_on_enemy_1_cursor_selected"]
+[connection signal="cursor_selected" from="Pair_of_Enemies/enemy_2" to="." method="_on_enemy_2_cursor_selected"]
+[connection signal="cursor_selected" from="Pair_of_Enemies/enemy_2" to="menu_cursor" method="_on_enemy_2_cursor_selected"]
 [connection signal="menu_canceled" from="menu_cursor" to="." method="_on_menu_cursor_menu_canceled"]
 
 [editable path="Companion"]

@@ -3,16 +3,18 @@
 [ext_resource type="Script" path="res://src/battle/ui/enemy_item.gd" id="1_wnvjr"]
 
 [node name="Pair_of_Enemies" type="GridContainer"]
+anchors_preset = -1
 offset_left = 1.0
-offset_right = 48.0
-offset_bottom = 112.0
+offset_right = 26.0
+offset_bottom = 54.0
 
-[node name="Enemy_1" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(25, 25)
+[node name="enemy_1" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+stretch_mode = 2
 script = ExtResource("1_wnvjr")
 
-[node name="Enemy_2" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(25, 25)
+[node name="enemy_2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 script = ExtResource("1_wnvjr")

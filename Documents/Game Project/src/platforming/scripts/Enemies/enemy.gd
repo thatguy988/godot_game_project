@@ -7,6 +7,9 @@ var direction = 1  # 1 for moving right, -1 for moving left.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
+func _ready():
+	pass
+
 func left_and_right_movement(delta):
 	pass
 	
@@ -28,6 +31,8 @@ func _physics_process(delta):
 
 	# Move the enemy.
 	move_and_slide()
+	if velocity.x > 0:
+		$AnimationPlayer.play("walking")
 
 func _on_top_collision_body_entered(body):
 	pass

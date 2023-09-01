@@ -20,6 +20,8 @@ func left_and_right_movement(delta):
 	if remaining_distance <= 0:
 		direction = -direction
 		remaining_distance = MOVE_DISTANCE
+		$Sprite2D.flip_h = (direction == 1)
+		
 
 	# Set the movement velocity based on the current direction.
 	velocity.x = SPEED * direction

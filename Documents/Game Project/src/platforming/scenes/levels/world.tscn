@@ -114,8 +114,19 @@ position = Vector2(-24.029, 279.167)
 [node name="Checkpoint_B" parent="." instance=ExtResource("16_440wg")]
 position = Vector2(241.251, 278.333)
 
+[node name="Out of Bounds" type="Area2D" parent="."]
+position = Vector2(301.804, 783.333)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Out of Bounds"]
+polygon = PackedVector2Array(-143.213, -217.5, 584.385, -209.167, 592.074, -180.833, -494.997, -165, -517.104, -678.333, -435.405, -669.167, -442.133, -211.667)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Out of Bounds"]
+polygon = PackedVector2Array(5135.48, 272.5, 7285.59, 259.167, 7283.67, 301.667, 5116.25, 280.833)
+
 [connection signal="body_entered" from="enemy/Top_Collision" to="Player" method="_on_top_collision_body_entered"]
 [connection signal="body_entered" from="enemy2/Top_Collision" to="Player" method="_on_top_collision_body_entered"]
+[connection signal="body_entered" from="Out of Bounds" to="Player" method="_on_out_of_bounds_body_entered"]
 
 [editable path="enemy"]
 [editable path="enemy2"]

@@ -1,12 +1,12 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://b75qdpe4in5sb"]
 
 [ext_resource type="Script" path="res://src/battle/resources/Enemies/BaseEnemy.gd" id="1_bt8wv"]
-[ext_resource type="Texture2D" uid="uid://dudmtm51jkepa" path="res://assets/Enemies/01b.png" id="2_m28a2"]
+[ext_resource type="Texture2D" uid="uid://b7o52g0r6l4be" path="res://assets/Enemies/Free Enemies/Free Enemies/Single/Slime 1A[single].png" id="2_ung4p"]
 
 [resource]
 script = ExtResource("1_bt8wv")
 name = "Enemy_2"
-texture = ExtResource("2_m28a2")
+texture = ExtResource("2_ung4p")
 health = 85
 max_health = 85
 magic_points = 21

@@ -15,7 +15,7 @@ func _ready():
 	health_bar_array = [$"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 healthbar", $"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion healthbar"]
 	magic_bar_array = [$"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 magicbar",$"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion magicbar"]
 	enemy_array = [enemy, enemy_2]
-	enemy_nodes = [$Pair_of_Enemies/Enemy_1, $Pair_of_Enemies/Enemy_2]
+	enemy_nodes = [$Pair_of_Enemies/enemy_1, $Pair_of_Enemies/enemy_2]
 	enemyturns = enemy_array.size()
 	playerturns = []
 	enemyturns = []
@@ -30,27 +30,29 @@ func _ready():
 	damage_array=[$"PlayerDamage",$"CompanionDamage"]
 	enemy_animation_array = []
 	enemy_damage_animation_array = [$"EnemyDamage", $"Enemy_2_Damage"]
-	set_health($"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 healthbar", 
-				character.health, 
-				character.max_health)
-	set_health($"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion healthbar",
-				companion.health,
-				companion.max_health)
-	set_magic_points($"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 magicbar",
-				character.magic_points,
-				character.max_magic_points)
-	set_magic_points($"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion magicbar",
-				companion.magic_points,
-				companion.max_magic_points)
+	emit_signal("set_health",$"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 healthbar", character.health, character.max_health)
+#	set_health($"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 healthbar", 
+#				character.health, 
+#				character.max_health)
+	emit_signal("set_health",$"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion healthbar", companion.health, companion.max_health)
+#	set_health($"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion healthbar",
+#				companion.health,
+#				companion.max_health)
+	emit_signal("set_magic_points",$"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 magicbar", character.magic_points, character.max_magic_points)
+#	set_magic_points($"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 magicbar",
+#				character.magic_points,
+#				character.max_magic_points)
+	emit_signal("set_magic_points",$"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion magicbar",companion.magic_points, companion.max_magic_points)
+#	set_magic_points($"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion magicbar",
+#				companion.magic_points,
+#				companion.max_magic_points)
 	for i in range(enemy_array.size()):
 		enemy_nodes[i].texture = enemy_array[i].texture
-	display_counter(character_array[index].name)
-	#$InfoTextbox.hide()
+	emit_signal("display_counter_text_box",character_array[index].name,playerturns)
 	for i in range(action_selection_array.size()):
 		action_selection_array[i].hide()
 		magic_selection_array[i].hide()
 	emit_signal("display_info_text_box","Start Battle")
-	#display_text("Battle Start")
 	$TextboxTimer.start(10)
 	await self.info_text_box_closed
 	print("Heyo")
@@ -75,10 +77,7 @@ func _on_enemy_1_cursor_selected():
 	else:
 		emit_signal("display_info_text_box","Enemy is dead pick another.")
 		await self.info_text_box_closed
-#		display_text("Enemy is dead pick another")
-#		await self.info_text_box_closed
-		attack_button_pressed.emit()#pass arguement
-		emit_signal("attack_button_pressed")#get it to work
+		emit_signal("attack_button_pressed")
 
 func _on_enemy_2_cursor_selected():
 	if enemy_array[1].alive:
@@ -92,9 +91,6 @@ func _on_enemy_2_cursor_selected():
 	else:
 		emit_signal("display_info_text_box","Enemy is dead pick another.")
 		await self.info_text_box_closed
-#		display_text("Enemy is dead pick another")
-#		await self.info_text_box_closed
-		attack_button_pressed.emit()#pass arguement
 		emit_signal("attack_button_pressed")#get it to work
 		
 		

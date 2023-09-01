@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://w55v1oqxcxtd"]
+[gd_scene load_steps=4 format=3 uid="uid://w55v1oqxcxtd"]
+
+[ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_qxfdj"]
+[ext_resource type="Script" path="res://src/battle/ui/turn_counter.gd" id="1_w4g8r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wh7os"]
 bg_color = Color(0, 0, 0.788235, 0.470588)
@@ -9,6 +12,7 @@ border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 
 [node name="TextBox" type="CanvasLayer"]
+script = ExtResource("1_w4g8r")
 
 [node name="TextBoxContainer" type="MarginContainer" parent="."]
 anchors_preset = 7
@@ -51,6 +55,8 @@ custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("1_qxfdj")
+theme_override_font_sizes/font_size = 15
 text = "Text  "
 autowrap_mode = 2
 clip_text = true
@@ -59,4 +65,6 @@ clip_text = true
 custom_minimum_size = Vector2(15, 26)
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_qxfdj")
+theme_override_font_sizes/font_size = 15
 text = "4.0"

@@ -22,6 +22,7 @@ func left_and_right_movement(delta):
 	# If the enemy has moved the desired distance in the current direction, change direction.
 	if remaining_distance <= 0:
 		direction = -direction
+		$Dragonfly1.flip_h = (direction == 1)
 		remaining_distance = MOVE_DISTANCE
 
 	# Set the movement velocity based on the current direction.

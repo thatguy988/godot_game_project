@@ -31,6 +31,8 @@ func _physics_process(delta):
 	elif not player_chase and at_home:
 		left_and_right_movement(delta)
 	move_and_slide()
+	if velocity.x > 0:
+		pass
 
 
 
