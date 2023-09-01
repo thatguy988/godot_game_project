@@ -100,9 +100,12 @@ script = ExtResource("4_nxn73")
 menu_parent_path = NodePath("../MainMenu/MenuSelection")
 cursor_offset = Vector2(60, 105)
 
+[node name="IdleTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="MainMenu/MenuSelection/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Play" to="main_menu_cursor" method="_on_play_pressed"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Tutorial" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Tutorial" to="main_menu_cursor" method="_on_tutorial_pressed"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Quit" to="main_menu_cursor" method="_on_quit_pressed"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

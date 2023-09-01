@@ -112,17 +112,6 @@ script = ExtResource("20_yv7jk")
 menu_parent_path = NodePath("../Companion/MagicSelectWater/Magic")
 cursor_offset = Vector2(110, 100)
 
-[connection signal="attack_button_pressed" from="." to="menu_cursor" method="_on_battle_attack_button_pressed"]
-[connection signal="companion_display_action_cursor" from="." to="Companion_Action_Selection" method="_on_battle_companion_display_action_cursor"]
-[connection signal="companion_display_magic_cursor" from="." to="Companion_Magic_Selection_Water" method="_on_battle_companion_display_magic_cursor"]
-[connection signal="display_attack_cursor" from="." to="Player_Character_Action_Selection" method="_on_battle_display_attack_cursor"]
-[connection signal="display_scan_cursor" from="." to="Player_Character_Scan_Selection" method="_on_tutorial_display_scan_cursor"]
-[connection signal="hide_companion_display_magic_cursor" from="." to="Companion_Magic_Selection_Fire" method="_on_battle_hide_companion_display_magic_cursor"]
-[connection signal="hide_companion_display_magic_cursor" from="." to="Companion_Magic_Selection_Water" method="_on_battle_hide_companion_display_magic_cursor"]
-[connection signal="magic_selected" from="." to="menu_cursor" method="_on_battle_magic_selected"]
-[connection signal="objective_complete" from="." to="." method="_on_objective_complete"]
-[connection signal="scan_button_pressed" from="." to="menu_cursor" method="_on_battle_scan_button_pressed"]
-[connection signal="tutorial_text_box_closed" from="." to="." method="_text_box_closed"]
 [connection signal="pressed" from="Player_Character/select_scan/Actions/Scan" to="." method="_on_scan_pressed"]
 [connection signal="pressed" from="Player_Character/select_scan/Actions/Scan" to="Player_Character_Scan_Selection" method="_on_scan_pressed"]
 [connection signal="pressed" from="Player_Character/ActionSelection/Actions/Attack" to="." method="_on_attack_pressed"]

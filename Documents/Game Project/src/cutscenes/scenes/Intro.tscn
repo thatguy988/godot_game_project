@@ -32,6 +32,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(463, -22)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(577, 324)]
+}
 
 [sub_resource type="Animation" id="Animation_hhqyt"]
 resource_name = "intro_walk_companion_1"
@@ -92,6 +104,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(470, 270), Vector2(1200, 270)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Camera2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(577, 324), Vector2(1200, 324)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kx1k5"]
 _data = {
@@ -128,9 +152,13 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" parent="CharacterBody2D2" index="1"]
 flip_h = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 324)
+
 [connection signal="animation_is_finished" from="." to="." method="_on_animation_is_finished"]
+[connection signal="display_textbox" from="." to="TextBox" method="_on_display_textbox"]
 [connection signal="scene_finished" from="." to="." method="_on_scene_finished"]
-[connection signal="text_box_closed" from="." to="." method="_on_text_box_closed"]
+[connection signal="text_box_closed" from="TextBox" to="." method="_on_text_box_closed"]
 [connection signal="timeout" from="TimerForTextBox" to="." method="_on_timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 

@@ -14,6 +14,8 @@ signal objective_complete
 signal display_scan_cursor
 signal display_magic_cursor
 
+signal display_textbox(name, new_text)
+
 var dialogue_index = 0
 
 var w_is_pressed := false
@@ -124,6 +126,7 @@ func _ready():
 # ui_select press spacebar to go through dialogue and infotexbox
 #ui_accept press enter to select menu option
 
+var allow_input = false
 func _input(event):
 	if not tutorial_step_0:
 		if Input.is_action_just_pressed("ui_select"):
@@ -135,8 +138,10 @@ func _input(event):
 
 	elif tutorial_step_1 and not tutorial_step_2: #step0 is true and step 1 is false then go into statement
 		if Input.is_action_just_pressed("ui_select"):
+			allow_input = true
 			emit_signal("tutorial_text_box_closed")
-		if not $"TextBox".visible:
+		if allow_input:
+			print("Hello there boy")
 			if Input.is_action_just_pressed("ui_up") and not tutorial_step_2:
 				w_is_pressed = true
 				both_w_and_s_pressed()
@@ -343,22 +348,25 @@ func step_5_enemy_selected():#step 5 select enemy to attack
 func next_step():
 	dialogue_index += 1
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[dialogue_index])
+	#display_textbox(character_name[0], dialogue[dialogue_index])
 	await self.tutorial_text_box_closed
 	
 	
 func tutorial_script():
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[0])
+	emit_signal("display_textbox", character_name[0], dialogue[0])
+	#display_textbox(character_name[0], dialogue[0])
 	await self.tutorial_text_box_closed
 
 	$TextboxTimer.start(20)
 	display_text("The InfoTextBox")
-	display_textbox(character_name[0], dialogue[1])
+	emit_signal("display_textbox", character_name[0], dialogue[1])
+	#display_textbox(character_name[0], dialogue[1])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[2])
+	emit_signal("display_textbox", character_name[0], dialogue[2])
+	#display_textbox(character_name[0], dialogue[2])
 	await self.tutorial_text_box_closed
 	
 	display_text("Press up and down keys")
@@ -370,7 +378,8 @@ func tutorial_script():
 	$Player_Character_Action_Selection.visible = false
 	$Player_Character/ActionSelection.hide()
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[3])
+	emit_signal("display_textbox", character_name[0], dialogue[3])
+	#display_textbox(character_name[0], dialogue[3])
 	await self.tutorial_text_box_closed
 	
 	$Player_Character/ActionSelection.show()
@@ -381,7 +390,8 @@ func tutorial_script():
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[4])
+	emit_signal("display_textbox", character_name[0], dialogue[4])
+	#display_textbox(character_name[0], dialogue[4])
 	await self.tutorial_text_box_closed
 	display_text("Press the cancel button go back.")
 	await self.objective_complete
@@ -391,7 +401,8 @@ func tutorial_script():
 	
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[5])
+	emit_signal("display_textbox", character_name[0], dialogue[5])
+	#display_textbox(character_name[0], dialogue[5])
 	await self.tutorial_text_box_closed
 	$Player_Character/ActionSelection.show()
 	$Player_Character/ActionSelection/Actions/Attack.grab_focus()
@@ -400,32 +411,38 @@ func tutorial_script():
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[6])
+	emit_signal("display_textbox", character_name[0], dialogue[6])
+	#display_textbox(character_name[0], dialogue[6])
 	await self.tutorial_text_box_closed
 	
 	
 	$"TurnCounter".show()
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[7])
+	emit_signal("display_textbox", character_name[0], dialogue[7])
+	#display_textbox(character_name[0], dialogue[7])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[8])
+	emit_signal("display_textbox", character_name[0], dialogue[8])
+	#display_textbox(character_name[0], dialogue[8])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[9])
+	emit_signal("display_textbox", character_name[0], dialogue[9])
+	#display_textbox(character_name[0], dialogue[9])
 	await self.tutorial_text_box_closed
 	
 	$Companion.visible = true
 	playerturns = [1, 1]
 	display_counter(character_array[index].name)
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[10])
+	emit_signal("display_textbox", character_name[0], dialogue[10])
+	#display_textbox(character_name[0], dialogue[10])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[11])
+	emit_signal("display_textbox", character_name[0], dialogue[11])
+	#display_textbox(character_name[0], dialogue[11])
 	await self.tutorial_text_box_closed
 	
 	$Player_Character/select_scan.show()
@@ -435,15 +452,18 @@ func tutorial_script():
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[12])
+	emit_signal("display_textbox", character_name[0], dialogue[12])
+	#display_textbox(character_name[0], dialogue[12])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[13])
+	emit_signal("display_textbox", character_name[0], dialogue[13])
+	#display_textbox(character_name[0], dialogue[13])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[14])
+	emit_signal("display_textbox", character_name[0], dialogue[14])
+	#display_textbox(character_name[0], dialogue[14])
 	await self.tutorial_text_box_closed
 	
 	$Companion/ActionSelection.show()
@@ -453,11 +473,13 @@ func tutorial_script():
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[15])
+	emit_signal("display_textbox", character_name[0], dialogue[15])
+	#display_textbox(character_name[0], dialogue[15])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[16])
+	emit_signal("display_textbox", character_name[0], dialogue[16])
+	#display_textbox(character_name[0], dialogue[16])
 	playerturns = [0.5, 1]
 	display_counter("Companion")
 	await self.tutorial_text_box_closed
@@ -469,37 +491,45 @@ func tutorial_script():
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[17])
+	emit_signal("display_textbox", character_name[0], dialogue[17])
+	#display_textbox(character_name[0], dialogue[17])
 	playerturns = [0, 1]
 	display_counter("Player_1")
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[18])
+	emit_signal("display_textbox", character_name[0], dialogue[18])
+	#display_textbox(character_name[0], dialogue[18])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[19])
+	emit_signal("display_textbox", character_name[0], dialogue[19])
+	#display_textbox(character_name[0], dialogue[19])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[20])
+	emit_signal("display_textbox", character_name[0], dialogue[20])
+	#display_textbox(character_name[0], dialogue[20])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[21])
+	emit_signal("display_textbox", character_name[0], dialogue[21])
+	#display_textbox(character_name[0], dialogue[21])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[22])
+	emit_signal("display_textbox", character_name[0], dialogue[22])
+	#display_textbox(character_name[0], dialogue[22])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[23])
+	emit_signal("display_textbox", character_name[0], dialogue[23])
+	#display_textbox(character_name[0], dialogue[23])
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
-	display_textbox(character_name[0], dialogue[24])
+	emit_signal("display_textbox", character_name[0], dialogue[24])
+	#display_textbox(character_name[0], dialogue[24])
 	await self.tutorial_text_box_closed
 	
 	get_tree().change_scene_to_file("res://src/main_menu/scenes/main.tscn")
@@ -555,7 +585,8 @@ func _on_text_box_timer_timeout():
 
 
 func _text_box_closed():
-	$TextBox.hide()
+	pass
+	#$TextBox.hide()
 	
 func _on_objective_complete():
 	$InfoTextbox.hide()

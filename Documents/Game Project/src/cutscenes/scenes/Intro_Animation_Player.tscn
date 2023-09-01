@@ -108,3 +108,5 @@ visible = false
 
 [node name="TextBox_3" parent="." instance=ExtResource("3_lur7u")]
 visible = false
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -45,13 +45,15 @@ func _ready():
 	for i in range(enemy_array.size()):
 		enemy_nodes[i].texture = enemy_array[i].texture
 	display_counter(character_array[index].name)
-	$InfoTextbox.hide()
+	#$InfoTextbox.hide()
 	for i in range(action_selection_array.size()):
 		action_selection_array[i].hide()
 		magic_selection_array[i].hide()
-	display_text("Battle Start")
+	emit_signal("display_info_text_box","Start Battle")
+	#display_text("Battle Start")
 	$TextboxTimer.start(10)
-	await self.text_box_closed
+	await self.info_text_box_closed
+	print("Heyo")
 	display_menu()
 	
 
@@ -71,8 +73,10 @@ func _on_enemy_1_cursor_selected():
 		
 		
 	else:
-		display_text("Enemy is dead pick another")
-		await self.text_box_closed
+		emit_signal("display_info_text_box","Enemy is dead pick another.")
+		await self.info_text_box_closed
+#		display_text("Enemy is dead pick another")
+#		await self.info_text_box_closed
 		attack_button_pressed.emit()#pass arguement
 		emit_signal("attack_button_pressed")#get it to work
 
@@ -86,11 +90,17 @@ func _on_enemy_2_cursor_selected():
 		elif action in ["Fire","Water","Thunder","Earth"]:
 			magic(selection_index, action)
 	else:
-		display_text("Enemy is dead pick another")
-		await self.text_box_closed
+		emit_signal("display_info_text_box","Enemy is dead pick another.")
+		await self.info_text_box_closed
+#		display_text("Enemy is dead pick another")
+#		await self.info_text_box_closed
 		attack_button_pressed.emit()#pass arguement
 		emit_signal("attack_button_pressed")#get it to work
 		
 		
 func go_back_to_platform_level():
 	get_tree().change_scene_to_file("res://src/platforming/camera/camera.tscn")
+
+
+func _on_info_text_box_closed():
+	emit_signal("info_text_box_closed")

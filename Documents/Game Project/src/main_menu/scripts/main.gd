@@ -2,7 +2,13 @@ extends Control
 
 func _ready():
 	$"MainMenu/MenuSelection/Play".grab_focus()
+	$IdleTimer.start(30)
 	
+func _input(event):
+	if Input.is_action_just_pressed("ui_up"):
+		$IdleTimer.start(30)
+	if Input.is_action_just_pressed("ui_dowm"):
+		$IdleTimer.start(30)
 
 func _on_quit_pressed():
 	get_tree().quit()
@@ -17,3 +23,7 @@ func _on_play_pressed():
 
 func _on_tutorial_pressed():
 	get_tree().change_scene_to_file("res://src/battle/scenes/Battle_Zones/tutorial.tscn")
+
+
+func _on_idle_timer_timeout():
+	get_tree().change_scene_to_file("res://src/cutscenes/scenes/Intro_Animation_Player.tscn")
