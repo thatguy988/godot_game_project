@@ -21,6 +21,6 @@ orbit_velocity_max = 0.0
 color_ramp = SubResource("GradientTexture1D_d4p7n")
 
 [node name="rain" type="GPUParticles2D"]
-amount = 800
+amount = 1000
 process_material = SubResource("ParticleProcessMaterial_rnnm5")
 lifetime = 6.0

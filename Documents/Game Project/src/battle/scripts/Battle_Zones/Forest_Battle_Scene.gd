@@ -31,32 +31,16 @@ func _ready():
 	enemy_animation_array = []
 	enemy_damage_animation_array = [$"EnemyDamage", $"Enemy_2_Damage"]
 	emit_signal("set_health",$"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 healthbar", character.health, character.max_health)
-#	set_health($"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 healthbar", 
-#				character.health, 
-#				character.max_health)
 	emit_signal("set_health",$"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion healthbar", companion.health, companion.max_health)
-#	set_health($"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion healthbar",
-#				companion.health,
-#				companion.max_health)
 	emit_signal("set_magic_points",$"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 magicbar", character.magic_points, character.max_magic_points)
-#	set_magic_points($"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 magicbar",
-#				character.magic_points,
-#				character.max_magic_points)
 	emit_signal("set_magic_points",$"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion magicbar",companion.magic_points, companion.max_magic_points)
-#	set_magic_points($"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion magicbar",
-#				companion.magic_points,
-#				companion.max_magic_points)
 	for i in range(enemy_array.size()):
 		enemy_nodes[i].texture = enemy_array[i].texture
 	emit_signal("display_counter_text_box",character_array[index].name,playerturns)
 	for i in range(action_selection_array.size()):
 		action_selection_array[i].hide()
 		magic_selection_array[i].hide()
-	emit_signal("display_info_text_box","Start Battle")
-	$TextboxTimer.start(10)
-	await self.info_text_box_closed
-	print("Heyo")
-	display_menu()
+	$Transition/AnimationPlayer.play("fade_in")
 	
 
 
@@ -100,3 +84,13 @@ func go_back_to_platform_level():
 
 func _on_info_text_box_closed():
 	emit_signal("info_text_box_closed")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "fade_in":
+		emit_signal("display_info_text_box","Start Battle")
+		$TextboxTimer.start(10)
+		await self.info_text_box_closed
+		display_menu()
+	elif anim_name == "battle_fade_out":
+		get_tree().change_scene_to_file("res://src/platforming/camera/camera.tscn")

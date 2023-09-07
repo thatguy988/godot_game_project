@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c1j44odlgo42f"]
+[gd_scene load_steps=57 format=3 uid="uid://c1j44odlgo42f"]
 
 [ext_resource type="Texture2D" uid="uid://b7maq8ef755mi" path="res://assets/backgrounds/grass_battle_background.png" id="1_3b60w"]
 [ext_resource type="Script" path="res://src/battle/scripts/Battle_Zones/Forest_Battle_Scene.gd" id="1_i27mq"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://src/battle/ui/cursors/companion_action_menu_cursor.gd" id="19_7el6r"]
 [ext_resource type="Script" path="res://src/battle/ui/cursors/companion_magic_menu_cursor.gd" id="20_npucr"]
 [ext_resource type="PackedScene" uid="uid://cd08g0b2vthor" path="res://src/battle/ui/health_and_magic_bars/Two_Character_Info_Textbox.tscn" id="21_i4wqi"]
+[ext_resource type="PackedScene" uid="uid://b2xipp4g8c33a" path="res://src/platform_to_battle_transition.tscn" id="23_byg6k"]
 
 [sub_resource type="Animation" id="Animation_pmchn"]
 resource_name = "Attacked"
@@ -649,6 +650,10 @@ offset = Vector2(600, 450)
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 600, 450)
 
+[node name="Transition" parent="." instance=ExtResource("23_byg6k")]
+offset = Vector2(300, 250)
+transform = Transform2D(1, 0, 0, 1, 300, 250)
+
 [connection signal="attack_button_pressed" from="." to="menu_cursor" method="_on_battle_attack_button_pressed"]
 [connection signal="companion_display_action_cursor" from="." to="Companion_Action_Cursor" method="_on_battle_companion_display_action_cursor"]
 [connection signal="companion_display_magic_cursor" from="." to="Companion_Magic_Cursor" method="_on_battle_companion_display_magic_cursor"]
@@ -705,6 +710,7 @@ transform = Transform2D(2, 0, 0, 2, 600, 450)
 [connection signal="cursor_selected" from="Pair_of_Enemies/enemy_2" to="." method="_on_enemy_2_cursor_selected"]
 [connection signal="cursor_selected" from="Pair_of_Enemies/enemy_2" to="menu_cursor" method="_on_enemy_2_cursor_selected"]
 [connection signal="menu_canceled" from="menu_cursor" to="." method="_on_menu_cursor_menu_canceled"]
+[connection signal="animation_finished" from="Transition/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="Companion"]
 [editable path="Companion/ActionSelection"]
@@ -714,3 +720,4 @@ transform = Transform2D(2, 0, 0, 2, 600, 450)
 [editable path="Player_Character/MagicSelection"]
 [editable path="Pair_of_Enemies"]
 [editable path="character_info_textbox"]
+[editable path="Transition"]

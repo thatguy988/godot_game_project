@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://src/battle/ui/enemy_item.gd" id="1_wnvjr"]
 
 [node name="Pair_of_Enemies" type="GridContainer"]
-anchors_preset = -1
 offset_left = 1.0
 offset_right = 26.0
 offset_bottom = 54.0

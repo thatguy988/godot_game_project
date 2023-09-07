@@ -14,12 +14,15 @@ signal objective_complete
 signal display_scan_cursor
 signal display_magic_cursor
 
+
+
 signal display_textbox(name, new_text)
 
 var dialogue_index = 0
 
 var w_is_pressed := false
 var s_is_pressed := false
+
 
 
 var tutorial_step_0 := false #use spacebar to go through dialogue box
@@ -49,7 +52,7 @@ var tutorial_step_23 := false
 var tutorial_step_24 := false 
 
 
-
+#connect signals
 
 func _ready():
 	character_array=[character]
@@ -72,15 +75,11 @@ func _ready():
 	damage_array=[$"PlayerDamage"]
 	enemy_animation_array = []
 	enemy_damage_animation_array = [$"EnemyDamage"]
-	set_health($"One_Character_Info_Textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 healthbar", 
-				character.health, 
-				character.max_health)
-	set_magic_points($"One_Character_Info_Textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 magicbar",
-				character.magic_points,
-				character.max_magic_points)
+	emit_signal("set_health",health_bar_array[0],character_array[0].health,character_array[0].max_health)
+	emit_signal("set_magic_points",magic_bar_array[0],character_array[0].magic_points,character_array[0].max_magic_points)
 	for i in range(enemy_array.size()):
 		enemy_nodes[i].texture = enemy_array[i].texture
-	display_counter(character_array[index].name)
+	emit_signal("display_counter_text_box",character_array[index].name,playerturns)
 	$InfoTextbox.hide()
 	for i in range(action_selection_array.size()):
 		action_selection_array[i].hide()
@@ -359,7 +358,7 @@ func tutorial_script():
 	await self.tutorial_text_box_closed
 
 	$TextboxTimer.start(20)
-	display_text("The InfoTextBox")
+	emit_signal("display_info_text_box","The InfoTextBox")
 	emit_signal("display_textbox", character_name[0], dialogue[1])
 	#display_textbox(character_name[0], dialogue[1])
 	await self.tutorial_text_box_closed
@@ -368,8 +367,7 @@ func tutorial_script():
 	emit_signal("display_textbox", character_name[0], dialogue[2])
 	#display_textbox(character_name[0], dialogue[2])
 	await self.tutorial_text_box_closed
-	
-	display_text("Press up and down keys")
+	emit_signal("display_info_text_box","Press up and down keys")
 	$Player_Character/ActionSelection.show()
 	$Player_Character/ActionSelection/Actions/Attack.grab_focus()
 	emit_signal("display_attack_cursor")
@@ -386,14 +384,15 @@ func tutorial_script():
 	$Player_Character/ActionSelection/Actions/Attack.grab_focus()
 	emit_signal("display_attack_cursor")
 #	$Player_Character_Action_Selection.visible = true
-	display_text("Press enter to select the attack option")
+	emit_signal("display_info_text_box","Press enter to select the attack option")
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
 	emit_signal("display_textbox", character_name[0], dialogue[4])
 	#display_textbox(character_name[0], dialogue[4])
 	await self.tutorial_text_box_closed
-	display_text("Press the cancel button go back.")
+	emit_signal("display_info_text_box","Press the cancel button go back.")
+	
 	await self.objective_complete
 	
 	$Player_Character/ActionSelection.hide()
@@ -407,7 +406,8 @@ func tutorial_script():
 	$Player_Character/ActionSelection.show()
 	$Player_Character/ActionSelection/Actions/Attack.grab_focus()
 	$Player_Character_Action_Selection.visible = true
-	display_text("Select attack option then select the enemy")
+	emit_signal("display_info_text_box","Select attack option then select the enemy.")
+
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
@@ -434,7 +434,8 @@ func tutorial_script():
 	
 	$Companion.visible = true
 	playerturns = [1, 1]
-	display_counter(character_array[index].name)
+	emit_signal("display_counter_text_box",character_array[index].name,playerturns)
+
 	$TextboxTimer.start(20)
 	emit_signal("display_textbox", character_name[0], dialogue[10])
 	#display_textbox(character_name[0], dialogue[10])
@@ -448,7 +449,8 @@ func tutorial_script():
 	$Player_Character/select_scan.show()
 	$Player_Character/select_scan/Actions/Attack.grab_focus()
 	emit_signal("display_scan_cursor")
-	display_text("Select scan and select the enemy")
+	emit_signal("display_info_text_box","Select scan and select the enemy")
+
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
@@ -469,7 +471,11 @@ func tutorial_script():
 	$Companion/ActionSelection.show()
 	$Companion/ActionSelection/Actions/Magic.grab_focus()
 	emit_signal("companion_display_action_cursor")
-	display_text("Select Magic then select Water then select enemy.")
+	emit_signal("display_info_text_box","Select Magic then select Water then select enemy.")
+	
+	
+	
+
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
@@ -481,20 +487,24 @@ func tutorial_script():
 	emit_signal("display_textbox", character_name[0], dialogue[16])
 	#display_textbox(character_name[0], dialogue[16])
 	playerturns = [0.5, 1]
-	display_counter("Companion")
+	emit_signal("display_counter_text_box","Companion",playerturns)
+
 	await self.tutorial_text_box_closed
 	
 	$Companion/ActionSelection.show()
 	$Companion/ActionSelection/Actions/Magic.grab_focus()
 	emit_signal("companion_display_action_cursor")
-	display_text("Select Magic then select Fire then select enemy.")
+	
+	emit_signal("display_info_text_box","Select Magic then select Fire then select enemy.")
+	
 	await self.objective_complete
 	
 	$TextboxTimer.start(20)
 	emit_signal("display_textbox", character_name[0], dialogue[17])
 	#display_textbox(character_name[0], dialogue[17])
 	playerturns = [0, 1]
-	display_counter("Player_1")
+	emit_signal("display_counter_text_box",character_array[index].name,playerturns)
+
 	await self.tutorial_text_box_closed
 	
 	$TextboxTimer.start(20)
@@ -565,7 +575,7 @@ func _on_enemy_1_cursor_selected():
 			magic(selection_index, action)
 		#add code for scripted scenes here maybe for bosses when boss reaches a certain health trigger cutscene
 	else:
-		display_text("Enemy is dead pick another")
+		emit_signal("display_info_text_box","Enemy is dead pick another.")
 		await self.text_box_closed
 		attack_button_pressed.emit()#pass arguement
 		emit_signal("attack_button_pressed")#get it to work

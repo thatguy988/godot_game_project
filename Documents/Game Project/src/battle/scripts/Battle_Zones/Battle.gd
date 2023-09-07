@@ -202,7 +202,8 @@ func check_if_all_enemies_dead():
 		$TextboxTimer.start(15)
 		emit_signal("display_info_text_box", "All enemies are dead.")
 		await self.info_text_box_closed
-		go_back_to_platform_level()
+		$Transition/AnimationPlayer.play("battle_fade_out")
+		#go_back_to_platform_level()
 	
 
 		

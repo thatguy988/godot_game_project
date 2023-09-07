@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://d0obj687s8e61"]
+[gd_scene load_steps=16 format=3 uid="uid://d0obj687s8e61"]
 
 [ext_resource type="Script" path="res://src/main_menu/scripts/main.gd" id="1_5klop"]
 [ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="2_5nuj3"]
 [ext_resource type="PackedScene" uid="uid://n3iybn13ymi1" path="res://src/ui/menu_cursor.tscn" id="3_6mp5d"]
 [ext_resource type="Script" path="res://src/main_menu/scripts/main_menu_cursor.gd" id="4_nxn73"]
+[ext_resource type="PackedScene" uid="uid://dgch1la8udhgi" path="res://src/battle/ui/InfoTexbox.tscn" id="5_wlnqc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4pqc"]
 bg_color = Color(0, 0, 0.6, 0.470588)
@@ -102,6 +103,9 @@ cursor_offset = Vector2(60, 105)
 
 [node name="IdleTimer" type="Timer" parent="."]
 
+[node name="TextBox" parent="." instance=ExtResource("5_wlnqc")]
+
+[connection signal="display_info_text_box" from="." to="TextBox" method="_on_display_info_text_box"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Play" to="main_menu_cursor" method="_on_play_pressed"]
 [connection signal="pressed" from="MainMenu/MenuSelection/Tutorial" to="." method="_on_tutorial_pressed"]

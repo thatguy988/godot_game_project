@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal battle_transition #connect to player and level node
+#make sure animation player has signal connect to each enemy when animation is finished change to specific scene
 
 var direction = 1  # 1 for moving right, -1 for moving left.
 

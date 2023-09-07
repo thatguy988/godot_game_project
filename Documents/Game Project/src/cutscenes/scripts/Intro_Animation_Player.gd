@@ -6,6 +6,9 @@ extends Node2D
 
 
 func _ready():
+	$TextBox_1/TextBoxContainer.visible = true
+	$TextBox_2/TextBoxContainer.visible = true
+	$TextBox_3/TextBoxContainer.visible = true
 	$TextBox_1/TextBoxContainer/MarginContainer/VBoxContainer/CharacterName.text = "Narrator"
 	$TextBox_1/TextBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Text.text = "First Dialgoue Box!"
 	$TextBox_2/TextBoxContainer/MarginContainer/VBoxContainer/CharacterName.text = "Mike"

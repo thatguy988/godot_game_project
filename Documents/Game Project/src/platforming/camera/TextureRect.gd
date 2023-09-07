@@ -2,4 +2,5 @@ extends TextureRect
 
 
 func _ready():
-	position = -size/8
+	position = -size/192
+	

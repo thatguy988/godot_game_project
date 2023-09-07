@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://c20dt1m53gelq"]
+
+[ext_resource type="Texture2D" uid="uid://d5fey23dyv3e" path="res://assets/Enemies/Free Enemies/Free Enemies/Anim/Mechasphere A[anim].png" id="1_8yux4"]
+
+[sub_resource type="Animation" id="Animation_n8dvg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_xkujf"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_od0hp"]
+_data = {
+"RESET": SubResource("Animation_n8dvg"),
+"idle": SubResource("Animation_xkujf")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hk7lh"]
+radius = 32.0
+
+[node name="boss_enemy_1" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_8yux4")
+hframes = 4
+vframes = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_od0hp")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hk7lh")

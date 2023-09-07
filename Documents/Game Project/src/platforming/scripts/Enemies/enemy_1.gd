@@ -34,4 +34,11 @@ func _on_top_collision_body_entered(body):
 
 func load_battle_scene():
 	Global.kill_enemy(1, 0)
-	get_tree().change_scene_to_file("res://src/battle/scenes/Battle_Zones/forest_battle_scene.tscn")
+	emit_signal("battle_transition")
+	
+	#get_tree().change_scene_to_file("res://src/battle/scenes/Battle_Zones/forest_battle_scene.tscn")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "fade_out":
+		get_tree().change_scene_to_file("res://src/battle/scenes/Battle_Zones/forest_battle_scene.tscn")

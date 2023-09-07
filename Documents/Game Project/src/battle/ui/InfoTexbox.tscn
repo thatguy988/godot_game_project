@@ -75,3 +75,7 @@ size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_mhp5o")
 theme_override_font_sizes/font_size = 14
 text = "v"
+
+[node name="DisplayEndSymbol" type="Timer" parent="."]
+
+[connection signal="timeout" from="DisplayEndSymbol" to="." method="_on_display_end_symbol_timeout"]

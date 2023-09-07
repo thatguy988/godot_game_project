@@ -13,6 +13,8 @@ var companion_2_position_y = position_y
 var checkpoint_spawn_point_x = position_x
 var checkpoint_spawn_point_y = position_y
 
+
+
 # Create a dictionary to store enemy states for each level.
 # The keys are the level numbers, and the values are the arrays representing the enemy states.
 var level_enemy_states = {
