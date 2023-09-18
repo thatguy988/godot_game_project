@@ -92,3 +92,4 @@ func _on_tutorial_display_scan_cursor():
 func _on_tutorial_display_magic_cursor():
 	visible = true
 	can_select_action = true
+

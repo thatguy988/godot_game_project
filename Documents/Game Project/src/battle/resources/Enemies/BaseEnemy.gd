@@ -1,8 +1,6 @@
 extends Resource
 
 @export var name : String = "Enemy"
-@export var sprite: Sprite2D = null
-@export var texture: Texture = null
 @export var health: int
 @export var max_health: int
 @export var magic_points: int

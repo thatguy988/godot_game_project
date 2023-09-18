@@ -11,7 +11,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(1, 1, 1, 1)
 
-[node name="TextBox" type="CanvasLayer"]
+[node name="TurnCounter" type="CanvasLayer"]
 script = ExtResource("1_w4g8r")
 
 [node name="TextBoxContainer" type="MarginContainer" parent="."]

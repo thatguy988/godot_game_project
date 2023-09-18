@@ -1,12 +1,10 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://kft4nq1mscca"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://kft4nq1mscca"]
 
 [ext_resource type="Script" path="res://src/battle/resources/Enemies/BaseEnemy.gd" id="1_pwxic"]
-[ext_resource type="Texture2D" uid="uid://bosut0vjxskt2" path="res://assets/Enemies/Free Enemies/Free Enemies/Single/Dragonfly 1A[single].png" id="2_bg8tm"]
 
 [resource]
 script = ExtResource("1_pwxic")
 name = "Enemy"
-texture = ExtResource("2_bg8tm")
 health = 125
 max_health = 125
 magic_points = 30

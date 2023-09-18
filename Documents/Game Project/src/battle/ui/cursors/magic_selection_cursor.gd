@@ -78,3 +78,7 @@ func _on_earth_pressed():
 	if current_menu_item != null:
 		if current_menu_item.has_method("cursor_select"):
 			current_menu_item.cursor_select()
+
+
+
+

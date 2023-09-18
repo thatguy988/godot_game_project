@@ -112,6 +112,7 @@ script = ExtResource("20_yv7jk")
 menu_parent_path = NodePath("../Companion/MagicSelectWater/Magic")
 cursor_offset = Vector2(110, 100)
 
+[connection signal="display_textbox" from="." to="TextBox" method="_on_display_textbox"]
 [connection signal="pressed" from="Player_Character/select_scan/Actions/Scan" to="." method="_on_scan_pressed"]
 [connection signal="pressed" from="Player_Character/select_scan/Actions/Scan" to="Player_Character_Scan_Selection" method="_on_scan_pressed"]
 [connection signal="pressed" from="Player_Character/ActionSelection/Actions/Attack" to="." method="_on_attack_pressed"]

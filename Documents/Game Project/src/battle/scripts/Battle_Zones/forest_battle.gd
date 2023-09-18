@@ -26,7 +26,6 @@ func _ready():
 	initialize_focus=[$Party_Group/Player_Character/ActionSelection/Actions/Attack,$Party_Group/Companion/ActionSelection/Actions/Magic]
 	initialize_focus_magic=[$Party_Group/Player_Character/MagicSelection/Magic/Fire,$Party_Group/Companion/MagicSelection/Magic/Fire ]
 	character_animation_array = [$"Party_Group/Player_Character/Player_AnimationPlayer",$"Party_Group/Companion/Companion_AnimationPlayer"]
-	character_animation_array[0].queue("idle")
 	damage_array=[$"Party_Group/PlayerDamage",$"Party_Group/CompanionDamage"]
 	enemy_animation_array = []
 	enemy_damage_animation_array = [$"Pair_of_Enemies/enemy_1/slime_enemy/Enemy_Animation_Player", $"Pair_of_Enemies/enemy_2/slime_enemy/Enemy_Animation_Player"]

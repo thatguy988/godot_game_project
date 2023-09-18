@@ -94,6 +94,7 @@ func enemy_turn():
 		if pick_attack_or_magic == 0: #attack
 			var critical_chance = 0.3
 			var is_critical = randf() <= critical_chance
+			enemy_damage_animation_array[enemy_index].play("Attack")
 			if is_critical:
 				emit_signal("display_info_text_box","%s does critical attack" % enemy_array[enemy_index].name)
 				await self.info_text_box_closed
@@ -111,6 +112,7 @@ func enemy_turn():
 				await self.info_text_box_closed
 				decrease_turns(enemyturns, false, false)
 		elif pick_attack_or_magic == 1: #use magic
+			enemy_damage_animation_array[enemy_index].play("Magic")
 			var pick_spell = randi_range(0,enemy_array[enemy_index].magic_spells.size() - 1)
 			emit_signal("display_info_text_box","%s casts %s" % [enemy_array[enemy_index].name, enemy_array[enemy_index].magic_spells[pick_spell]])
 			await self.info_text_box_closed
@@ -152,7 +154,6 @@ func display_magic_menu():
 		emit_signal("companion_display_magic_cursor")
 	
 func display_menu():
-	print("In display menu")
 	action_selection_array[index].show()
 	initialize_focus[index].grab_focus()
 	if index == 0:
@@ -163,8 +164,7 @@ func display_menu():
 func _on_attack_pressed():
 	action_selection_array[index].hide()
 	action = "attack"
-	attack_button_pressed.emit()#pass arguement
-	emit_signal("attack_button_pressed")#get it to work
+	emit_signal("attack_button_pressed")
 	
 func _on_fire_pressed():
 	magic_is_selected()
@@ -196,7 +196,7 @@ func check_if_all_enemies_dead():
 	for i in range(0,enemy_array.size()):
 		if enemy_array[i].alive == false:
 			dead_enemies += 1
-	print(dead_enemies)
+	#print(dead_enemies)
 	while dead_enemies == enemy_array.size():
 		battle_over = true
 		$TextboxTimer.start(15)
@@ -331,8 +331,7 @@ func _on_healing_pressed():
 func _on_scan_pressed():
 	action_selection_array[index].hide()
 	action = "scan"
-	scan_button_pressed.emit()#pass arguement
-	emit_signal("scan_button_pressed")#get it to work
+	emit_signal("scan_button_pressed")
 	
 func _on_textbox_timer_timeout():
 	pass
@@ -350,13 +349,12 @@ func _on_skip_pressed():
 
 
 func attack(selection_index):
-	var critical_chance = 0.9
+	var critical_chance = 0.05
 	var is_critical = randf() <= critical_chance
 	if is_critical:
 		emit_signal("display_info_text_box", "Critical Attack")
 		await self.info_text_box_closed
 		character_animation_array[index].play("attack")
-		character_animation_array[index].queue("idle")
 		enemy_array[selection_index].health = max(0, enemy_array[selection_index].health - (critical_multiplier * character_array[index].attack_power))			
 		emit_signal("display_info_text_box", "Critical %d" % (critical_multiplier * character_array[index].attack_power))
 		decrease_turns(playerturns, true, true)
@@ -364,7 +362,6 @@ func attack(selection_index):
 		emit_signal("display_info_text_box", "Attack")
 		await self.info_text_box_closed
 		character_animation_array[index].play("attack")
-		character_animation_array[index].queue("idle")
 		emit_signal("display_info_text_box", "Damage %d" % character_array[index].attack_power)
 		enemy_array[selection_index].health = max(0, enemy_array[selection_index].health - character_array[index].attack_power)
 		decrease_turns(playerturns, false, true)
@@ -394,7 +391,6 @@ func magic(selection_index,action):
 			await self.info_text_box_closed
 			decrease_turns(playerturns, false, true)
 		character_animation_array[index].play("magic_attack")
-		character_animation_array[index].queue("idle")
 		enemy_damage_animation_array[selection_index].play(action)
 		character_array[index].magic_points -= 10
 		emit_signal("set_magic_points",magic_bar_array[index],character_array[index].magic_points,character_array[index].max_magic_points)
@@ -426,7 +422,7 @@ func _on_menu_cursor_menu_canceled():
 func decrease_turns(turns_array, halfturnhit, is_player):
 	var half_turn = 0.5
 	var full_turn = 1.0
-	var no_1 = true
+	var no_1 = true # there is no one turn
 	
 	if halfturnhit:
 		for i in range(len(turns_array)):

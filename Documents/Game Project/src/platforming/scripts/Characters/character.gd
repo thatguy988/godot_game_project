@@ -1,9 +1,15 @@
 extends CharacterBody2D
 
 
+var tween: Tween
+var idle = false
+
 signal textbox_text
 const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
+
+var camera_x_offset = 125
+var camera_y_offset = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -34,10 +40,28 @@ func _physics_process(delta):
 	if disable_controls == false:
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			
 		var direction = Input.get_axis("ui_left", "ui_right")
+		
 		if direction != 0:
 			sprite.flip_h = (direction == -1)
-			#sprite.flip_h mirror sprite
+			idle = false
+			if direction == 1:#facing right
+				camera_x_offset = 125
+				move_camera_up_and_down()
+				tween = create_tween()
+				tween.tween_property($Camera,"offset",Vector2(camera_x_offset,camera_y_offset),1).set_trans(Tween.TRANS_LINEAR) 
+			elif direction == -1:#facing left
+				camera_x_offset=-125
+				move_camera_up_and_down()
+				tween = create_tween()
+				tween.tween_property($Camera,"offset",Vector2(camera_x_offset,camera_y_offset),1).set_trans(Tween.TRANS_LINEAR) 
+		elif (direction == 0):
+			move_camera_up_and_down()
+			if idle == false:
+				idle = true
+				$IdleTimer.start(5)
+			
 		if direction:
 			velocity.x = direction * SPEED
 		else:
@@ -93,3 +117,31 @@ func _on_area_2d_body_entered(body):
 	
 func _on_battle_transition():
 	disable_controls = true
+
+
+func _on_idle_timer_timeout():
+	camera_x_offset = 0
+	tween = create_tween()
+	tween.tween_property($Camera,"offset",Vector2(camera_x_offset,camera_y_offset),1).set_trans(Tween.TRANS_LINEAR) 
+	
+func move_camera_up_and_down():
+	if Input.is_action_just_pressed("ui_up"):
+		camera_y_offset = -125
+		
+		tween= create_tween()
+		tween.tween_property($Camera,"offset",Vector2(camera_x_offset,camera_y_offset),1).set_trans(Tween.TRANS_LINEAR)
+	elif Input.is_action_just_pressed("ui_down"):
+		camera_y_offset = 125
+		
+		tween = create_tween()
+		tween.tween_property($Camera,"offset",Vector2(camera_x_offset,camera_y_offset),1).set_trans(Tween.TRANS_LINEAR)
+	if Input.is_action_just_released("ui_up"):
+		camera_y_offset = 0
+		
+		tween = create_tween()
+		tween.tween_property($Camera,"offset",Vector2(camera_x_offset,camera_y_offset),1).set_trans(Tween.TRANS_LINEAR)
+	elif Input.is_action_just_released("ui_down"):
+		camera_y_offset = 0
+		
+		tween = create_tween()
+		tween.tween_property($Camera,"offset",Vector2(camera_x_offset,camera_y_offset),1).set_trans(Tween.TRANS_LINEAR)

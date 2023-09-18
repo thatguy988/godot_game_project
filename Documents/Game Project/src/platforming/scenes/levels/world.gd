@@ -53,6 +53,7 @@ func cutscene_script():
 	$Transition/AnimationPlayer.play("fade_out")
 	textbox_closed = true
 	await self.scene_finished
+	get_tree().change_scene_to_file("res://src/battle/scenes/Battle_Zones/Boss_1_Battle_Scene.tscn")
 	#get_tree().change_scene_to_file("res://src/main_menu/scenes/main.tscn")
 	
 	

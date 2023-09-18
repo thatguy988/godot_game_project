@@ -1,10 +1,10 @@
 extends "res://src/battle/scripts/Battle_Zones/Battle.gd"
 
 
-@export var enemy: Resource
+@export var boss: Resource
 @export var character: Resource
 @export var companion: Resource
-@export var enemy_2: Resource
+
 
 
 
@@ -14,8 +14,8 @@ func _ready():
 	magic_selection_array=[$Party_Group/Player_Character/MagicSelection, $Party_Group/Companion/MagicSelection]
 	health_bar_array = [$"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 healthbar", $"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion healthbar"]
 	magic_bar_array = [$"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 magicbar",$"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion magicbar"]
-	enemy_array = [enemy, enemy_2]
-	enemy_nodes = [$Pair_of_Enemies/enemy_1, $Pair_of_Enemies/enemy_2]
+	enemy_array = [boss]
+	enemy_nodes = [$One_Enemy/Enemy_1]
 	enemyturns = enemy_array.size()
 	playerturns = []
 	enemyturns = []
@@ -26,10 +26,9 @@ func _ready():
 	initialize_focus=[$Party_Group/Player_Character/ActionSelection/Actions/Attack,$Party_Group/Companion/ActionSelection/Actions/Magic]
 	initialize_focus_magic=[$Party_Group/Player_Character/MagicSelection/Magic/Fire,$Party_Group/Companion/MagicSelection/Magic/Fire ]
 	character_animation_array = [$"Party_Group/Player_Character/Player_AnimationPlayer",$"Party_Group/Companion/Companion_AnimationPlayer"]
-	character_animation_array[0].queue("idle")
 	damage_array=[$"Party_Group/PlayerDamage",$"Party_Group/CompanionDamage"]
 	enemy_animation_array = []
-	enemy_damage_animation_array = [$"Pair_of_Enemies/enemy_1/slime_enemy/Enemy_Animation_Player", $"Pair_of_Enemies/enemy_2/slime_enemy/Enemy_Animation_Player"]
+	enemy_damage_animation_array = [$"One_Enemy/enemy_1/boss_1/Enemy_Animation_Player"]
 	emit_signal("set_health",$"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 healthbar", character.health, character.max_health)
 	emit_signal("set_health",$"character_info_textbox/MarginContainer/MarginContainer2/VBoxContainer/companion healthbar", companion.health, companion.max_health)
 	emit_signal("set_magic_points",$"character_info_textbox/MarginContainer/MarginContainer/VBoxContainer/Player1 magicbar", character.magic_points, character.max_magic_points)

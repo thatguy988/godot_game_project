@@ -61,7 +61,3 @@ func _on_battle_magic_selected():
 
 
 
-
-
-func _on_tutorial_magic_selected():
-	pass # Replace with function body.

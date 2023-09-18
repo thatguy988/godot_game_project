@@ -1,16 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://dwafp2cab1kxc"]
 
-[sub_resource type="GDScript" id="GDScript_b1c0k"]
-script/source = "extends TextureRect
-
-
-
-"
+[ext_resource type="Script" path="res://src/battle/ui/enemy_item.gd" id="1_xt4as"]
 
 [node name="One_Enemy" type="GridContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Enemy" type="TextureRect" parent="."]
+[node name="enemy_1" type="TextureRect" parent="."]
 layout_mode = 2
-script = SubResource("GDScript_b1c0k")
+script = ExtResource("1_xt4as")

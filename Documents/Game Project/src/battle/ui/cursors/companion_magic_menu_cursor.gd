@@ -29,7 +29,6 @@ func _on_battle_companion_display_magic_cursor():
 
 
 func _on_battle_hide_companion_display_magic_cursor():
-	print("HEYO")
 	visible = false
 	can_select_magic = false
 	cursor_index = 0
@@ -91,3 +90,5 @@ func _on_tutorial_companion_display_magic_cursor():
 
 func _on_tutorial_hide_companion_display_magic_cursor():
 	pass # Replace with function body.
+
+
