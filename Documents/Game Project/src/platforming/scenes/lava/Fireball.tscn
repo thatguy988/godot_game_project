@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://cl06wudjnfo5d"]
+
+[ext_resource type="Script" path="res://src/platforming/scripts/lava/Fireball.gd" id="1_ofa8w"]
+
+[sub_resource type="Gradient" id="Gradient_adt8e"]
+offsets = PackedFloat32Array(0, 0.525346, 1)
+colors = PackedColorArray(1, 1, 0, 1, 0.87451, 0.34902, 0.207843, 1, 0.164706, 0.164706, 0.164706, 0.568627)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_77pdt"]
+gradient = SubResource("Gradient_adt8e")
+
+[sub_resource type="Curve" id="Curve_0njwk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5ts06"]
+curve = SubResource("Curve_0njwk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fs8is"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 44, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_5ts06")
+color_ramp = SubResource("GradientTexture1D_77pdt")
+turbulence_enabled = true
+turbulence_noise_scale = 1.08
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yx7q1"]
+radius = 1.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ofa8w")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Fireball" type="GPUParticles2D" parent="CharacterBody2D"]
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_fs8is")
+
+[node name="Fireball_Collision" type="Area2D" parent="CharacterBody2D/Fireball"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Fireball/Fireball_Collision"]
+shape = SubResource("CircleShape2D_yx7q1")

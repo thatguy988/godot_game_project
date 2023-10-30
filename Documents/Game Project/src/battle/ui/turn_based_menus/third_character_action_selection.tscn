@@ -72,7 +72,7 @@ theme_override_constants/separation = 1
 [node name="Attack" type="Button" parent="Actions"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../Stats")
+focus_neighbor_bottom = NodePath("../Magic")
 theme_override_fonts/font = ExtResource("1_5yfvs")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_welie")
@@ -80,7 +80,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_da1qt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_hca7g")
 text = "Attack"
 
-[node name="Stats" type="Button" parent="Actions"]
+[node name="Magic" type="Button" parent="Actions"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 focus_neighbor_top = NodePath("../Attack")
@@ -90,13 +90,13 @@ theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_isfre")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7yr5w")
 theme_override_styles/focus = SubResource("StyleBoxFlat_3o0dl")
-text = "Stats
+text = "Magic
 "
 
 [node name="Scan" type="Button" parent="Actions"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
-focus_neighbor_top = NodePath("../Stats")
+focus_neighbor_top = NodePath("../Magic")
 focus_neighbor_bottom = NodePath("../Skip")
 theme_override_fonts/font = ExtResource("1_5yfvs")
 theme_override_font_sizes/font_size = 5

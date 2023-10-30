@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsnxti0mkr1h7"]
+
+[ext_resource type="Texture2D" uid="uid://cos4lbnc4f57o" path="res://assets/15 Blob TileMap 16x16.png" id="1_dwm55"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxd5s"]
+size = Vector2(31, 15)
+
+[node name="small_platform" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_dwm55")
+region_enabled = true
+region_rect = Rect2(464, 384, 32, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_uxd5s")
+one_way_collision = true

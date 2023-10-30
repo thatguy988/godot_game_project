@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c1j44odlgo42f"]
+[gd_scene load_steps=13 format=3 uid="uid://c1j44odlgo42f"]
 
 [ext_resource type="Script" path="res://src/battle/scripts/Battle_Zones/Forest_Battle_Scene.gd" id="1_nyaer"]
 [ext_resource type="PackedScene" uid="uid://dgch1la8udhgi" path="res://src/battle/ui/InfoTexbox.tscn" id="7_kh4u5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/battle/ui/cursors/enemy_selection_cursor.gd" id="10_op7hy"]
 [ext_resource type="Script" path="res://src/battle/ui/cursors/magic_selection_cursor.gd" id="11_7qd2g"]
 [ext_resource type="Script" path="res://src/battle/ui/cursors/action_selection_cursor.gd" id="12_e43kg"]
+[ext_resource type="Script" path="res://src/battle/ui/cursors/player_selection_cursor.gd" id="12_l17lj"]
 [ext_resource type="Script" path="res://src/battle/ui/cursors/companion_action_menu_cursor.gd" id="13_ehihc"]
 [ext_resource type="Script" path="res://src/battle/ui/cursors/companion_magic_menu_cursor.gd" id="14_h7fwo"]
 [ext_resource type="PackedScene" uid="uid://cd08g0b2vthor" path="res://src/battle/ui/health_and_magic_bars/Two_Character_Info_Textbox.tscn" id="15_3n7e7"]
@@ -43,6 +44,11 @@ scale = Vector2(0.789061, 0.814179)
 script = ExtResource("10_op7hy")
 menu_parent_path = NodePath("../Pair_of_Enemies")
 cursor_offset = Vector2(-25, -30)
+
+[node name="player_selection_cursor" parent="." instance=ExtResource("9_nbbme")]
+layout_mode = 0
+script = ExtResource("12_l17lj")
+cursor_offset = Vector2(0, 0)
 
 [node name="Player_Character_Magic_Cursor" parent="." instance=ExtResource("9_nbbme")]
 layout_mode = 0
@@ -90,6 +96,7 @@ scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 600, 450)
 
 [node name="Transition" parent="." instance=ExtResource("16_v3bct")]
+visible = false
 offset = Vector2(300, 250)
 transform = Transform2D(1, 0, 0, 1, 300, 250)
 
@@ -99,6 +106,7 @@ transform = Transform2D(1, 0, 0, 1, 300, 250)
 [connection signal="display_attack_cursor" from="." to="Player_Character_Action_Cursor" method="_on_battle_display_attack_cursor"]
 [connection signal="display_counter_text_box" from="." to="TurnCounter" method="_on_display_counter_text_box"]
 [connection signal="display_info_text_box" from="." to="InfoTextbox" method="_on_display_info_text_box"]
+[connection signal="healing_magic_selected" from="." to="player_selection_cursor" method="_on_battle_healing_magic_selected"]
 [connection signal="hide_companion_display_magic_cursor" from="." to="Companion_Magic_Cursor" method="_on_battle_hide_companion_display_magic_cursor"]
 [connection signal="hide_player_display_magic_cursor" from="." to="Player_Character_Magic_Cursor" method="_on_battle_hide_player_display_magic_cursor"]
 [connection signal="magic_selected" from="." to="menu_cursor" method="_on_battle_magic_selected"]
@@ -109,6 +117,7 @@ transform = Transform2D(1, 0, 0, 1, 300, 250)
 [connection signal="timeout" from="TextboxTimer" to="." method="_on_textbox_timer_timeout"]
 [connection signal="info_text_box_closed" from="InfoTextbox" to="." method="_on_info_text_box_closed"]
 [connection signal="menu_canceled" from="menu_cursor" to="." method="_on_menu_cursor_menu_canceled"]
+[connection signal="player_selection_canceled" from="player_selection_cursor" to="." method="_on_player_selection_cursor_player_selection_canceled"]
 [connection signal="animation_finished" from="Transition/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 
 [editable path="character_info_textbox"]

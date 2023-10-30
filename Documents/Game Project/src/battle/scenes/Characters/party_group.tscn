@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://bh7airq6lcj5s"]
+[gd_scene load_steps=8 format=3 uid="uid://bh7airq6lcj5s"]
 
+[ext_resource type="Script" path="res://src/battle/ui/enemy_item.gd" id="1_jnf0o"]
 [ext_resource type="PackedScene" uid="uid://ckiain8unk2wd" path="res://src/battle/scenes/Characters/companion.tscn" id="1_nkj4k"]
 [ext_resource type="PackedScene" uid="uid://dqgpi3owbaxar" path="res://src/battle/ui/turn_based_menus/companion_action_selection.tscn" id="2_xtd2c"]
 [ext_resource type="PackedScene" uid="uid://telmfvalpr36" path="res://src/battle/ui/turn_based_menus/companion_magic_selection.tscn" id="3_j34iv"]
@@ -7,296 +8,51 @@
 [ext_resource type="PackedScene" uid="uid://c7t2aex7vmkrj" path="res://src/battle/ui/turn_based_menus/action_selection.tscn" id="5_a461a"]
 [ext_resource type="PackedScene" uid="uid://drnd0jopnheao" path="res://src/battle/ui/turn_based_menus/magic_selection.tscn" id="6_wtl2f"]
 
-[sub_resource type="Animation" id="Animation_chh0n"]
-resource_name = "Dead"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Player_Character:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_01jcc"]
-resource_name = "Earth"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Player_Character:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_owh5b"]
-resource_name = "Fire"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Player_Character:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_5yonk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Player_Character:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_cid7y"]
-resource_name = "Thunder"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Player_Character:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_dxmi4"]
-resource_name = "Water"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Player_Character:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_di6b4"]
-resource_name = "player_damaged"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Player_Character:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_gwvdt"]
-resource_name = "player_heal"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Player_Character:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1), Color(0, 1, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwyqv"]
-_data = {
-"Dead": SubResource("Animation_chh0n"),
-"Earth": SubResource("Animation_01jcc"),
-"Fire": SubResource("Animation_owh5b"),
-"RESET": SubResource("Animation_5yonk"),
-"Thunder": SubResource("Animation_cid7y"),
-"Water": SubResource("Animation_dxmi4"),
-"damage": SubResource("Animation_di6b4"),
-"heal": SubResource("Animation_gwvdt")
-}
-
-[sub_resource type="Animation" id="Animation_xqc77"]
-resource_name = "Dead"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Companion:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_6ymxa"]
-resource_name = "Earth"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Companion:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1), Color(0.545098, 0.270588, 0.0745098, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_tok61"]
-resource_name = "Fire"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Companion:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_ouhr6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Companion:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_u8wvk"]
-resource_name = "Thunder"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Companion:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_v30fk"]
-resource_name = "Water"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Companion:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 1, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_k3rkn"]
-resource_name = "companion_damage"
-length = 1.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Party_Group/Companion:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kx2mk"]
-_data = {
-"Dead": SubResource("Animation_xqc77"),
-"Earth": SubResource("Animation_6ymxa"),
-"Fire": SubResource("Animation_tok61"),
-"RESET": SubResource("Animation_ouhr6"),
-"Thunder": SubResource("Animation_u8wvk"),
-"Water": SubResource("Animation_v30fk"),
-"damage": SubResource("Animation_k3rkn")
-}
-
 [node name="Party_Group" type="Node"]
 
-[node name="Companion" parent="." instance=ExtResource("1_nkj4k")]
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ActionSelection" parent="Companion" instance=ExtResource("2_xtd2c")]
+[node name="Player" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+script = ExtResource("1_jnf0o")
 
-[node name="MagicSelection" parent="Companion" instance=ExtResource("3_j34iv")]
+[node name="Player_Character" parent="GridContainer/Player" instance=ExtResource("4_s5pyk")]
 
-[node name="Player_Character" parent="." instance=ExtResource("4_s5pyk")]
+[node name="ActionSelection" parent="GridContainer/Player/Player_Character" instance=ExtResource("5_a461a")]
 
-[node name="ActionSelection" parent="Player_Character" instance=ExtResource("5_a461a")]
+[node name="MagicSelection" parent="GridContainer/Player/Player_Character" instance=ExtResource("6_wtl2f")]
 
-[node name="MagicSelection" parent="Player_Character" instance=ExtResource("6_wtl2f")]
+[node name="Companion" type="TextureRect" parent="GridContainer"]
+layout_mode = 2
+script = ExtResource("1_jnf0o")
 
-[node name="PlayerDamage" type="AnimationPlayer" parent="."]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_rwyqv")
-}
+[node name="Companion" parent="GridContainer/Companion" instance=ExtResource("1_nkj4k")]
+position = Vector2(925, 182.5)
+scale = Vector2(1.6625, 1.66875)
 
-[node name="CompanionDamage" type="AnimationPlayer" parent="."]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_kx2mk")
-}
+[node name="ActionSelection" parent="GridContainer/Companion/Companion" instance=ExtResource("2_xtd2c")]
+anchors_preset = -1
+anchor_left = -0.285
+anchor_right = -0.285
+offset_left = -442.4
+offset_top = 128.0
+offset_right = -384.4
+offset_bottom = 234.0
 
-[editable path="Companion"]
-[editable path="Companion/ActionSelection"]
-[editable path="Companion/MagicSelection"]
-[editable path="Player_Character"]
-[editable path="Player_Character/ActionSelection"]
-[editable path="Player_Character/MagicSelection"]
+[node name="Actions" parent="GridContainer/Companion/Companion/ActionSelection" index="0"]
+offset_right = 28.0
+
+[node name="MagicSelection" parent="GridContainer/Companion/Companion" instance=ExtResource("3_j34iv")]
+offset_left = -371.0
+offset_top = 132.0
+offset_right = -92.72
+offset_bottom = 650.08
+
+[editable path="GridContainer/Player/Player_Character"]
+[editable path="GridContainer/Player/Player_Character/ActionSelection"]
+[editable path="GridContainer/Player/Player_Character/MagicSelection"]
+[editable path="GridContainer/Companion/Companion"]
+[editable path="GridContainer/Companion/Companion/ActionSelection"]
+[editable path="GridContainer/Companion/Companion/MagicSelection"]

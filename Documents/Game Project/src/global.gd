@@ -18,8 +18,14 @@ var checkpoint_spawn_point_y = position_y
 # Create a dictionary to store enemy states for each level.
 # The keys are the level numbers, and the values are the arrays representing the enemy states.
 var level_enemy_states = {
-	1: [true, true, true],  
-	2: [true, true, true, true],  
+	1: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+	2: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+
+	3: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+	4: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+	5: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+	6: [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true],
+	7: [true, true, true, true],
 	# Add more levels and their respective enemy states arrays here.
 }
 

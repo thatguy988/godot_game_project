@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://befv4on7l5s6t"]
+
+[ext_resource type="Texture2D" uid="uid://dmyokw6y1tco2" path="res://assets/Enemies/Free Enemies/Free Enemies/Anim/Defencer 1A[anim].png" id="1_bpjam"]
+
+[sub_resource type="Animation" id="Animation_b3epj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_c1reo"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_74q7j"]
+resource_name = "walking"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4dtue"]
+_data = {
+"RESET": SubResource("Animation_b3epj"),
+"idle": SubResource("Animation_c1reo"),
+"walking": SubResource("Animation_74q7j")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05515"]
+size = Vector2(37, 34)
+
+[node name="defencer_enemy" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bpjam")
+hframes = 4
+vframes = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_4dtue")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 48)
+shape = SubResource("RectangleShape2D_05515")
+
+[node name="Timer" type="Timer" parent="."]

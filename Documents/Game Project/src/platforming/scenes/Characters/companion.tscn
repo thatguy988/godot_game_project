@@ -1,119 +1,48 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbrqsl2jgtmji"]
 
 [ext_resource type="Script" path="res://src/platforming/scripts/Characters/companion.gd" id="1_yv40f"]
-[ext_resource type="Texture2D" uid="uid://bh3rl2nbceuaq" path="res://assets/Fada rosa.png" id="2_4bug7"]
+[ext_resource type="Texture2D" uid="uid://deiqkunfl64l3" path="res://assets/Enemies/Free Enemies/Free Enemies/Anim/Fairy 1B[anim].png" id="2_t5076"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fo346"]
-size = Vector2(10, 16)
+size = Vector2(6, 12)
 
 [sub_resource type="Animation" id="Animation_qadgs"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_4bug7")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_un348"]
+[sub_resource type="Animation" id="Animation_uvait"]
 resource_name = "idle"
-length = 0.7
+length = 0.6
 loop_mode = 1
+step = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_4bug7")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_24q4s"]
 _data = {
 "RESET": SubResource("Animation_qadgs"),
-"idle": SubResource("Animation_un348")
+"idle": SubResource("Animation_uvait")
 }
 
 [node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("navigation_agent")]
@@ -124,15 +53,15 @@ script = ExtResource("1_yv40f")
 navigation_agent = NodePath("NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
+position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_fo346")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -2)
-scale = Vector2(0.0675705, 0.153508)
-texture = ExtResource("2_4bug7")
-hframes = 3
-vframes = 3
+position = Vector2(-9.53674e-07, -5)
+scale = Vector2(0.215035, 0.376754)
+texture = ExtResource("2_t5076")
+hframes = 4
+vframes = 14
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true

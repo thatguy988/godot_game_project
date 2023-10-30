@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://o4jqksw3761h"]
+
+[ext_resource type="Script" path="res://src/platforming/scenes/moving_platforms/level_2/key.gd" id="1_1huj4"]
+[ext_resource type="Texture2D" uid="uid://coghyxe4im4ds" path="res://Banjo_tiles.png" id="1_tddxy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5r4p"]
+size = Vector2(8, 8)
+
+[node name="key" type="Node2D"]
+script = ExtResource("1_1huj4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_tddxy")
+region_enabled = true
+region_rect = Rect2(128, 48, 8, 12)
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+shape = SubResource("RectangleShape2D_v5r4p")
+
+[connection signal="body_entered" from="StaticBody2D/Area2D" to="." method="_on_area_2d_body_entered"]

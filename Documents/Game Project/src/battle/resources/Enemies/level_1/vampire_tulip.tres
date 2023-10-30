@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cttxg5wqavaw7"]
+
+[ext_resource type="Script" path="res://src/battle/resources/Enemies/BaseEnemy.gd" id="1_0uqk4"]
+
+[resource]
+script = ExtResource("1_0uqk4")
+name = "Enemy"
+health = 100
+max_health = 100
+magic_points = 30
+max_magic_points = 30
+attack_power = 20
+strength = "Water"
+weakness = "Earth"
+magic_attack_power = 10
+healing_power = 0
+alive = true
+magic_spells = ["Thunder"]

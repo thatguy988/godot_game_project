@@ -1,0 +1,185 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5jnwjcge7moo"]
+
+[ext_resource type="Texture2D" uid="uid://dhsq6a7lrasq1" path="res://assets/Enemies/Free Enemies/Free Enemies/Anim/Demonpot A[anim].png" id="1_c437i"]
+[ext_resource type="Script" path="res://src/platforming/scripts/Enemies/level_5/demonpot_enemy.gd" id="1_s2rkn"]
+
+[sub_resource type="Animation" id="Animation_vie54"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(3, 27, -2, 27, -3, 26, -14, 24, -19, 24, -20, 23, -20, 20, -19, 19, -17, 19, -17, 16, -16, 15, -16, 13, -18, 11, -19, 9, -20, 8, -21, 6, -22, 5, -23, 3, -24, 1, -26, -1, -26, -4, -26, -6, -27, -7, -28, -9, -30, -11, -30, -20, -29, -22, -29, -27, -28, -28, -26, -29, -23, -30, -23, -32, -24, -33, -24, -37, -22, -39, -20, -40, -15, -40, -15, -41, -14, -42, -12, -44, -10, -45, 4, -45, 10, -44, 12, -43, 14, -42, 15, -41, 15, -40, 21, -40, 23, -39, 25, -37, 25, -33, 24, -32, 24, -29, 27, -29, 29, -28, 30, -27, 30, -20, 31, -20, 31, -11, 29, -9, 28, -7, 27, -6, 27, -1, 25, 1, 24, 3, 23, 5, 22, 6, 21, 8, 20, 9, 19, 11, 17, 13, 17, 15, 18, 16, 18, 19, 20, 19, 21, 20, 21, 23, 20, 24, 15, 24, 14, 23, 4, 23, 4, 26)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ju7l4"]
+resource_name = "idle_left"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(3, 27, -2, 27, -3, 26, -14, 24, -19, 24, -20, 23, -20, 20, -19, 19, -17, 19, -17, 16, -16, 15, -16, 13, -18, 11, -19, 9, -20, 8, -21, 6, -22, 5, -23, 3, -24, 1, -26, -1, -26, -4, -26, -6, -27, -7, -28, -9, -30, -11, -30, -20, -29, -22, -29, -27, -28, -28, -26, -29, -23, -30, -23, -32, -24, -33, -24, -37, -22, -39, -20, -40, -15, -40, -15, -41, -14, -42, -12, -44, -10, -45, 4, -45, 10, -44, 12, -43, 14, -42, 15, -41, 15, -40, 21, -40, 23, -39, 25, -37, 25, -33, 24, -32, 24, -29, 27, -29, 29, -28, 30, -27, 30, -20, 31, -20, 31, -11, 29, -9, 28, -7, 27, -6, 27, -1, 25, 1, 24, 3, 23, 5, 22, 6, 21, 8, 20, 9, 19, 11, 17, 13, 17, 15, 18, 16, 18, 19, 20, 19, 21, 20, 21, 23, 20, 24, 15, 24, 14, 23, 4, 23, 4, 26), PackedVector2Array(3, 27, -2, 27, -3, 26, -14, 24, -19, 24, -20, 23, -20, 20, -19, 19, -17, 19, -17, 16, -16, 15, -16, 13, -18, 11, -19, 9, -20, 8, -21, 6, -22, 5, -23, 3, -24, 1, -26, -1, -26, -4, -26, -6, -27, -7, -28, -9, -30, -11, -30, -20, -30, -22, -29, -24, -29, -29, -28, -30, -26, -31, -23, -32, -23, -34, -24, -35, -24, -39, -22, -41, -20, -42, -17, -43, -14, -43, -14, -45, -13, -46, -10, -49, -8, -50, 0, -50, 0, -49, 4, -49, 4, -48, 8, -48, 8, -47, 10, -47, 13, -44, 13, -43, 18, -43, 18, -42, 21, -42, 21, -41, 23, -41, 24, -40, 25, -39, 25, -35, 24, -32, 24, -31, 27, -31, 27, -30, 29, -30, 30, -29, 30, -22, 31, -22, 31, -13, 29, -11, 28, -9, 27, -8, 27, -2, 25, 0, 24, 2, 23, 4, 22, 6, 21, 7, 20, 9, 19, 11, 17, 13, 17, 15, 18, 16, 18, 19, 20, 19, 21, 20, 21, 23, 20, 24, 15, 24, 14, 23, 4, 23, 4, 26), PackedVector2Array(-2, 22, -3, 21, -14, 24, -19, 24, -20, 23, -20, 20, -19, 19, -17, 19, -17, 16, -16, 15, -16, 13, -18, 11, -19, 9, -20, 7, -21, 6, -22, 4, -23, 2, -24, 0, -26, -2, -26, -5, -25, -5, -25, -10, -27, -12, -28, -14, -30, -16, -30, -20, -30, -25, -29, -25, -29, -29, -29, -32, -28, -33, -26, -34, -24, -39, -24, -42, -23, -43, -20, -44, -17, -45, -14, -45, -13, -46, -13, -51, -9, -55, -7, -56, -5, -57, 2, -57, 5, -56, 7, -55, 10, -52, 11, -50, 12, -49, 12, -47, 13, -47, 14, -46, 14, -45, 18, -45, 18, -44, 21, -44, 21, -43, 24, -43, 25, -42, 25, -34, 27, -34, 29, -33, 30, -32, 30, -25, 31, -25, 31, -16, 29, -14, 28, -12, 27, -11, 27, -2, 25, 0, 24, 2, 23, 4, 22, 6, 21, 7, 20, 9, 19, 11, 17, 13, 17, 15, 18, 16, 18, 19, 20, 19, 21, 20, 21, 23, 20, 24, 15, 24, 14, 23, 4, 21, 3, 22), PackedVector2Array(-2, 23, -3, 22, -14, 24, -19, 24, -20, 23, -20, 20, -19, 19, -17, 19, -17, 16, -16, 15, -16, 13, -18, 11, -19, 9, -20, 8, -21, 6, -22, 5, -23, 3, -24, 1, -25, 0, -26, -1, -26, -7, -27, -8, -27, -10, -28, -10, -30, -12, -30, -21.0193, -29, -23, -29, -28, -28, -29, -26, -30, -23, -31, -24, -34, -24, -38, -23, -39, -20, -40, -17, -41, -14, -41, -14, -44, -10, -48, -8, -49, 0, -49, 4, -48, 8, -47, 10, -46, 14, -42, 18, -41, 21, -40, 24, -39, 25, -38, 25, -34, 27, -30, 29, -29, 30, -28, 30, -25, 30, -21, 31, -21, 31, -16, 31, -12, 29, -10, 28, -8, 27, -7, 27, -1, 26, 0, 25, 1, 24, 3, 23, 5, 22, 6, 21, 8, 20, 9, 19, 11, 17, 13, 17, 15, 18, 16, 18, 19, 20, 19, 21, 20, 21, 23, 20, 24, 15, 24, 14, 23, 4, 22, 3, 23)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_skmeu"]
+resource_name = "idle_right"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(3, 27, -2, 27, -3, 26, -14, 24, -19, 24, -20, 23, -20, 20, -19, 19, -17, 19, -17, 16, -16, 15, -16, 13, -18, 11, -19, 9, -20, 8, -21, 6, -22, 5, -23, 3, -24, 1, -26, -1, -26, -4, -26, -6, -27, -7, -28, -9, -30, -11, -30, -20, -29, -22, -29, -27, -28, -28, -26, -29, -23, -30, -23, -32, -24, -33, -24, -37, -22, -39, -20, -40, -15, -40, -15, -41, -14, -42, -12, -44, -10, -45, 4, -45, 10, -44, 12, -43, 14, -42, 15, -41, 15, -40, 21, -40, 23, -39, 25, -37, 25, -33, 24, -32, 24, -29, 27, -29, 29, -28, 30, -27, 30, -20, 31, -20, 31, -11, 29, -9, 28, -7, 27, -6, 27, -1, 25, 1, 24, 3, 23, 5, 22, 6, 21, 8, 20, 9, 19, 11, 17, 13, 17, 15, 18, 16, 18, 19, 20, 19, 21, 20, 21, 23, 20, 24, 15, 24, 14, 23, 4, 23, 4, 26), PackedVector2Array(3, 27, -2, 27, -3, 26, -14, 24, -19, 24, -20, 23, -20, 20, -19, 19, -17, 19, -17, 16, -16, 15, -16, 13, -18, 11, -19, 9, -20, 8, -21, 6, -22, 5, -23, 3, -24, 1, -26, -1, -26, -4, -26, -6, -27, -7, -28, -9, -30, -11, -30, -20, -30, -22, -29, -24, -29, -29, -28, -30, -26, -31, -23, -32, -23, -34, -24, -35, -24, -39, -22, -41, -20, -42, -17, -43, -14, -43, -14, -45, -13, -46, -10, -49, -8, -50, 0, -50, 0, -49, 4, -49, 4, -48, 8, -48, 8, -47, 10, -47, 13, -44, 13, -43, 18, -43, 18, -42, 21, -42, 21, -41, 23, -41, 24, -40, 25, -39, 25, -35, 24, -32, 24, -31, 27, -31, 27, -30, 29, -30, 30, -29, 30, -22, 31, -22, 31, -13, 29, -11, 28, -9, 27, -8, 27, -2, 25, 0, 24, 2, 23, 4, 22, 6, 21, 7, 20, 9, 19, 11, 17, 13, 17, 15, 18, 16, 18, 19, 20, 19, 21, 20, 21, 23, 20, 24, 15, 24, 14, 23, 4, 23, 4, 26), PackedVector2Array(-2, 22, -3, 21, -14, 24, -19, 24, -20, 23, -20, 20, -19, 19, -17, 19, -17, 16, -16, 15, -16, 13, -18, 11, -19, 9, -20, 7, -21, 6, -22, 4, -23, 2, -24, 0, -26, -2, -26, -5, -25, -5, -25, -10, -27, -12, -28, -14, -30, -16, -30, -20, -30, -25, -29, -25, -29, -29, -29, -32, -28, -33, -26, -34, -24, -39, -24, -42, -23, -43, -20, -44, -17, -45, -14, -45, -13, -46, -13, -51, -9, -55, -7, -56, -5, -57, 2, -57, 5, -56, 7, -55, 10, -52, 11, -50, 12, -49, 12, -47, 13, -47, 14, -46, 14, -45, 18, -45, 18, -44, 21, -44, 21, -43, 24, -43, 25, -42, 25, -34, 27, -34, 29, -33, 30, -32, 30, -25, 31, -25, 31, -16, 29, -14, 28, -12, 27, -11, 27, -2, 25, 0, 24, 2, 23, 4, 22, 6, 21, 7, 20, 9, 19, 11, 17, 13, 17, 15, 18, 16, 18, 19, 20, 19, 21, 20, 21, 23, 20, 24, 15, 24, 14, 23, 4, 21, 3, 22), PackedVector2Array(-2, 23, -3, 22, -14, 24, -19, 24, -20, 23, -20, 20, -19, 19, -17, 19, -17, 16, -16, 15, -16, 13, -18, 11, -19, 9, -20, 8, -21, 6, -22, 5, -23, 3, -24, 1, -25, 0, -26, -1, -26, -7, -27, -8, -27, -10, -28, -10, -30, -12, -30, -21.0193, -29, -23, -29, -28, -28, -29, -26, -30, -23, -31, -24, -34, -24, -38, -23, -39, -20, -40, -17, -41, -14, -41, -14, -44, -10, -48, -8, -49, 0, -49, 4, -48, 8, -47, 10, -46, 14, -42, 18, -41, 21, -40, 24, -39, 25, -38, 25, -34, 27, -30, 29, -29, 30, -28, 30, -25, 30, -21, 31, -21, 31, -16, 31, -12, 29, -10, 28, -8, 27, -7, 27, -1, 26, 0, 25, 1, 24, 3, 23, 5, 22, 6, 21, 8, 20, 9, 19, 11, 17, 13, 17, 15, 18, 16, 18, 19, 20, 19, 21, 20, 21, 23, 20, 24, 15, 24, 14, 23, 4, 22, 3, 23)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3kphg"]
+resource_name = "walking"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_njyph"]
+_data = {
+"RESET": SubResource("Animation_vie54"),
+"idle_left": SubResource("Animation_ju7l4"),
+"idle_right": SubResource("Animation_skmeu"),
+"walking": SubResource("Animation_3kphg")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu1u7"]
+size = Vector2(43, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_s2rkn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_c437i")
+offset = Vector2(0, -40)
+hframes = 4
+vframes = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_njyph")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 27.5)
+shape = SubResource("RectangleShape2D_gu1u7")
+
+[node name="MovementTimer" type="Timer" parent="."]
+
+[node name="Player_Enemy_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player_Enemy_Collision"]
+polygon = PackedVector2Array(3, 27, -2, 27, -3, 26, -14, 24, -19, 24, -20, 23, -20, 20, -19, 19, -17, 19, -17, 16, -16, 15, -16, 13, -18, 11, -19, 9, -20, 8, -21, 6, -22, 5, -23, 3, -24, 1, -26, -1, -26, -4, -26, -6, -27, -7, -28, -9, -30, -11, -30, -20, -29, -22, -29, -27, -28, -28, -26, -29, -23, -30, -23, -32, -24, -33, -24, -37, -22, -39, -20, -40, -15, -40, -15, -41, -14, -42, -12, -44, -10, -45, 4, -45, 10, -44, 12, -43, 14, -42, 15, -41, 15, -40, 21, -40, 23, -39, 25, -37, 25, -33, 24, -32, 24, -29, 27, -29, 29, -28, 30, -27, 30, -20, 31, -20, 31, -11, 29, -9, 28, -7, 27, -6, 27, -1, 25, 1, 24, 3, 23, 5, 22, 6, 21, 8, 20, 9, 19, 11, 17, 13, 17, 15, 18, 16, 18, 19, 20, 19, 21, 20, 21, 23, 20, 24, 15, 24, 14, 23, 4, 23, 4, 26)
+
+[connection signal="body_entered" from="Player_Enemy_Collision" to="." method="_on_player_enemy_collision_body_entered"]

@@ -46,14 +46,15 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="ActionSelection" type="Panel"]
-offset_left = -1859.81
-offset_top = 458.763
-offset_right = -1791.81
-offset_bottom = 577.763
-scale = Vector2(4, 4)
+offset_left = 127.0
+offset_top = 345.0
+offset_right = 193.0
+offset_bottom = 453.0
+scale = Vector2(1.25, 1.25)
 theme_override_styles/panel = SubResource("StyleBoxFlat_anaen")
 
 [node name="Actions" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 0
 offset_top = 2.0
 offset_right = 32.0

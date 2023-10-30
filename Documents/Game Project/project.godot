@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 BattleCharacter1="res://components/battle_character_1.gd"
 Global="*res://src/global.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 ui_accept={
@@ -41,6 +45,7 @@ ui_enter={
 2d_physics/layer_2="player"
 2d_navigation/layer_2="worldnavigation"
 2d_physics/layer_3="enemy"
+2d_physics/layer_4="spikes"
 avoidance/layer_2="worldavoid"
 
 [rendering]
@@ -48,4 +53,3 @@ avoidance/layer_2="worldavoid"
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)

@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://bk2wj2sbyxgev"]
+
+[ext_resource type="PackedScene" uid="uid://c1j44odlgo42f" path="res://src/battle/scenes/Battle_Zones/Generic_Battle_Scene.tscn" id="1_71y6c"]
+[ext_resource type="Script" path="res://src/battle/scripts/Battle_Zones/level_1/forest_battle.gd" id="2_k7fks"]
+[ext_resource type="Resource" uid="uid://4o61bulmtd63" path="res://src/battle/resources/Enemies/level_1/slime.tres" id="3_3qm66"]
+[ext_resource type="Resource" uid="uid://c7u4es6btphxh" path="res://src/battle/resources/Characters/player_1.tres" id="4_k43hg"]
+[ext_resource type="Resource" uid="uid://woane3tbb58u" path="res://src/battle/resources/Characters/companion.tres" id="5_t6njm"]
+[ext_resource type="Resource" uid="uid://bqr1oqcqtjunk" path="res://src/battle/resources/Enemies/level_1/slime_2.tres" id="6_6d50w"]
+[ext_resource type="Texture2D" uid="uid://x1bsnrwuuk6u" path="res://assets/backgrounds/battle_scene_backgrounds/level_1/level_1_battle_background.png" id="7_ohuja"]
+[ext_resource type="PackedScene" uid="uid://bh7airq6lcj5s" path="res://src/battle/scenes/Characters/party_group.tscn" id="8_yhf24"]
+[ext_resource type="PackedScene" uid="uid://b4o35bpv3uwrr" path="res://src/battle/scenes/Enemies/enemy_group.tscn" id="9_i0avn"]
+[ext_resource type="PackedScene" uid="uid://bv6h6dskwhrnw" path="res://src/battle/scenes/Enemies/level_1/slime_1.tscn" id="10_v8uw1"]
+
+[node name="Battle" instance=ExtResource("1_71y6c")]
+script = ExtResource("2_k7fks")
+slime = ExtResource("3_3qm66")
+character = ExtResource("4_k43hg")
+companion = ExtResource("5_t6njm")
+slime_2 = ExtResource("6_6d50w")
+
+[node name="Battle_Background" parent="." index="0"]
+texture_filter = 1
+offset_top = -79.0
+offset_right = 1153.0
+offset_bottom = 729.0
+texture = ExtResource("7_ohuja")
+
+[node name="Party_Group" parent="." index="1" instance=ExtResource("8_yhf24")]
+
+[node name="Pair_of_Enemies" parent="." index="2" instance=ExtResource("9_i0avn")]
+layout_mode = 0
+offset_left = 252.0
+offset_top = 214.0
+offset_right = 372.0
+offset_bottom = 425.0
+
+[node name="slime_enemy" parent="Pair_of_Enemies/enemy_1" index="0" instance=ExtResource("10_v8uw1")]
+
+[node name="slime_enemy" parent="Pair_of_Enemies/enemy_2" index="0" instance=ExtResource("10_v8uw1")]
+
+[node name="menu_cursor" parent="." index="6"]
+cursor_offset = Vector2(80, 100)
+
+[node name="player_selection_cursor" parent="." index="7"]
+menu_parent_path = NodePath("../Party_Group/GridContainer")
+cursor_offset = Vector2(-600, 0)
+
+[node name="Player_Character_Magic_Cursor" parent="." index="8"]
+menu_parent_path = NodePath("../Party_Group/GridContainer/Player/Player_Character/MagicSelection/Magic")
+
+[node name="Player_Character_Action_Cursor" parent="." index="9"]
+menu_parent_path = NodePath("../Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions")
+
+[node name="Companion_Action_Cursor" parent="." index="10"]
+menu_parent_path = NodePath("../Party_Group/GridContainer/Companion/Companion/ActionSelection/Actions")
+
+[node name="Companion_Magic_Cursor" parent="." index="11"]
+menu_parent_path = NodePath("../Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic")
+
+[connection signal="cursor_selected" from="Party_Group/GridContainer/Player" to="." method="_on_player_cursor_selected"]
+[connection signal="cursor_selected" from="Party_Group/GridContainer/Player" to="player_selection_cursor" method="_on_player_cursor_selected"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions/Attack" to="Player_Character_Action_Cursor" method="_on_attack_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions/Magic" to="." method="_on_magic_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions/Magic" to="Player_Character_Action_Cursor" method="_on_magic_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions/Scan" to="." method="_on_scan_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions/Scan" to="Player_Character_Action_Cursor" method="_on_scan_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions/Skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions/Skip" to="Player_Character_Action_Cursor" method="_on_skip_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions/Flee" to="." method="_on_flee_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/ActionSelection/Actions/Flee" to="Player_Character_Action_Cursor" method="_on_flee_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/MagicSelection/Magic/Fire" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/MagicSelection/Magic/Fire" to="Player_Character_Magic_Cursor" method="_on_fire_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/MagicSelection/Magic/Water" to="." method="_on_water_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/MagicSelection/Magic/Water" to="Player_Character_Magic_Cursor" method="_on_water_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/MagicSelection/Magic/Lightning" to="." method="_on_lightning_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/MagicSelection/Magic/Lightning" to="Player_Character_Magic_Cursor" method="_on_lightning_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/MagicSelection/Magic/Earth" to="." method="_on_earth_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Player/Player_Character/MagicSelection/Magic/Earth" to="Player_Character_Magic_Cursor" method="_on_earth_pressed"]
+[connection signal="cursor_selected" from="Party_Group/GridContainer/Companion" to="." method="_on_companion_cursor_selected"]
+[connection signal="cursor_selected" from="Party_Group/GridContainer/Companion" to="player_selection_cursor" method="_on_companion_cursor_selected"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/ActionSelection/Actions/Magic" to="." method="_on_magic_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/ActionSelection/Actions/Magic" to="Companion_Action_Cursor" method="_on_magic_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/ActionSelection/Actions/Scan" to="." method="_on_scan_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/ActionSelection/Actions/Scan" to="Companion_Action_Cursor" method="_on_scan_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/ActionSelection/Actions/Skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/ActionSelection/Actions/Skip" to="Companion_Action_Cursor" method="_on_skip_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/ActionSelection/Actions/Flee" to="." method="_on_flee_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/ActionSelection/Actions/Flee" to="Companion_Action_Cursor" method="_on_flee_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic/Fire" to="." method="_on_fire_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic/Fire" to="Companion_Magic_Cursor" method="_on_fire_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic/Water" to="." method="_on_water_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic/Water" to="Companion_Magic_Cursor" method="_on_water_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic/Lightning" to="." method="_on_lightning_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic/Lightning" to="Companion_Magic_Cursor" method="_on_lightning_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic/Earth" to="." method="_on_earth_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic/Earth" to="Companion_Magic_Cursor" method="_on_earth_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic/Healing" to="." method="_on_healing_pressed"]
+[connection signal="pressed" from="Party_Group/GridContainer/Companion/Companion/MagicSelection/Magic/Healing" to="Companion_Magic_Cursor" method="_on_healing_pressed"]
+[connection signal="cursor_selected" from="Pair_of_Enemies/enemy_1" to="." method="_on_enemy_1_cursor_selected"]
+[connection signal="cursor_selected" from="Pair_of_Enemies/enemy_1" to="menu_cursor" method="_on_enemy_1_cursor_selected"]
+[connection signal="cursor_selected" from="Pair_of_Enemies/enemy_2" to="." method="_on_enemy_2_cursor_selected"]
+[connection signal="cursor_selected" from="Pair_of_Enemies/enemy_2" to="menu_cursor" method="_on_enemy_2_cursor_selected"]
+
+[editable path="Party_Group"]
+[editable path="Party_Group/GridContainer/Player/Player_Character"]
+[editable path="Party_Group/GridContainer/Player/Player_Character/ActionSelection"]
+[editable path="Party_Group/GridContainer/Player/Player_Character/MagicSelection"]
+[editable path="Party_Group/GridContainer/Companion/Companion"]
+[editable path="Party_Group/GridContainer/Companion/Companion/ActionSelection"]
+[editable path="Party_Group/GridContainer/Companion/Companion/MagicSelection"]
+[editable path="Pair_of_Enemies"]
+[editable path="Pair_of_Enemies/enemy_1/slime_enemy"]
+[editable path="Pair_of_Enemies/enemy_2/slime_enemy"]
+[editable path="character_info_textbox"]
+[editable path="Transition"]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://kft4nq1mscca"]
+
+[ext_resource type="Script" path="res://src/battle/resources/Enemies/BaseEnemy.gd" id="1_harny"]
+
+[resource]
+script = ExtResource("1_harny")
+name = "Enemy"
+health = 125
+max_health = 125
+magic_points = 30
+max_magic_points = 30
+attack_power = 15
+strength = "Thunder"
+weakness = "Earth"
+magic_attack_power = 0
+healing_power = 0
+alive = true
+magic_spells = ["Thunder"]

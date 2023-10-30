@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d8jevddutj1v"]
+[gd_scene load_steps=16 format=3 uid="uid://d8jevddutj1v"]
 
 [ext_resource type="FontFile" uid="uid://dlqvbprjc7f1w" path="res://assets/fonts/TeenyTinyPixls-o2zo.ttf" id="1_toqbv"]
 
@@ -48,93 +48,80 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1n7yt"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q02dj"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[node name="StatsSelection" type="Panel"]
+[node name="MagicSelection" type="Panel"]
 anchors_preset = -1
 anchor_right = 0.017
 anchor_bottom = 0.062
 offset_left = -117.0
 offset_top = 31.0
-offset_right = -95.584
-offset_bottom = 72.824
+offset_right = -105.584
+offset_bottom = 57.824
 theme_override_styles/panel = SubResource("StyleBoxFlat_bml0v")
 
-[node name="SupportMagic" type="VBoxContainer" parent="."]
+[node name="Magic" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 3.0
 offset_top = 1.0
-offset_right = 51.0
-offset_bottom = 106.0
+offset_right = 40.0
+offset_bottom = 89.0
 scale = Vector2(0.75, 0.75)
 theme_override_constants/separation = 3
 
-[node name="Matarukaja" type="Button" parent="SupportMagic"]
+[node name="Fire" type="Button" parent="Magic"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
-focus_neighbor_top = NodePath("../Matarunda")
-focus_neighbor_bottom = NodePath("../Masukukaja")
+focus_neighbor_top = NodePath("../Earth")
+focus_neighbor_bottom = NodePath("../Water")
 theme_override_fonts/font = ExtResource("1_toqbv")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_752nt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wrxwg")
 theme_override_styles/focus = SubResource("StyleBoxFlat_edlwb")
-text = "Matarukaja"
+text = "Fire
+"
 
-[node name="Masukukaja" type="Button" parent="SupportMagic"]
+[node name="Water" type="Button" parent="Magic"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
-focus_neighbor_top = NodePath("../Matarukaja")
-focus_neighbor_bottom = NodePath("../Marakukaja")
+focus_neighbor_top = NodePath("../Fire")
+focus_neighbor_bottom = NodePath("../Thunder")
 theme_override_fonts/font = ExtResource("1_toqbv")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_bkj42")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1fsxt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_qdln0")
-text = "Masukukaja
+text = "Water
 "
 
-[node name="Marakukaja" type="Button" parent="SupportMagic"]
+[node name="Thunder" type="Button" parent="Magic"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
-focus_neighbor_top = NodePath("../Masukukaja")
-focus_neighbor_bottom = NodePath("../Matarunda")
+focus_neighbor_top = NodePath("../Water")
+focus_neighbor_bottom = NodePath("../Earth")
 theme_override_fonts/font = ExtResource("1_toqbv")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_mllqs")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_on4pw")
 theme_override_styles/focus = SubResource("StyleBoxFlat_pumcs")
-text = "Marakukaja
+text = "Thunder
 "
 
-[node name="Matarunda" type="Button" parent="SupportMagic"]
+[node name="Earth" type="Button" parent="Magic"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
-focus_neighbor_top = NodePath("../Marakukaja")
-focus_neighbor_bottom = NodePath("../Masukunda")
+focus_neighbor_top = NodePath("../Thunder")
+focus_neighbor_bottom = NodePath("../Heal")
 theme_override_fonts/font = ExtResource("1_toqbv")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_h1ocn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_iecww")
 theme_override_styles/focus = SubResource("StyleBoxFlat_dcxv6")
-text = "Matarunda"
+text = "Earth"
 
-[node name="Masukunda" type="Button" parent="SupportMagic"]
+[node name="Heal" type="Button" parent="Magic"]
 custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
-focus_neighbor_top = NodePath("../Matarunda")
-focus_neighbor_bottom = NodePath("../Marakunda")
+focus_neighbor_top = NodePath("../Earth")
 theme_override_fonts/font = ExtResource("1_toqbv")
 theme_override_font_sizes/font_size = 5
 theme_override_styles/normal = SubResource("StyleBoxFlat_1n7yt")
-text = "Masukunda"
-
-[node name="Marakunda" type="Button" parent="SupportMagic"]
-custom_minimum_size = Vector2(0, 15)
-layout_mode = 2
-focus_neighbor_top = NodePath("../Masukunda")
-theme_override_fonts/font = ExtResource("1_toqbv")
-theme_override_font_sizes/font_size = 5
-theme_override_styles/normal = SubResource("StyleBoxFlat_q02dj")
-text = "Marakunda"
+text = "Heal"

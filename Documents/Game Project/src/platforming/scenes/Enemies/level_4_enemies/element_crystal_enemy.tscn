@@ -1,0 +1,218 @@
+[gd_scene load_steps=9 format=3 uid="uid://ceadlxj41r3qy"]
+
+[ext_resource type="Texture2D" uid="uid://ci4wmbv1v4ywj" path="res://assets/Enemies/Free Enemies/Free Enemies/Anim/Element Crystal 1A[anim].png" id="1_hvm4w"]
+[ext_resource type="Script" path="res://src/platforming/scripts/Enemies/level_4/element_crystal_enemy.gd" id="1_mbhqd"]
+
+[sub_resource type="Animation" id="Animation_8leeu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(1, 28, 2, 27, 2, 25, 3, 25, 4, 23, 5, 21, 6, 19, 6, 12, 25, 10, 26, 10, 27, 8, 28, 5, 29, 2, 29, -2, 28, -4, 26, -6, 25, -8, 24, -9, 23, -9, 13, -14, 13, -18, 12, -18, 12, -24, 11, -25, 10, -25, 9, -24, 6, -28, 5, -30, 4, -31, 3, -33, 2, -35, 1, -36, 0, -36, -1, -35, -1, -33, -2, -33, -3, -32, -3, -30, -4, -30, -5, -29, -5, -27, -6, -27, -6, -21, -18, -17, -19, -19, -20, -20, -21, -20, -21, -18, -22, -18, -22, -15, -23, -15, -23, -13, -24, -13, -24, -10, -23, -9, -22, -7, -21, -6, -19, -4, -18, -4, -11, 1, -11, 3, -12, 3, -12, 5, -13, 5, -13, 7, -12, 7, -12, 10, -11, 12, -10, 14, -9, 16, -8, 16, -5, 19, -4, 21, -3, 23, -2, 25, -1, 27, 0, 28)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bhxt6"]
+resource_name = "idle_left"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(1, 28, 2, 27, 2, 25, 3, 25, 4, 23, 5, 21, 6, 19, 6, 12, 25, 10, 26, 10, 27, 8, 28, 5, 29, 2, 29, -2, 28, -4, 26, -6, 25, -8, 24, -9, 23, -9, 13, -14, 13, -18, 12, -18, 12, -24, 11, -25, 10, -25, 9, -24, 6, -28, 5, -30, 4, -31, 3, -33, 2, -35, 1, -36, 0, -36, -1, -35, -1, -33, -2, -33, -3, -32, -3, -30, -4, -30, -5, -29, -5, -27, -6, -27, -6, -21, -18, -17, -19, -19, -20, -20, -21, -20, -21, -18, -22, -18, -22, -15, -23, -15, -23, -13, -24, -13, -24, -10, -23, -9, -22, -7, -21, -6, -19, -4, -18, -4, -11, 1, -11, 3, -12, 3, -12, 5, -13, 5, -13, 7, -12, 7, -12, 10, -11, 12, -10, 14, -9, 16, -8, 16, -5, 19, -4, 21, -3, 23, -2, 25, -1, 27, 0, 28), PackedVector2Array(1, 29, 2, 28, 3, 26, 4, 24, 5, 22, 6, 20, 8, 16, 9, 15, 10, 14, 12, 11, 13, 9, 14, 7, 22, -4, 22, -7, 23, -7, 23, -11, 24, -11, 24, -14, 23, -16, 22, -17, 21, -19, 20, -20, 19, -20, 6, -21, 6, -27, 5, -29, 4, -30, 3, -32, 2, -34, 1, -35, 0, -35, -1, -34, -2, -32, -3, -31, -4, -29, -5, -28, -6, -26, -7, -24, -8, -22, -9, -20, -10, -19, -10, -16, -11, -16, -25, -9, -26, -7, -27, -5, -28, -3, -29, -1, -29, 3, -28, 4, -27, 6, -23, 10, -22, 10, -5, 10, -5, 20, -4, 22, -3, 24, -2, 26, -1, 28, 0, 29), PackedVector2Array(1, 28, 2, 27, 3, 25, 4, 23, 5, 21, 6, 19, 6, 12, 23, 8, 24, 8, 26, 6, 27, 4, 28, 3, 29, 1, 30, -1, 30, -4, 29, -4, 29, -11, 28, -11, 28, -15, 27, -15, 12, -18, 11, -18, 11, -20, 10, -21, 9, -23, 8, -24, 6, -28, 5, -30, 4, -31, 3, -33, 2, -35, 1, -36, 0, -36, -1, -35, -2, -33, -3, -32, -4, -30, -5, -29, -6, -27, -6, -21, -12, -20, -13, -21, -14, -21, -15, -20, -16, -18, -17, -16, -18, -15, -19, -12, -19, -8, -18, -8, -18, -5, -17, -3, -16, -2, -11, 3, -12, 5, -13, 7, -13, 11, -12, 12, -11, 14, -7, 18, -5, 19, -4, 21, -3, 23, -2, 25, -1, 27, 0, 28), PackedVector2Array(1, 27, 2, 26, 3, 24, 4, 22, 5, 20, 6, 18, 10, 18, 11, 16, 12, 13, 13, 10, 13, 6, 17, -2, 18, -4, 19, -6, 20, -8, 21, -10, 21, -14, 20, -14, 20, -20, 19, -21, 18, -21, 17, -20, 6, -23, 6, -29, 5, -31, 4, -32, 3, -34, 2, -36, 1, -37, 0, -37, -1, -36, -2, -34, -3, -33, -4, -31, -5, -30, -6, -28, -8, -24, -9, -24, -10, -22, -11, -19, -20, -15, -21, -15, -23, -13, -24, -11, -25, -10, -26, -8, -27, -7, -28, -5, -29, -3, -29, -1, -28, -1, -28, 2, -27, 4, -26, 6, -25, 8, -24, 8, -23, 7, -22, 6, -21, 4, -5, 6, -5, 18, -4, 20, -3, 22, -2, 24, -1, 26, 0, 27)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eon1l"]
+resource_name = "idle_right"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(1, 28, 2, 27, 2, 25, 3, 25, 4, 23, 5, 21, 6, 19, 6, 12, 25, 10, 26, 10, 27, 8, 28, 5, 29, 2, 29, -2, 28, -4, 26, -6, 25, -8, 24, -9, 23, -9, 13, -14, 13, -18, 12, -18, 12, -24, 11, -25, 10, -25, 9, -24, 6, -28, 5, -30, 4, -31, 3, -33, 2, -35, 1, -36, 0, -36, -1, -35, -1, -33, -2, -33, -3, -32, -3, -30, -4, -30, -5, -29, -5, -27, -6, -27, -6, -21, -18, -17, -19, -19, -20, -20, -21, -20, -21, -18, -22, -18, -22, -15, -23, -15, -23, -13, -24, -13, -24, -10, -23, -9, -22, -7, -21, -6, -19, -4, -18, -4, -11, 1, -11, 3, -12, 3, -12, 5, -13, 5, -13, 7, -12, 7, -12, 10, -11, 12, -10, 14, -9, 16, -8, 16, -5, 19, -4, 21, -3, 23, -2, 25, -1, 27, 0, 28), PackedVector2Array(1, 29, 2, 28, 3, 26, 4, 24, 5, 22, 6, 20, 8, 16, 9, 15, 10, 14, 12, 11, 13, 9, 14, 7, 22, -4, 22, -7, 23, -7, 23, -11, 24, -11, 24, -14, 23, -16, 22, -17, 21, -19, 20, -20, 19, -20, 6, -21, 6, -27, 5, -29, 4, -30, 3, -32, 2, -34, 1, -35, 0, -35, -1, -34, -2, -32, -3, -31, -4, -29, -5, -28, -6, -26, -7, -24, -8, -22, -9, -20, -10, -19, -10, -16, -11, -16, -25, -9, -26, -7, -27, -5, -28, -3, -29, -1, -29, 3, -28, 4, -27, 6, -23, 10, -22, 10, -5, 10, -5, 20, -4, 22, -3, 24, -2, 26, -1, 28, 0, 29), PackedVector2Array(1, 28, 2, 27, 3, 25, 4, 23, 5, 21, 6, 19, 6, 12, 23, 8, 24, 8, 26, 6, 27, 4, 28, 3, 29, 1, 30, -1, 30, -4, 29, -4, 29, -11, 28, -11, 28, -15, 27, -15, 12, -18, 11, -18, 11, -20, 10, -21, 9, -23, 8, -24, 6, -28, 5, -30, 4, -31, 3, -33, 2, -35, 1, -36, 0, -36, -1, -35, -2, -33, -3, -32, -4, -30, -5, -29, -6, -27, -6, -21, -12, -20, -13, -21, -14, -21, -15, -20, -16, -18, -17, -16, -18, -15, -19, -12, -19, -8, -18, -8, -18, -5, -17, -3, -16, -2, -11, 3, -12, 5, -13, 7, -13, 11, -12, 12, -11, 14, -7, 18, -5, 19, -4, 21, -3, 23, -2, 25, -1, 27, 0, 28), PackedVector2Array(1, 27, 2, 26, 3, 24, 4, 22, 5, 20, 6, 18, 10, 18, 11, 16, 12, 13, 13, 10, 13, 6, 17, -2, 18, -4, 19, -6, 20, -8, 21, -10, 21, -14, 20, -14, 20, -20, 19, -21, 18, -21, 17, -20, 6, -23, 6, -29, 5, -31, 4, -32, 3, -34, 2, -36, 1, -37, 0, -37, -1, -36, -2, -34, -3, -33, -4, -31, -5, -30, -6, -28, -8, -24, -9, -24, -10, -22, -11, -19, -20, -15, -21, -15, -23, -13, -24, -11, -25, -10, -26, -8, -27, -7, -28, -5, -29, -3, -29, -1, -28, -1, -28, 2, -27, 4, -26, 6, -25, 8, -24, 8, -23, 7, -22, 6, -21, 4, -5, 6, -5, 18, -4, 20, -3, 22, -2, 24, -1, 26, 0, 27)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nmiwc"]
+resource_name = "walking"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rylhb"]
+_data = {
+"RESET": SubResource("Animation_8leeu"),
+"idle_left": SubResource("Animation_bhxt6"),
+"idle_right": SubResource("Animation_eon1l"),
+"walking": SubResource("Animation_nmiwc")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vni2j"]
+size = Vector2(28, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_mbhqd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hvm4w")
+offset = Vector2(0, -20)
+hframes = 4
+vframes = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rylhb")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 32)
+shape = SubResource("RectangleShape2D_vni2j")
+
+[node name="MovementTimer" type="Timer" parent="."]
+
+[node name="Player_Enemy_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player_Enemy_Collision"]
+polygon = PackedVector2Array(1, 28, 2, 27, 2, 25, 3, 25, 4, 23, 5, 21, 6, 19, 6, 12, 25, 10, 26, 10, 27, 8, 28, 5, 29, 2, 29, -2, 28, -4, 26, -6, 25, -8, 24, -9, 23, -9, 13, -14, 13, -18, 12, -18, 12, -24, 11, -25, 10, -25, 9, -24, 6, -28, 5, -30, 4, -31, 3, -33, 2, -35, 1, -36, 0, -36, -1, -35, -1, -33, -2, -33, -3, -32, -3, -30, -4, -30, -5, -29, -5, -27, -6, -27, -6, -21, -18, -17, -19, -19, -20, -20, -21, -20, -21, -18, -22, -18, -22, -15, -23, -15, -23, -13, -24, -13, -24, -10, -23, -9, -22, -7, -21, -6, -19, -4, -18, -4, -11, 1, -11, 3, -12, 3, -12, 5, -13, 5, -13, 7, -12, 7, -12, 10, -11, 12, -10, 14, -9, 16, -8, 16, -5, 19, -4, 21, -3, 23, -2, 25, -1, 27, 0, 28)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(18, -25)
+target_position = Vector2(27, 0)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(18, 27)
+target_position = Vector2(27, 0)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+position = Vector2(-18, 27)
+target_position = Vector2(-27, 0)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="RayCast2D4" type="RayCast2D" parent="."]
+position = Vector2(-18, -24)
+target_position = Vector2(-27, 0)
+collision_mask = 5
+collide_with_areas = true
+
+[node name="RayCast2D5" type="RayCast2D" parent="."]
+position = Vector2(18, 32)
+target_position = Vector2(0, 10)
+
+[node name="RayCast2D6" type="RayCast2D" parent="."]
+position = Vector2(-18, 32)
+target_position = Vector2(0, 10)
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="body_entered" from="Player_Enemy_Collision" to="." method="_on_player_enemy_collision_body_entered"]

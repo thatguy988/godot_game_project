@@ -1,0 +1,210 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkawax4sg1epk"]
+
+[ext_resource type="Texture2D" uid="uid://ebeq8rd7craq" path="res://assets/Enemies/Free Enemies/Free Enemies/Anim/Spore 1A[anim].png" id="1_0d0r4"]
+[ext_resource type="Script" path="res://src/platforming/scripts/Enemies/level_3/spore_1_enemy.gd" id="1_ae728"]
+
+[sub_resource type="Animation" id="Animation_8txsr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-12, -9, -13, -8, -13, -4, -12, -4, -12, 0, -10, 0, -7, 3, -7, 6, -5, 6, -5, 10, -4, 11, -2, 12, 4, 12, 6, 11, 7, 10, 8, 9, 8, 7, 10, 7, 11, 6, 11, 4, 12, 1, 14, 1, 14, -2, 15, -2, 15, -4, 16, -4, 16, -8, 14, -10, 13, -10, 13, -12, 12, -12, 12, -14, 10, -14, 8, -15, 5, -18, -1, -18, -1, -17, -3, -17, -5, -15, -5, -14, -7, -14, -8, -13, -8, -11, -9, -11, -10, -10, -10, -9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wdyg1"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1v0py"]
+resource_name = "walking_left"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(-12, -9, -13, -8, -13, -4, -12, -4, -12, 0, -10, 0, -7, 3, -7, 6, -5, 6, -5, 10, -4, 11, -2, 12, 4, 12, 6, 11, 7, 10, 8, 9, 8, 7, 10, 7, 11, 6, 11, 4, 12, 1, 14, 1, 14, -2, 15, -2, 15, -4, 16, -4, 16, -8, 14, -10, 13, -10, 13, -12, 12, -12, 12, -14, 10, -14, 8, -15, 5, -18, -1, -18, -1, -17, -3, -17, -5, -15, -5, -14, -7, -14, -8, -13, -8, -11, -9, -11, -10, -10, -10, -9), PackedVector2Array(-12, -10, -13, -9, -13, -4, -12, -4, -12, -1, -10, -1, -7, 1, -5, 5, -5, 10, -4, 11, -2, 12, 4, 12, 6, 11, 9, 11, 9, 8, 8, 8, 8, 5, 9, 5, 9, 2, 12, 0, 14, 0, 14, -3, 15, -3, 15, -5, 16, -5, 16, -9, 14, -11, 13, -11, 13, -13, 12, -13, 12, -15, 10, -15, 8, -15, 8, -16, 5, -19, -1, -19, -1, -18, -3, -18, -5, -16, -5, -15, -7, -15, -8, -14, -8, -12, -9, -12, -10, -11, -10, -10), PackedVector2Array(-12, -9, -13, -8, -13, -4, -12, -4, -12, 0, -10, 0, -7, 1, -7, 2, -5, 5, -6, 8, -6, 11, -2, 11, -2, 12, 4, 12, 5, 11, 5, 10, 9, 10, 10, 9, 10, 6, 8, 6, 8, 0, 12, 0, 12, 1, 14, 1, 14, 0, 14, -2, 15, -2, 15, -4, 16, -4, 16, -8, 14, -10, 13, -10, 13, -12, 12, -12, 12, -14, 10, -14, 8, -14, 8, -15, 5, -18, -1, -18, -1, -17, -3, -17, -5, -15, -7, -14, -8, -13, -8, -11, -9, -11, -9, -10, -10, -10), PackedVector2Array(-12, -10, -12, -9, -13, -9, -13, -5, -12, -5, -12, -1, -8, -1, -7, 1, -5, 5, -5, 10, -4, 11, -2, 11, -2, 12, 4, 12, 5, 11, 9, 11, 9, 8, 8, 8, 8, 5, 9, 5, 9, 2, 12, 0, 12, 1, 14, 1, 14, 0, 14, -3, 15, -3, 15, -5, 16, -5, 16, -9, 14, -11, 13, -11, 13, -13, 12, -13, 12, -15, 8, -15, 8, -16, 5, -19, -1, -19, -1, -18, -3, -18, -5, -16, -5, -15, -7, -15, -8, -14, -8, -12, -9, -12, -10, -11, -10, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bg7qd"]
+resource_name = "walking_right"
+length = 0.6
+loop_mode = 1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:polygon")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(-12, -9, -13, -8, -13, -4, -12, -4, -12, 0, -10, 0, -7, 3, -7, 6, -5, 6, -5, 10, -4, 11, -2, 12, 4, 12, 6, 11, 7, 10, 8, 9, 8, 7, 10, 7, 11, 6, 11, 4, 12, 1, 14, 1, 14, -2, 15, -2, 15, -4, 16, -4, 16, -8, 14, -10, 13, -10, 13, -12, 12, -12, 12, -14, 10, -14, 8, -15, 5, -18, -1, -18, -1, -17, -3, -17, -5, -15, -5, -14, -7, -14, -8, -13, -8, -11, -9, -11, -10, -10, -10, -9), PackedVector2Array(-12, -10, -13, -9, -13, -4, -12, -4, -12, -1, -10, -1, -7, 1, -5, 5, -5, 10, -4, 11, -2, 12, 4, 12, 6, 11, 9, 11, 9, 8, 8, 8, 8, 5, 9, 5, 9, 2, 12, 0, 14, 0, 14, -3, 15, -3, 15, -5, 16, -5, 16, -9, 14, -11, 13, -11, 13, -13, 12, -13, 12, -15, 10, -15, 8, -15, 8, -16, 5, -19, -1, -19, -1, -18, -3, -18, -5, -16, -5, -15, -7, -15, -8, -14, -8, -12, -9, -12, -10, -11, -10, -10), PackedVector2Array(-12, -9, -13, -8, -13, -4, -12, -4, -12, 0, -10, 0, -7, 1, -7, 2, -5, 5, -6, 8, -6, 11, -2, 11, -2, 12, 4, 12, 5, 11, 5, 10, 9, 10, 10, 9, 10, 6, 8, 6, 8, 0, 12, 0, 12, 1, 14, 1, 14, 0, 14, -2, 15, -2, 15, -4, 16, -4, 16, -8, 14, -10, 13, -10, 13, -12, 12, -12, 12, -14, 10, -14, 8, -14, 8, -15, 5, -18, -1, -18, -1, -17, -3, -17, -5, -15, -7, -14, -8, -13, -8, -11, -9, -11, -9, -10, -10, -10), PackedVector2Array(-12, -10, -12, -9, -13, -9, -13, -5, -12, -5, -12, -1, -8, -1, -7, 1, -5, 5, -5, 10, -4, 11, -2, 11, -2, 12, 4, 12, 5, 11, 9, 11, 9, 8, 8, 8, 8, 5, 9, 5, 9, 2, 12, 0, 12, 1, 14, 1, 14, 0, 14, -3, 15, -3, 15, -5, 16, -5, 16, -9, 14, -11, 13, -11, 13, -13, 12, -13, 12, -15, 8, -15, 8, -16, 5, -19, -1, -19, -1, -18, -3, -18, -5, -16, -5, -15, -7, -15, -8, -14, -8, -12, -9, -12, -10, -11, -10, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player_Enemy_Collision/CollisionPolygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(-1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yl6pw"]
+_data = {
+"RESET": SubResource("Animation_8txsr"),
+"idle": SubResource("Animation_wdyg1"),
+"walking_left": SubResource("Animation_1v0py"),
+"walking_right": SubResource("Animation_bg7qd")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km3wr"]
+size = Vector2(20, 1)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_ae728")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -50)
+texture = ExtResource("1_0d0r4")
+hframes = 4
+vframes = 14
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yl6pw")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 12.5)
+shape = SubResource("RectangleShape2D_km3wr")
+
+[node name="MovementTimer" type="Timer" parent="."]
+
+[node name="Player_Enemy_Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Player_Enemy_Collision"]
+polygon = PackedVector2Array(-12, -9, -13, -8, -13, -4, -12, -4, -12, 0, -10, 0, -7, 3, -7, 6, -5, 6, -5, 10, -4, 11, -2, 12, 4, 12, 6, 11, 7, 10, 8, 9, 8, 7, 10, 7, 11, 6, 11, 4, 12, 1, 14, 1, 14, -2, 15, -2, 15, -4, 16, -4, 16, -8, 14, -10, 13, -10, 13, -12, 12, -12, 12, -14, 10, -14, 8, -15, 5, -18, -1, -18, -1, -17, -3, -17, -5, -15, -5, -14, -7, -14, -8, -13, -8, -11, -9, -11, -10, -10, -10, -9)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(12, 9)
+target_position = Vector2(15, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(12, -13)
+target_position = Vector2(15, 0)
+
+[node name="RayCast2D3" type="RayCast2D" parent="."]
+position = Vector2(-10, 9)
+target_position = Vector2(-15, 0)
+
+[node name="RayCast2D4" type="RayCast2D" parent="."]
+position = Vector2(-10, -13)
+target_position = Vector2(-15, 0)
+
+[node name="RayCast2D5" type="RayCast2D" parent="."]
+position = Vector2(13, 12)
+target_position = Vector2(0, 9)
+
+[node name="RayCast2D6" type="RayCast2D" parent="."]
+position = Vector2(-11, 12)
+target_position = Vector2(0, 9)
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="body_entered" from="Player_Enemy_Collision" to="." method="_on_player_enemy_collision_body_entered"]

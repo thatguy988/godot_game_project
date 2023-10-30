@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://btrub7koy7q4q"]
+
+[ext_resource type="Script" path="res://src/platforming/scenes/moving_platforms/level_7/rising_platform.gd" id="1_i7y5q"]
+[ext_resource type="Texture2D" uid="uid://cos4lbnc4f57o" path="res://assets/15 Blob TileMap 16x16.png" id="2_8e28i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mh8s1"]
+size = Vector2(47, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilaiv"]
+size = Vector2(47, 1)
+
+[node name="rising_platform" type="Node2D"]
+script = ExtResource("1_i7y5q")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_8e28i")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_mh8s1")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(0.5, -24.5)
+shape = SubResource("RectangleShape2D_ilaiv")
+
+[connection signal="body_entered" from="CharacterBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CharacterBody2D/Area2D" to="." method="_on_area_2d_body_exited"]

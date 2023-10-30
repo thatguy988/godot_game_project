@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://jfa3fmhfw4xi"]
+
+[ext_resource type="Texture2D" uid="uid://cos4lbnc4f57o" path="res://assets/15 Blob TileMap 16x16.png" id="1_3amuo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ly4w"]
+size = Vector2(113, 14)
+
+[node name="Bigger_Moving_Platform" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(56.5, 0)
+scale = Vector2(8.0625, 1)
+texture = ExtResource("1_3amuo")
+region_enabled = true
+region_rect = Rect2(48, 368, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(56.5, 0)
+shape = SubResource("RectangleShape2D_2ly4w")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://crts6ecechv1b"]
+
+[ext_resource type="Texture2D" uid="uid://cos4lbnc4f57o" path="res://assets/15 Blob TileMap 16x16.png" id="1_i50bm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrdh3"]
+size = Vector2(16, 46)
+
+[node name="thin_moving_platform" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("1_i50bm")
+region_enabled = true
+region_rect = Rect2(48, 80, 16, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_rrdh3")
